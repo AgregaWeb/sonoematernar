@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #FAF7F2; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; color: #2B2A27; overflow-x: hidden; }
+  ::selection { background: #D6E4F0; color: #1F4A52; }
+  @keyframes mt-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  @keyframes mt-floatB { 0%,100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-9px) translateX(6px); } }
+  @keyframes mt-drift { 0%,100% { transform: translate(0,0) rotate(0deg); } 50% { transform: translate(16px,-12px) rotate(5deg); } }
+  @keyframes mt-breathe { 0%,100% { transform: scale(1); opacity:.85; } 50% { transform: scale(1.06); opacity:1; } }
+  @keyframes mt-particle { 0% { transform: translateY(0) scale(1); opacity:0; } 20% { opacity:.8; } 100% { transform: translateY(-90px) scale(1.3); opacity:0; } }
+  image-slot { display:block; }
+</style>
+</helmet>
+
+<div style="font-family:'Hanken Grotesk',sans-serif; background:#FAF7F2; position:relative;">
+
+  <!-- ===== HEADER ===== -->
+  <header id="mt-header" style="position:fixed; top:0; left:0; right:0; z-index:100; padding:18px 0; transition:.32s ease; background:rgba(250,247,242,0); border-bottom:1px solid rgba(232,225,213,0);">
+    <div style="max-width:1240px; margin:0 auto; padding:0 40px; display:flex; align-items:center; gap:28px;">
+      <a href="Home.dc.html" style="display:flex; align-items:center; gap:11px; text-decoration:none; flex-shrink:0;">
+        <img src="assets/logo-mark.png" alt="Vitória — Sono &amp; Maternar" style="height:40px; width:auto; display:block;">
+        <span style="font:500 19px 'Newsreader',serif; color:#2B2A27; letter-spacing:.01em;">Vitória Teixeira</span>
+      </a>
+      <nav style="flex:1; display:flex; align-items:center; justify-content:center; gap:4px;">
+        <a href="Home.dc.html" style="font:600 14px 'Hanken Grotesk'; color:#4A463F; text-decoration:none; padding:9px 14px; border-radius:9px; transition:.16s;" style-hover="background:rgba(46,90,99,.07); color:#2E5A63;">Início</a>
+        <a href="Quem Sou.dc.html" style="font:600 14px 'Hanken Grotesk'; color:#4A463F; text-decoration:none; padding:9px 14px; border-radius:9px; transition:.16s;" style-hover="background:rgba(46,90,99,.07); color:#2E5A63;">Quem Sou</a>
+        <a href="Metodo.dc.html" style="font:600 14px 'Hanken Grotesk'; color:#2E5A63; background:rgba(46,90,99,.08); text-decoration:none; padding:9px 14px; border-radius:9px; transition:.16s;">Método</a>
+        <div style="position:relative;" onMouseEnter="{{ openConsult }}" onMouseLeave="{{ closeMenu }}">
+          <a href="Consultoria Individual.dc.html" style="font:600 14px 'Hanken Grotesk'; color:#4A463F; text-decoration:none; padding:9px 14px; border-radius:9px; display:inline-flex; align-items:center; gap:5px; transition:.16s;" style-hover="background:rgba(46,90,99,.07); color:#2E5A63;">Consultorias <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></a>
+          <sc-if value="{{ menuConsult }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; top:100%; left:50%; transform:translateX(-50%); margin-top:8px; width:300px; background:#fff; border:1px solid #ECE4D6; border-radius:16px; box-shadow:0 18px 44px rgba(45,42,36,.12); padding:10px;">
+              <a href="Diagnostico.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Diagnóstico do Sono</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Por onde começar · R$ 147</div></a>
+              <a href="Consultoria Coletiva.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Consultoria Coletiva</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Em grupo, acessível · R$ 247</div></a>
+              <a href="Consultoria Individual.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s; background:#F2F6F4;" style-hover="background:#EAF1F7;"><div style="font:600 14px 'Hanken Grotesk'; color:#2E5A63;">Consultoria Individual ★</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">A mais escolhida · R$ 597</div></a>
+              <a href="Consultoria Premium.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Domiciliar Premium</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Avaliação presencial</div></a>
+            </div>
+          </sc-if>
+        </div>
+        <a href="#produtos" style="font:600 14px 'Hanken Grotesk'; color:#4A463F; text-decoration:none; padding:9px 14px; border-radius:9px; transition:.16s;" style-hover="background:rgba(46,90,99,.07); color:#2E5A63;">Biblioteca</a>
+        <a href="Blog.dc.html" style="font:600 14px 'Hanken Grotesk'; color:#4A463F; text-decoration:none; padding:9px 14px; border-radius:9px; transition:.16s;" style-hover="background:rgba(46,90,99,.07); color:#2E5A63;">Blog</a>
+      </nav>
+      <div style="display:flex; align-items:center; gap:12px; flex-shrink:0;">
+        <a href="Diagnostico.dc.html" style="font:700 14px 'Hanken Grotesk'; color:#fff; background:#2E5A63; text-decoration:none; padding:12px 22px; border-radius:11px; box-shadow:0 6px 16px rgba(46,90,99,.2); transition:.18s; white-space:nowrap;" style-hover="background:#1F4A52; transform:translateY(-1px);">Diagnóstico do Sono</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section style="position:relative; overflow:hidden; padding:150px 0 96px; background:radial-gradient(1100px 560px at 80% 0%, #EAF1F7 0%, rgba(234,241,247,0) 58%), radial-gradient(820px 480px at 8% 16%, #F8EDEA 0%, rgba(248,237,234,0) 55%), #FAF7F2;">
+    <div style="position:absolute; left:12%; top:65%; width:9px; height:9px; border-radius:50%; background:#B7C7AE; opacity:.5; animation:mt-particle 7s ease-in-out infinite;"></div>
+    <div style="position:absolute; left:22%; top:72%; width:6px; height:6px; border-radius:50%; background:#B9CFE4; opacity:.5; animation:mt-particle 9s ease-in-out infinite 1s;"></div>
+    <div style="position:absolute; left:30%; top:60%; width:7px; height:7px; border-radius:50%; background:#E1BDB5; opacity:.5; animation:mt-particle 8s ease-in-out infinite .6s;"></div>
+    <div style="position:absolute; left:42%; top:78%; width:5px; height:5px; border-radius:50%; background:#B7C7AE; opacity:.5; animation:mt-particle 10s ease-in-out infinite 2s;"></div>
+    <div style="position:absolute; top:120px; right:-60px; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle at 35% 30%, #FFFFFF, #DCE9D1); opacity:.4; animation:mt-drift 18s ease-in-out infinite;"></div>
+    <div style="max-width:1240px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; position:relative;">
+      <div data-reveal>
+        <div style="display:inline-flex; align-items:center; gap:8px; padding:7px 15px; background:rgba(255,255,255,.72); backdrop-filter:blur(8px); border:1px solid #E7DFD1; border-radius:999px; font:600 12px 'Hanken Grotesk'; letter-spacing:.04em; color:#2E5A63; margin-bottom:26px;"><span style="width:7px; height:7px; border-radius:50%; background:#5F7E5A;"></span> Metodologia exclusiva</div>
+        <h1 style="font:300 58px/1.06 'Newsreader',serif; letter-spacing:-.02em; color:#2B2A27; margin:0;">Método <em style="font-style:italic; color:#2E5A63;">Maternar Leve</em></h1>
+        <p style="font:400 17.5px/1.7 'Hanken Grotesk'; color:#615D55; max-width:520px; margin:22px 0 0;">Uma metodologia exclusiva criada para ajudar famílias a desenvolverem rotinas previsíveis, promoverem a autonomia do bebê e conquistarem noites mais tranquilas — de forma respeitosa, humanizada e baseada em evidências.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:30px;">
+          <a href="Consultoria Individual.dc.html" style="font:700 15.5px 'Hanken Grotesk'; color:#fff; background:#2E5A63; text-decoration:none; padding:16px 26px; border-radius:13px; box-shadow:0 10px 24px rgba(46,90,99,.24); transition:.18s; display:inline-flex; align-items:center; gap:9px;" style-hover="background:#1F4A52; transform:translateY(-2px);">Conhecer a Consultoria <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="Diagnostico.dc.html" style="font:700 15.5px 'Hanken Grotesk'; color:#2E5A63; background:rgba(255,255,255,.7); text-decoration:none; padding:16px 26px; border-radius:13px; border:1.5px solid #C4D7E2; transition:.18s;" style-hover="background:#fff; border-color:#2E5A63;">Agendar Diagnóstico</a>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:14px 24px; margin-top:32px;">
+          <span style="display:inline-flex; align-items:center; gap:8px; font:500 13.5px 'Hanken Grotesk'; color:#5C584F;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Baseado em Evidências</span>
+          <span style="display:inline-flex; align-items:center; gap:8px; font:500 13.5px 'Hanken Grotesk'; color:#5C584F;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Humanizado</span>
+          <span style="display:inline-flex; align-items:center; gap:8px; font:500 13.5px 'Hanken Grotesk'; color:#5C584F;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Personalizado</span>
+          <span style="display:inline-flex; align-items:center; gap:8px; font:500 13.5px 'Hanken Grotesk'; color:#5C584F;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Adaptado para cada família</span>
+        </div>
+      </div>
+      <div data-reveal style="position:relative;">
+        <div style="position:absolute; inset:-20px; background:linear-gradient(150deg,#EAF1F7,#F8EDEA); border-radius:48% 52% 54% 46% / 56% 44% 56% 44%; opacity:.7;"></div>
+        <image-slot id="mt-hero" style="position:relative; width:100%; height:540px;" shape="rounded" radius="30" placeholder="Foto editorial da Vitória — método, calma, autoridade"></image-slot>
+        <div style="position:absolute; top:30px; right:-24px; background:rgba(255,255,255,.85); backdrop-filter:blur(10px); border:1px solid #EEE6D8; border-radius:16px; padding:13px 16px; box-shadow:0 14px 30px rgba(45,42,36,.12); display:flex; align-items:center; gap:11px; animation:mt-float 6s ease-in-out infinite;"><span style="width:38px; height:38px; border-radius:11px; background:#EAF1F7; display:grid; place-items:center; color:#2E5A63;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span><div><div style="font:700 13px 'Hanken Grotesk'; color:#2B2A27;">5 pilares</div><div style="font:400 11.5px 'Hanken Grotesk'; color:#98938B;">um caminho claro</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== A GRANDE PROMESSA ===== -->
+  <section style="padding:100px 0; background:#FAF7F2;">
+    <div style="max-width:1080px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;">
+      <div data-reveal>
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#C68A7F; margin-bottom:16px;">A grande promessa</div>
+        <h2 style="font:300 40px/1.18 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.015em;">Dormir bem não acontece por acaso.</h2>
+        <p style="font:400 16.5px/1.75 'Hanken Grotesk'; color:#615D55; margin:18px 0 0;">O sono saudável é consequência — não sorte. Ele nasce de uma rotina estruturada, de um ambiente preparado e de pequenos hábitos consistentes que dão segurança ao bebê. O Maternar Leve organiza tudo isso em um caminho previsível.</p>
+        <div style="display:flex; gap:24px; margin-top:28px; padding-top:24px; border-top:1px solid #E5DDCF;">
+          <div><div style="font:300 30px 'Newsreader',serif; color:#2E5A63; line-height:1;">Rotina</div><div style="font:500 13px 'Hanken Grotesk'; color:#7A766D; margin-top:4px;">estruturada</div></div>
+          <div><div style="font:300 30px 'Newsreader',serif; color:#2E5A63; line-height:1;">Ambiente</div><div style="font:500 13px 'Hanken Grotesk'; color:#7A766D; margin-top:4px;">preparado</div></div>
+          <div><div style="font:300 30px 'Newsreader',serif; color:#2E5A63; line-height:1;">Hábitos</div><div style="font:500 13px 'Hanken Grotesk'; color:#7A766D; margin-top:4px;">consistentes</div></div>
+        </div>
+      </div>
+      <div data-reveal style="position:relative; display:flex; justify-content:center;">
+        <div style="position:absolute; inset:0; background:radial-gradient(circle at 50% 45%, #EEF2EB, rgba(238,242,235,0) 70%);"></div>
+        <svg width="340" height="300" viewBox="0 0 340 300" fill="none" style="position:relative;">
+          <path d="M30 240c50-30 100-36 160-20s100 6 130-30" stroke="#B7C7AE" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="170" cy="130" r="74" fill="none" stroke="#2E5A63" stroke-width="2.2"/>
+          <path d="M170 70a60 60 0 1 0 54 86 46 46 0 0 1-54-86Z" fill="#EAF1F7" stroke="#2E5A63" stroke-width="2.2" stroke-linejoin="round"/>
+          <circle cx="240" cy="92" r="3.5" fill="#C68A7F"/><circle cx="258" cy="112" r="2.2" fill="#B7C7AE"/><circle cx="96" cy="120" r="2.6" fill="#B9CFE4"/>
+          <g opacity=".85"><path d="M150 250c-4-6-4-12 0-18M170 252c-4-6-4-12 0-18M190 250c-4-6-4-12 0-18" stroke="#B9CFE4" stroke-width="2" stroke-linecap="round"/></g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== O QUE TORNA DIFERENTE ===== -->
+  <section style="padding:100px 0; background:linear-gradient(180deg,#FFFFFF,#FAF7F2);">
+    <div style="max-width:1180px; margin:0 auto; padding:0 40px;">
+      <div data-reveal style="text-align:center; max-width:620px; margin:0 auto 50px;">
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#2E5A63; margin-bottom:16px;">O que torna o método diferente</div>
+        <h2 style="font:300 42px/1.15 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.015em;">Quatro princípios inegociáveis</h2>
+      </div>
+      <div data-reveal style="display:grid; grid-template-columns:repeat(auto-fill,minmax(252px,1fr)); gap:18px;">
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:22px; padding:30px; box-shadow:0 2px 10px rgba(45,42,36,.05); transition:.24s;" style-hover="transform:translateY(-6px); box-shadow:0 22px 44px rgba(45,42,36,.1); border-color:#D6E4F0;">
+          <span style="width:54px; height:54px; border-radius:16px; background:#EAF1F7; display:grid; place-items:center; color:#2E5A63; margin-bottom:18px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span>
+          <h3 style="font:500 20px 'Newsreader',serif; color:#2B2A27; margin:0;">Individualização</h3>
+          <p style="font:400 13.5px/1.6 'Hanken Grotesk'; color:#6E6A62; margin:9px 0 0;">Cada plano nasce do bebê real — sua idade, temperamento e rotina. Nunca um modelo único.</p>
+        </div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:22px; padding:30px; box-shadow:0 2px 10px rgba(45,42,36,.05); transition:.24s;" style-hover="transform:translateY(-6px); box-shadow:0 22px 44px rgba(45,42,36,.1); border-color:#D8E1D2;">
+          <span style="width:54px; height:54px; border-radius:16px; background:#EEF2EB; display:grid; place-items:center; color:#5F7E5A; margin-bottom:18px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v6.3L5 18a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9.7V2"/><path d="M8.5 2h7M7 14h10"/></svg></span>
+          <h3 style="font:500 20px 'Newsreader',serif; color:#2B2A27; margin:0;">Ciência</h3>
+          <p style="font:400 13.5px/1.6 'Hanken Grotesk'; color:#6E6A62; margin:9px 0 0;">Cada decisão é ancorada em evidências sobre sono e desenvolvimento infantil.</p>
+        </div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:22px; padding:30px; box-shadow:0 2px 10px rgba(45,42,36,.05); transition:.24s;" style-hover="transform:translateY(-6px); box-shadow:0 22px 44px rgba(45,42,36,.1); border-color:#E1BDB5;">
+          <span style="width:54px; height:54px; border-radius:16px; background:#F8EDEA; display:grid; place-items:center; color:#C68A7F; margin-bottom:18px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg></span>
+          <h3 style="font:500 20px 'Newsreader',serif; color:#2B2A27; margin:0;">Acolhimento</h3>
+          <p style="font:400 13.5px/1.6 'Hanken Grotesk'; color:#6E6A62; margin:9px 0 0;">Sem culpa, sem pressão. A mãe é cuidada tanto quanto o bebê em cada etapa.</p>
+        </div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:22px; padding:30px; box-shadow:0 2px 10px rgba(45,42,36,.05); transition:.24s;" style-hover="transform:translateY(-6px); box-shadow:0 22px 44px rgba(45,42,36,.1); border-color:#D6E4F0;">
+          <span style="width:54px; height:54px; border-radius:16px; background:#EAF1F7; display:grid; place-items:center; color:#2E5A63; margin-bottom:18px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></span>
+          <h3 style="font:500 20px 'Newsreader',serif; color:#2B2A27; margin:0;">Plano personalizado</h3>
+          <p style="font:400 13.5px/1.6 'Hanken Grotesk'; color:#6E6A62; margin:9px 0 0;">Um roteiro escrito, com etapas e cronograma — não conselhos soltos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OS CINCO PILARES ===== -->
+  <section style="padding:100px 0; background:#FAF7F2;">
+    <div style="max-width:1180px; margin:0 auto; padding:0 40px;">
+      <div data-reveal style="text-align:center; max-width:620px; margin:0 auto 64px;">
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#C68A7F; margin-bottom:16px;">Os cinco pilares</div>
+        <h2 style="font:300 42px/1.15 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.015em;">A jornada, passo a passo</h2>
+      </div>
+
+      <!-- pilar 1 -->
+      <div data-reveal style="display:grid; grid-template-columns:1fr 1fr; gap:54px; align-items:center; margin-bottom:80px;">
+        <div>
+          <div style="display:inline-flex; align-items:center; gap:12px; margin-bottom:16px;"><span style="font:300 44px 'Newsreader',serif; color:#D6E4F0; line-height:1;">01</span><span style="font:700 11px 'Hanken Grotesk'; letter-spacing:.16em; text-transform:uppercase; color:#2E5A63;">Diagnóstico Inteligente</span></div>
+          <h3 style="font:400 28px/1.3 'Newsreader',serif; color:#2B2A27; margin:0;">Antes de qualquer mudança, é preciso compreender.</h3>
+          <p style="font:400 15.5px/1.7 'Hanken Grotesk'; color:#615D55; margin:16px 0 0;">Cada bebê é único. Antes de propor qualquer ajuste, fazemos uma análise completa da rotina, do ambiente, dos hábitos e das necessidades da família.</p>
+        </div>
+        <div style="position:relative; display:flex; justify-content:center;"><div style="width:100%; max-width:380px; aspect-ratio:4/3; background:linear-gradient(150deg,#EAF1F7,#F4F8FB); border:1px solid #DCE7F0; border-radius:24px; display:grid; place-items:center;"><svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#2E5A63" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="52" cy="52" r="30"/><path d="m74 74 22 22"/><path d="M52 38a14 14 0 1 0 12 21 11 11 0 0 1-12-21Z" fill="#fff"/></svg></div></div>
+      </div>
+
+      <!-- pilar 2 -->
+      <div data-reveal style="display:grid; grid-template-columns:1fr 1fr; gap:54px; align-items:center; margin-bottom:80px;">
+        <div style="order:2;">
+          <div style="display:inline-flex; align-items:center; gap:12px; margin-bottom:16px;"><span style="font:300 44px 'Newsreader',serif; color:#D8E1D2; line-height:1;">02</span><span style="font:700 11px 'Hanken Grotesk'; letter-spacing:.16em; text-transform:uppercase; color:#5F7E5A;">Rotina Personalizada</span></div>
+          <h3 style="font:400 28px/1.3 'Newsreader',serif; color:#2B2A27; margin:0;">Uma rotina construída para a realidade da sua família.</h3>
+          <p style="font:400 15.5px/1.7 'Hanken Grotesk'; color:#615D55; margin:16px 0 0;">Nada de fórmulas prontas. Cada plano considera idade, alimentação, desenvolvimento, a rotina da casa e as necessidades individuais do bebê.</p>
+        </div>
+        <div style="order:1; position:relative; display:flex; justify-content:center;"><div style="width:100%; max-width:380px; aspect-ratio:4/3; background:linear-gradient(150deg,#EEF2EB,#F6F9F4); border:1px solid #DDE6D7; border-radius:24px; display:grid; place-items:center;"><svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#5F7E5A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="24" y="30" width="72" height="66" rx="8" fill="#fff"/><path d="M24 46h72M44 22v12M76 22v12"/><circle cx="44" cy="62" r="3" fill="#5F7E5A" stroke="none"/><circle cx="60" cy="62" r="3" fill="#5F7E5A" stroke="none"/><circle cx="76" cy="62" r="3" fill="#C68A7F" stroke="none"/><circle cx="44" cy="78" r="3" fill="#5F7E5A" stroke="none"/><circle cx="60" cy="78" r="3" fill="#B7C7AE" stroke="none"/></svg></div></div>
+      </div>
+
+      <!-- pilar 3 -->
+      <div data-reveal style="display:grid; grid-template-columns:1fr 1fr; gap:54px; align-items:center; margin-bottom:80px;">
+        <div>
+          <div style="display:inline-flex; align-items:center; gap:12px; margin-bottom:16px;"><span style="font:300 44px 'Newsreader',serif; color:#EFD9D4; line-height:1;">03</span><span style="font:700 11px 'Hanken Grotesk'; letter-spacing:.16em; text-transform:uppercase; color:#C68A7F;">Ambiente Ideal</span></div>
+          <h3 style="font:400 28px/1.3 'Newsreader',serif; color:#2B2A27; margin:0;">Pequenos ajustes fazem grandes diferenças.</h3>
+          <p style="font:400 15.5px/1.7 'Hanken Grotesk'; color:#615D55; margin:16px 0 18px;">A organização do ambiente de sono muda tudo:</p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;"><span style="font:600 12.5px 'Hanken Grotesk'; color:#5C584F; background:#fff; border:1px solid #ECE4D6; padding:7px 13px; border-radius:999px;">Luminosidade</span><span style="font:600 12.5px 'Hanken Grotesk'; color:#5C584F; background:#fff; border:1px solid #ECE4D6; padding:7px 13px; border-radius:999px;">Temperatura</span><span style="font:600 12.5px 'Hanken Grotesk'; color:#5C584F; background:#fff; border:1px solid #ECE4D6; padding:7px 13px; border-radius:999px;">Ruídos</span><span style="font:600 12.5px 'Hanken Grotesk'; color:#5C584F; background:#fff; border:1px solid #ECE4D6; padding:7px 13px; border-radius:999px;">Associações positivas</span></div>
+        </div>
+        <div style="position:relative; display:flex; justify-content:center;"><div style="width:100%; max-width:380px; aspect-ratio:4/3; background:linear-gradient(150deg,#F8EDEA,#FCF4F2); border:1px solid #EFDDD7; border-radius:24px; display:grid; place-items:center;"><svg width="130" height="120" viewBox="0 0 130 120" fill="none" stroke="#C68A7F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 60 65 30l41 30"/><path d="M34 56v40h62V56" fill="#fff"/><rect x="52" y="66" width="26" height="30" rx="4"/><path d="M96 36a8 8 0 0 0 0 12" stroke="#2E5A63"/><circle cx="100" cy="30" r="5" fill="#fff" stroke="#2E5A63"/></svg></div></div>
+      </div>
+
+      <!-- pilar 4 -->
+      <div data-reveal style="display:grid; grid-template-columns:1fr 1fr; gap:54px; align-items:center; margin-bottom:80px;">
+        <div style="order:2;">
+          <div style="display:inline-flex; align-items:center; gap:12px; margin-bottom:16px;"><span style="font:300 44px 'Newsreader',serif; color:#D6E4F0; line-height:1;">04</span><span style="font:700 11px 'Hanken Grotesk'; letter-spacing:.16em; text-transform:uppercase; color:#2E5A63;">Autonomia Gradual</span></div>
+          <h3 style="font:400 28px/1.3 'Newsreader',serif; color:#2B2A27; margin:0;">Ensinar o bebê com respeito.</h3>
+          <p style="font:400 15.5px/1.7 'Hanken Grotesk'; color:#615D55; margin:16px 0 0;">O desenvolvimento da autonomia acontece de maneira gradual, respeitando cada fase e o tempo de adaptação da criança. Sem pressa, sem deixar chorando sozinho.</p>
+        </div>
+        <div style="order:1; position:relative; display:flex; justify-content:center;"><div style="width:100%; max-width:380px; aspect-ratio:4/3; background:linear-gradient(150deg,#EAF1F7,#F4F8FB); border:1px solid #DCE7F0; border-radius:24px; display:grid; place-items:center;"><svg width="140" height="110" viewBox="0 0 140 110" fill="none" stroke="#2E5A63" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 84h100"/><circle cx="38" cy="66" r="10" fill="#fff"/><circle cx="70" cy="54" r="12" fill="#fff"/><circle cx="104" cy="40" r="14" fill="#fff"/><path d="M101 30a10 10 0 1 0 9 14 8 8 0 0 1-9-14Z" fill="#EAF1F7"/></svg></div></div>
+      </div>
+
+      <!-- pilar 5 -->
+      <div data-reveal style="display:grid; grid-template-columns:1fr 1fr; gap:54px; align-items:center;">
+        <div>
+          <div style="display:inline-flex; align-items:center; gap:12px; margin-bottom:16px;"><span style="font:300 44px 'Newsreader',serif; color:#D8E1D2; line-height:1;">05</span><span style="font:700 11px 'Hanken Grotesk'; letter-spacing:.16em; text-transform:uppercase; color:#5F7E5A;">Acompanhamento</span></div>
+          <h3 style="font:400 28px/1.3 'Newsreader',serif; color:#2B2A27; margin:0;">Você nunca estará sozinha.</h3>
+          <p style="font:400 15.5px/1.7 'Hanken Grotesk'; color:#615D55; margin:16px 0 0;">Durante todo o processo há acompanhamento, ajustes e suporte para garantir que a família evolua com segurança — semana após semana.</p>
+        </div>
+        <div style="position:relative; display:flex; justify-content:center;"><div style="width:100%; max-width:380px; aspect-ratio:4/3; background:linear-gradient(150deg,#EEF2EB,#F6F9F4); border:1px solid #DDE6D7; border-radius:24px; display:grid; place-items:center;"><svg width="130" height="110" viewBox="0 0 130 110" fill="none" stroke="#5F7E5A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 34a8 8 0 0 1 8-8h36a8 8 0 0 1 8 8v20a8 8 0 0 1-8 8H40l-12 10V62a8 8 0 0 1-6-8Z" fill="#fff"/><path d="M58 56a8 8 0 0 1 8-8h34a8 8 0 0 1 8 8v18a8 8 0 0 1-8 8 8 8 0 0 1-6-2l-10 8V64" fill="#EEF2EB"/></svg></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMO FUNCIONA ===== -->
+  <section style="padding:96px 0; background:linear-gradient(180deg,#FFFFFF,#FAF7F2);">
+    <div style="max-width:1180px; margin:0 auto; padding:0 40px;">
+      <div data-reveal style="text-align:center; margin-bottom:54px;">
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#2E5A63; margin-bottom:16px;">Como funciona</div>
+        <h2 style="font:300 42px/1.15 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.015em;">Do primeiro contato aos resultados</h2>
+      </div>
+      <div data-reveal style="display:flex; align-items:stretch; justify-content:center; gap:8px; flex-wrap:wrap;">
+        <div style="flex:1; min-width:140px; background:#fff; border:1px solid #ECE4D6; border-radius:18px; padding:20px 16px; text-align:center; box-shadow:0 2px 8px rgba(45,42,36,.04);"><span style="width:44px; height:44px; margin:0 auto 12px; border-radius:12px; background:#EAF1F7; display:grid; place-items:center; color:#2E5A63;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5Z"/></svg></span><div style="font:600 13.5px 'Hanken Grotesk'; color:#2B2A27;">Contato</div></div>
+        <div style="display:flex; align-items:center; color:#C9C2B6; font-size:18px;">→</div>
+        <div style="flex:1; min-width:140px; background:#fff; border:1px solid #ECE4D6; border-radius:18px; padding:20px 16px; text-align:center; box-shadow:0 2px 8px rgba(45,42,36,.04);"><span style="width:44px; height:44px; margin:0 auto 12px; border-radius:12px; background:#EEF2EB; display:grid; place-items:center; color:#5F7E5A;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><div style="font:600 13.5px 'Hanken Grotesk'; color:#2B2A27;">Diagnóstico</div></div>
+        <div style="display:flex; align-items:center; color:#C9C2B6; font-size:18px;">→</div>
+        <div style="flex:1; min-width:140px; background:#fff; border:1px solid #ECE4D6; border-radius:18px; padding:20px 16px; text-align:center; box-shadow:0 2px 8px rgba(45,42,36,.04);"><span style="width:44px; height:44px; margin:0 auto 12px; border-radius:12px; background:#F8EDEA; display:grid; place-items:center; color:#C68A7F;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></span><div style="font:600 13.5px 'Hanken Grotesk'; color:#2B2A27;">Plano</div></div>
+        <div style="display:flex; align-items:center; color:#C9C2B6; font-size:18px;">→</div>
+        <div style="flex:1; min-width:140px; background:#fff; border:1px solid #ECE4D6; border-radius:18px; padding:20px 16px; text-align:center; box-shadow:0 2px 8px rgba(45,42,36,.04);"><span style="width:44px; height:44px; margin:0 auto 12px; border-radius:12px; background:#EAF1F7; display:grid; place-items:center; color:#2E5A63;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9M3 20l4-1 11-11a2.8 2.8 0 0 0-4-4L3 15Z"/></svg></span><div style="font:600 13.5px 'Hanken Grotesk'; color:#2B2A27;">Implementação</div></div>
+        <div style="display:flex; align-items:center; color:#C9C2B6; font-size:18px;">→</div>
+        <div style="flex:1; min-width:140px; background:#fff; border:1px solid #ECE4D6; border-radius:18px; padding:20px 16px; text-align:center; box-shadow:0 2px 8px rgba(45,42,36,.04);"><span style="width:44px; height:44px; margin:0 auto 12px; border-radius:12px; background:#EEF2EB; display:grid; place-items:center; color:#5F7E5A;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 20a5 5 0 0 0-10 0"/><circle cx="12" cy="8" r="4"/></svg></span><div style="font:600 13.5px 'Hanken Grotesk'; color:#2B2A27;">Acompanhamento</div></div>
+        <div style="display:flex; align-items:center; color:#C9C2B6; font-size:18px;">→</div>
+        <div style="flex:1; min-width:140px; background:#2E5A63; border-radius:18px; padding:20px 16px; text-align:center; box-shadow:0 12px 26px rgba(46,90,99,.2);"><span style="width:44px; height:44px; margin:0 auto 12px; border-radius:12px; background:rgba(255,255,255,.16); display:grid; place-items:center; color:#fff;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg></span><div style="font:600 13.5px 'Hanken Grotesk'; color:#fff;">Resultados</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESULTADOS ESPERADOS ===== -->
+  <section style="padding:100px 0; background:#FAF7F2;">
+    <div style="max-width:1180px; margin:0 auto; padding:0 40px;">
+      <div data-reveal style="text-align:center; max-width:620px; margin:0 auto 50px;">
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#C68A7F; margin-bottom:16px;">Resultados esperados</div>
+        <h2 style="font:300 42px/1.15 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.015em;">O que muda na sua casa</h2>
+      </div>
+      <div data-reveal style="display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:16px;">
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:20px; padding:26px; display:flex; gap:16px; align-items:flex-start; box-shadow:0 2px 8px rgba(45,42,36,.04); transition:.2s;" style-hover="transform:translateY(-4px); box-shadow:0 16px 34px rgba(45,42,36,.09);"><span style="width:48px; height:48px; flex-shrink:0; border-radius:14px; background:#EAF1F7; display:grid; place-items:center; color:#2E5A63;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><div><h3 style="font:500 18px 'Newsreader',serif; color:#2B2A27; margin:0;">Rotinas previsíveis</h3><p style="font:400 13px/1.55 'Hanken Grotesk'; color:#6E6A62; margin:5px 0 0;">A casa ganha um ritmo que dá segurança a todos.</p></div></div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:20px; padding:26px; display:flex; gap:16px; align-items:flex-start; box-shadow:0 2px 8px rgba(45,42,36,.04); transition:.2s;" style-hover="transform:translateY(-4px); box-shadow:0 16px 34px rgba(45,42,36,.09);"><span style="width:48px; height:48px; flex-shrink:0; border-radius:14px; background:#EEF2EB; display:grid; place-items:center; color:#5F7E5A;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span><div><h3 style="font:500 18px 'Newsreader',serif; color:#2B2A27; margin:0;">Mais tranquilidade</h3><p style="font:400 13px/1.55 'Hanken Grotesk'; color:#6E6A62; margin:5px 0 0;">Menos ansiedade na hora de dormir, mais leveza.</p></div></div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:20px; padding:26px; display:flex; gap:16px; align-items:flex-start; box-shadow:0 2px 8px rgba(45,42,36,.04); transition:.2s;" style-hover="transform:translateY(-4px); box-shadow:0 16px 34px rgba(45,42,36,.09);"><span style="width:48px; height:48px; flex-shrink:0; border-radius:14px; background:#F8EDEA; display:grid; place-items:center; color:#C68A7F;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12a9 9 0 0 1 9-9 9 9 0 0 0 0 18 9 9 0 0 1-9-9Z"/></svg></span><div><h3 style="font:500 18px 'Newsreader',serif; color:#2B2A27; margin:0;">Sono saudável</h3><p style="font:400 13px/1.55 'Hanken Grotesk'; color:#6E6A62; margin:5px 0 0;">Descanso de qualidade para o bebê e para você.</p></div></div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:20px; padding:26px; display:flex; gap:16px; align-items:flex-start; box-shadow:0 2px 8px rgba(45,42,36,.04); transition:.2s;" style-hover="transform:translateY(-4px); box-shadow:0 16px 34px rgba(45,42,36,.09);"><span style="width:48px; height:48px; flex-shrink:0; border-radius:14px; background:#EAF1F7; display:grid; place-items:center; color:#2E5A63;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><div><h3 style="font:500 18px 'Newsreader',serif; color:#2B2A27; margin:0;">Menos despertares</h3><p style="font:400 13px/1.55 'Hanken Grotesk'; color:#6E6A62; margin:5px 0 0;">Noites mais inteiras, com despertares espaçados.</p></div></div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:20px; padding:26px; display:flex; gap:16px; align-items:flex-start; box-shadow:0 2px 8px rgba(45,42,36,.04); transition:.2s;" style-hover="transform:translateY(-4px); box-shadow:0 16px 34px rgba(45,42,36,.09);"><span style="width:48px; height:48px; flex-shrink:0; border-radius:14px; background:#EEF2EB; display:grid; place-items:center; color:#5F7E5A;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1 1 0 0 1 1.6 0C15.5 3.8 18 5 20 5a1 1 0 0 1 1 1Z"/></svg></span><div><h3 style="font:500 18px 'Newsreader',serif; color:#2B2A27; margin:0;">Mais segurança</h3><p style="font:400 13px/1.55 'Hanken Grotesk'; color:#6E6A62; margin:5px 0 0;">Confiança para decidir sem culpa nem dúvidas.</p></div></div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:20px; padding:26px; display:flex; gap:16px; align-items:flex-start; box-shadow:0 2px 8px rgba(45,42,36,.04); transition:.2s;" style-hover="transform:translateY(-4px); box-shadow:0 16px 34px rgba(45,42,36,.09);"><span style="width:48px; height:48px; flex-shrink:0; border-radius:14px; background:#F8EDEA; display:grid; place-items:center; color:#C68A7F;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg></span><div><h3 style="font:500 18px 'Newsreader',serif; color:#2B2A27; margin:0;">Mais qualidade de vida</h3><p style="font:400 13px/1.55 'Hanken Grotesk'; color:#6E6A62; margin:5px 0 0;">Uma família inteira mais descansada e presente.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PARA QUEM É ===== -->
+  <section style="padding:100px 0; background:linear-gradient(180deg,#FFFFFF,#FAF7F2);">
+    <div style="max-width:1080px; margin:0 auto; padding:0 40px;">
+      <div data-reveal style="text-align:center; margin-bottom:48px;">
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#2E5A63; margin-bottom:16px;">Para quem é o método</div>
+        <h2 style="font:300 42px/1.15 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.015em;">Feito para a sua fase</h2>
+      </div>
+      <div data-reveal style="display:grid; grid-template-columns:1.2fr 0.8fr; gap:20px;">
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:24px; padding:34px; box-shadow:0 2px 10px rgba(45,42,36,.05);">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px;"><span style="width:34px; height:34px; border-radius:10px; background:#EEF2EB; display:grid; place-items:center; color:#5F7E5A;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg></span><h3 style="font:500 20px 'Newsreader',serif; color:#2B2A27; margin:0;">Ideal para</h3></div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <span style="font:500 14px 'Hanken Grotesk'; color:#3A3833; display:flex; gap:9px; align-items:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>Gestantes</span>
+            <span style="font:500 14px 'Hanken Grotesk'; color:#3A3833; display:flex; gap:9px; align-items:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>Recém-nascidos</span>
+            <span style="font:500 14px 'Hanken Grotesk'; color:#3A3833; display:flex; gap:9px; align-items:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>Bebês até 2 anos</span>
+            <span style="font:500 14px 'Hanken Grotesk'; color:#3A3833; display:flex; gap:9px; align-items:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>Famílias sem rotina</span>
+            <span style="font:500 14px 'Hanken Grotesk'; color:#3A3833; display:flex; gap:9px; align-items:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>Bebês que acordam muito</span>
+            <span style="font:500 14px 'Hanken Grotesk'; color:#3A3833; display:flex; gap:9px; align-items:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>Famílias cansadas</span>
+          </div>
+        </div>
+        <div style="background:#F5EFE6; border:1px solid #E7DFD1; border-radius:24px; padding:34px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;"><span style="width:34px; height:34px; border-radius:10px; background:#F6ECD7; display:grid; place-items:center; color:#C2954C;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg></span><h3 style="font:500 20px 'Newsreader',serif; color:#2B2A27; margin:0;">Antes, um cuidado</h3></div>
+          <p style="font:400 14px/1.65 'Hanken Grotesk'; color:#6E6A62; margin:0;">Em situações que envolvam questões clínicas — refluxo importante, condições de saúde ou orientação médica específica — a avaliação do pediatra vem primeiro. O método caminha junto ao acompanhamento médico, nunca no lugar dele.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BASE CIENTÍFICA ===== -->
+  <section style="padding:100px 0; background:#1F4A52; position:relative; overflow:hidden;">
+    <div style="position:absolute; top:-70px; right:-50px; width:300px; height:300px; border-radius:50%; background:radial-gradient(circle at 40% 35%, rgba(255,255,255,.06), rgba(255,255,255,0) 70%);"></div>
+    <div style="max-width:1080px; margin:0 auto; padding:0 40px; position:relative;">
+      <div data-reveal style="text-align:center; max-width:640px; margin:0 auto 50px;">
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#9DBFC6; margin-bottom:16px;">Base científica</div>
+        <h2 style="font:300 42px/1.15 'Newsreader',serif; color:#fff; margin:0; letter-spacing:-.015em;">Conhecimento que se mantém atual</h2>
+        <p style="font:400 16px/1.7 'Hanken Grotesk'; color:#C7DDE2; margin:16px 0 0;">Toda a metodologia é fundamentada em evidências, desenvolvimento infantil e práticas atualizadas — revisadas continuamente.</p>
+      </div>
+      <div data-reveal style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:46px;">
+        <div style="background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:24px; text-align:center;"><span style="width:46px; height:46px; margin:0 auto 14px; border-radius:13px; background:rgba(255,255,255,.1); display:grid; place-items:center; color:#B7C7AE;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 2v6.3L5 18a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9.7V2"/></svg></span><div style="font:600 15px 'Hanken Grotesk'; color:#fff;">Evidências</div><div style="font:400 12.5px/1.5 'Hanken Grotesk'; color:#AECBD1; margin-top:5px;">Estudos sobre sono e cronobiologia infantil.</div></div>
+        <div style="background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:24px; text-align:center;"><span style="width:46px; height:46px; margin:0 auto 14px; border-radius:13px; background:rgba(255,255,255,.1); display:grid; place-items:center; color:#B7C7AE;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span><div style="font:600 15px 'Hanken Grotesk'; color:#fff;">Desenvolvimento</div><div style="font:400 12.5px/1.5 'Hanken Grotesk'; color:#AECBD1; margin-top:5px;">Respeito às fases neurológicas do bebê.</div></div>
+        <div style="background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:24px; text-align:center;"><span style="width:46px; height:46px; margin:0 auto 14px; border-radius:13px; background:rgba(255,255,255,.1); display:grid; place-items:center; color:#B7C7AE;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></span><div style="font:600 15px 'Hanken Grotesk'; color:#fff;">Prática atualizada</div><div style="font:400 12.5px/1.5 'Hanken Grotesk'; color:#AECBD1; margin-top:5px;">Revisão constante de protocolos e técnicas.</div></div>
+      </div>
+      <div data-reveal style="display:flex; align-items:center; justify-content:space-between; gap:8px; max-width:760px; margin:0 auto; flex-wrap:wrap;">
+        <div style="text-align:center; flex:1; min-width:90px;"><div style="width:14px; height:14px; border-radius:50%; background:#B7C7AE; margin:0 auto 8px;"></div><div style="font:600 12px 'Hanken Grotesk'; color:#fff;">Formação</div></div>
+        <div style="height:2px; flex:1; background:rgba(255,255,255,.2); min-width:20px;"></div>
+        <div style="text-align:center; flex:1; min-width:90px;"><div style="width:14px; height:14px; border-radius:50%; background:#B7C7AE; margin:0 auto 8px;"></div><div style="font:600 12px 'Hanken Grotesk'; color:#fff;">Especialização</div></div>
+        <div style="height:2px; flex:1; background:rgba(255,255,255,.2); min-width:20px;"></div>
+        <div style="text-align:center; flex:1; min-width:90px;"><div style="width:14px; height:14px; border-radius:50%; background:#B7C7AE; margin:0 auto 8px;"></div><div style="font:600 12px 'Hanken Grotesk'; color:#fff;">Atualizações</div></div>
+        <div style="height:2px; flex:1; background:rgba(255,255,255,.2); min-width:20px;"></div>
+        <div style="text-align:center; flex:1; min-width:90px;"><div style="width:14px; height:14px; border-radius:50%; background:#fff; margin:0 auto 8px;"></div><div style="font:600 12px 'Hanken Grotesk'; color:#fff;">Hoje</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DIFERENCIAIS ===== -->
+  <section style="padding:100px 0; background:#FAF7F2;">
+    <div style="max-width:1180px; margin:0 auto; padding:0 40px;">
+      <div data-reveal style="text-align:center; max-width:600px; margin:0 auto 50px;">
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#C68A7F; margin-bottom:16px;">Diferenciais</div>
+        <h2 style="font:300 42px/1.15 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.015em;">O que só o Maternar Leve entrega</h2>
+      </div>
+      <div data-reveal style="display:grid; grid-template-columns:repeat(auto-fill,minmax(252px,1fr)); gap:18px;">
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:20px; padding:26px; box-shadow:0 2px 8px rgba(45,42,36,.04); transition:.22s;" style-hover="transform:translateY(-5px); box-shadow:0 18px 38px rgba(45,42,36,.1);"><span style="width:46px; height:46px; border-radius:13px; background:#F8EDEA; display:grid; place-items:center; color:#C68A7F; margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg></span><h3 style="font:600 16px 'Hanken Grotesk'; color:#2B2A27; margin:0;">Atendimento humanizado</h3><p style="font:400 13px/1.55 'Hanken Grotesk'; color:#6E6A62; margin:7px 0 0;">Escuta e acolhimento em primeiro lugar.</p></div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:20px; padding:26px; box-shadow:0 2px 8px rgba(45,42,36,.04); transition:.22s;" style-hover="transform:translateY(-5px); box-shadow:0 18px 38px rgba(45,42,36,.1);"><span style="width:46px; height:46px; border-radius:13px; background:#EAF1F7; display:grid; place-items:center; color:#2E5A63; margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></span><h3 style="font:600 16px 'Hanken Grotesk'; color:#2B2A27; margin:0;">Plano individual</h3><p style="font:400 13px/1.55 'Hanken Grotesk'; color:#6E6A62; margin:7px 0 0;">Único para cada bebê e família.</p></div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:20px; padding:26px; box-shadow:0 2px 8px rgba(45,42,36,.04); transition:.22s;" style-hover="transform:translateY(-5px); box-shadow:0 18px 38px rgba(45,42,36,.1);"><span style="width:46px; height:46px; border-radius:13px; background:#EEF2EB; display:grid; place-items:center; color:#5F7E5A; margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 2v6.3L5 18a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9.7V2"/></svg></span><h3 style="font:600 16px 'Hanken Grotesk'; color:#2B2A27; margin:0;">Base científica</h3><p style="font:400 13px/1.55 'Hanken Grotesk'; color:#6E6A62; margin:7px 0 0;">Evidência, não achismo.</p></div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:20px; padding:26px; box-shadow:0 2px 8px rgba(45,42,36,.04); transition:.22s;" style-hover="transform:translateY(-5px); box-shadow:0 18px 38px rgba(45,42,36,.1);"><span style="width:46px; height:46px; border-radius:13px; background:#EAF1F7; display:grid; place-items:center; color:#2E5A63; margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5Z"/></svg></span><h3 style="font:600 16px 'Hanken Grotesk'; color:#2B2A27; margin:0;">Suporte</h3><p style="font:400 13px/1.55 'Hanken Grotesk'; color:#6E6A62; margin:7px 0 0;">Acompanhamento próximo por WhatsApp.</p></div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:20px; padding:26px; box-shadow:0 2px 8px rgba(45,42,36,.04); transition:.22s;" style-hover="transform:translateY(-5px); box-shadow:0 18px 38px rgba(45,42,36,.1);"><span style="width:46px; height:46px; border-radius:13px; background:#EEF2EB; display:grid; place-items:center; color:#5F7E5A; margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12a8 8 0 0 1 8-8M20 12a8 8 0 0 1-8 8"/><path d="M16 4h4v4M8 20H4v-4"/></svg></span><h3 style="font:600 16px 'Hanken Grotesk'; color:#2B2A27; margin:0;">Flexibilidade</h3><p style="font:400 13px/1.55 'Hanken Grotesk'; color:#6E6A62; margin:7px 0 0;">O plano se adapta à vida real da família.</p></div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:20px; padding:26px; box-shadow:0 2px 8px rgba(45,42,36,.04); transition:.22s;" style-hover="transform:translateY(-5px); box-shadow:0 18px 38px rgba(45,42,36,.1);"><span style="width:46px; height:46px; border-radius:13px; background:#F8EDEA; display:grid; place-items:center; color:#C68A7F; margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg></span><h3 style="font:600 16px 'Hanken Grotesk'; color:#2B2A27; margin:0;">Acompanhamento</h3><p style="font:400 13px/1.55 'Hanken Grotesk'; color:#6E6A62; margin:7px 0 0;">Ajustes contínuos até o resultado.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DEPOIMENTOS ===== -->
+  <section style="padding:100px 0; background:linear-gradient(180deg,#FFFFFF,#FAF7F2);">
+    <div style="max-width:980px; margin:0 auto; padding:0 40px;">
+      <div data-reveal style="text-align:center; margin-bottom:44px;">
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#2E5A63; margin-bottom:16px;">Quem aplicou o método</div>
+        <h2 style="font:300 42px/1.15 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.015em;">Resultados que falam por si</h2>
+      </div>
+      <div data-reveal style="position:relative; overflow:hidden; border-radius:26px;">
+        <div style="{{ carouselTrack }}">
+          <div style="min-width:100%; padding:6px;"><div style="background:#fff; border:1px solid #ECE4D6; border-radius:24px; padding:42px; box-shadow:0 10px 30px rgba(45,42,36,.06); text-align:center;"><div style="display:flex; gap:4px; justify-content:center; color:#C68A7F; margin-bottom:18px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg></div><p style="font:400 23px/1.5 'Newsreader',serif; font-style:italic; color:#3A3833; margin:0 auto; max-width:680px;">"O que mais me marcou foi entender o porquê de cada passo. Não era 'faça assim' — era um método que fez sentido."</p><div style="display:flex; align-items:center; justify-content:center; gap:13px; margin-top:24px;"><span style="width:46px; height:46px; border-radius:50%; background:radial-gradient(circle at 35% 30%,#fff,#E7C9C2);"></span><div style="text-align:left;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Marina S.</div><div style="font:500 12.5px 'Hanken Grotesk'; color:#98938B;">mãe da Helena, 7 meses</div></div></div></div></div>
+          <div style="min-width:100%; padding:6px;"><div style="background:#fff; border:1px solid #ECE4D6; border-radius:24px; padding:42px; box-shadow:0 10px 30px rgba(45,42,36,.06); text-align:center;"><div style="display:flex; gap:4px; justify-content:center; color:#C68A7F; margin-bottom:18px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg></div><p style="font:400 23px/1.5 'Newsreader',serif; font-style:italic; color:#3A3833; margin:0 auto; max-width:680px;">"Eu já tinha tentado de tudo. A diferença foi ter um plano escrito e alguém ao meu lado para ajustar."</p><div style="display:flex; align-items:center; justify-content:center; gap:13px; margin-top:24px;"><span style="width:46px; height:46px; border-radius:50%; background:radial-gradient(circle at 35% 30%,#fff,#CFE0EC);"></span><div style="text-align:left;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Carolina M.</div><div style="font:500 12.5px 'Hanken Grotesk'; color:#98938B;">mãe do Theo, 11 meses</div></div></div></div></div>
+          <div style="min-width:100%; padding:6px;"><div style="background:#fff; border:1px solid #ECE4D6; border-radius:24px; padding:42px; box-shadow:0 10px 30px rgba(45,42,36,.06); text-align:center;"><div style="display:flex; gap:4px; justify-content:center; color:#C68A7F; margin-bottom:18px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg></div><p style="font:400 23px/1.5 'Newsreader',serif; font-style:italic; color:#3A3833; margin:0 auto; max-width:680px;">"Em poucas semanas as noites mudaram completamente. Hoje confio no processo e sei o que fazer em cada fase."</p><div style="display:flex; align-items:center; justify-content:center; gap:13px; margin-top:24px;"><span style="width:46px; height:46px; border-radius:50%; background:radial-gradient(circle at 35% 30%,#fff,#D7E0D0);"></span><div style="text-align:left;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Juliana R.</div><div style="font:500 12.5px 'Hanken Grotesk'; color:#98938B;">mãe do Davi, 5 meses</div></div></div></div></div>
+        </div>
+      </div>
+      <div data-reveal style="display:flex; align-items:center; justify-content:center; gap:18px; margin-top:26px;">
+        <button onClick="{{ prevT }}" aria-label="Anterior" style="width:44px; height:44px; border-radius:50%; border:1.5px solid #D8D0C2; background:#fff; cursor:pointer; display:grid; place-items:center; color:#2E5A63; transition:.16s;" style-hover="border-color:#2E5A63; background:#F5EFE6;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div style="display:flex; gap:8px;"><span style="{{ dot0 }}"></span><span style="{{ dot1 }}"></span><span style="{{ dot2 }}"></span></div>
+        <button onClick="{{ nextT }}" aria-label="Próximo" style="width:44px; height:44px; border-radius:50%; border:1.5px solid #D8D0C2; background:#fff; cursor:pointer; display:grid; place-items:center; color:#2E5A63; transition:.16s;" style-hover="border-color:#2E5A63; background:#F5EFE6;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section style="padding:100px 0; background:#FAF7F2;">
+    <div style="max-width:780px; margin:0 auto; padding:0 40px;">
+      <div data-reveal style="text-align:center; margin-bottom:44px;">
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#C68A7F; margin-bottom:16px;">Perguntas frequentes</div>
+        <h2 style="font:300 42px/1.15 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.015em;">Sobre o método</h2>
+      </div>
+      <div data-reveal style="display:flex; flex-direction:column; gap:12px;">
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:16px; padding:6px 24px; box-shadow:0 2px 8px rgba(45,42,36,.04);"><button onClick="{{ toggleFaq0 }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:none; padding:20px 0; cursor:pointer; font:600 17px 'Hanken Grotesk'; color:#2B2A27; text-align:left;">O método funciona para qualquer bebê?<span style="{{ chev0 }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E5A63" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg></span></button><sc-if value="{{ faq0 }}" hint-placeholder-val="{{ true }}"><p style="font:400 15px/1.65 'Hanken Grotesk'; color:#6E6A62; margin:0; padding:0 0 22px;">O Maternar Leve se adapta da gestação aos 2 anos. Cada plano é construído a partir da fase, do temperamento e da rotina daquele bebê.</p></sc-if></div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:16px; padding:6px 24px; box-shadow:0 2px 8px rgba(45,42,36,.04);"><button onClick="{{ toggleFaq1 }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:none; padding:20px 0; cursor:pointer; font:600 17px 'Hanken Grotesk'; color:#2B2A27; text-align:left;">Vou precisar usar algum método de deixar chorar?<span style="{{ chev1 }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E5A63" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg></span></button><sc-if value="{{ faq1 }}" hint-placeholder-val="{{ false }}"><p style="font:400 15px/1.65 'Hanken Grotesk'; color:#6E6A62; margin:0; padding:0 0 22px;">Não. A autonomia é construída de forma gradual e respeitosa, sempre preservando o vínculo e o bem-estar do bebê.</p></sc-if></div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:16px; padding:6px 24px; box-shadow:0 2px 8px rgba(45,42,36,.04);"><button onClick="{{ toggleFaq2 }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:none; padding:20px 0; cursor:pointer; font:600 17px 'Hanken Grotesk'; color:#2B2A27; text-align:left;">Em quanto tempo vejo resultado?<span style="{{ chev2 }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E5A63" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg></span></button><sc-if value="{{ faq2 }}" hint-placeholder-val="{{ false }}"><p style="font:400 15px/1.65 'Hanken Grotesk'; color:#6E6A62; margin:0; padding:0 0 22px;">Cada família tem seu ritmo, mas muitas percebem melhoras já nas primeiras semanas de implementação consistente do plano.</p></sc-if></div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:16px; padding:6px 24px; box-shadow:0 2px 8px rgba(45,42,36,.04);"><button onClick="{{ toggleFaq3 }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:none; padding:20px 0; cursor:pointer; font:600 17px 'Hanken Grotesk'; color:#2B2A27; text-align:left;">Como o método se aplica na prática?<span style="{{ chev3 }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E5A63" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg></span></button><sc-if value="{{ faq3 }}" hint-placeholder-val="{{ false }}"><p style="font:400 15px/1.65 'Hanken Grotesk'; color:#6E6A62; margin:0; padding:0 0 22px;">Através da Consultoria Individual: você recebe o diagnóstico, o plano escrito, o cronograma e o acompanhamento por 30 dias.</p></sc-if></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section style="padding:0;">
+    <div data-reveal style="position:relative; overflow:hidden; background:radial-gradient(900px 480px at 80% 10%, #36636C, #1F4A52);">
+      <div style="position:absolute; top:-60px; left:-40px; width:240px; height:240px; border-radius:50%; background:radial-gradient(circle at 40% 35%, rgba(255,255,255,.08), rgba(255,255,255,0) 70%);"></div>
+      <div style="position:absolute; bottom:-60px; right:30%; width:180px; height:180px; border-radius:50%; background:radial-gradient(circle at 40% 35%, rgba(183,199,174,.16), rgba(255,255,255,0) 70%); animation:mt-breathe 6s ease-in-out infinite;"></div>
+      <div style="max-width:1180px; margin:0 auto; padding:90px 40px; display:grid; grid-template-columns:1.1fr 0.9fr; gap:54px; align-items:center; position:relative;">
+        <div>
+          <h2 style="font:300 46px/1.12 'Newsreader',serif; color:#fff; margin:0; letter-spacing:-.015em;">Sua família merece viver <em style="font-style:italic; color:#B7C7AE;">noites mais tranquilas</em>.</h2>
+          <p style="font:400 18px/1.65 'Hanken Grotesk'; color:#C7DDE2; margin:20px 0 0; max-width:480px;">O método existe. O caminho está traçado. Falta só você dar o primeiro passo — e eu caminho com você.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:32px;">
+            <a href="Consultoria Individual.dc.html" style="font:700 15.5px 'Hanken Grotesk'; color:#2E5A63; background:#fff; text-decoration:none; padding:16px 28px; border-radius:13px; box-shadow:0 12px 28px rgba(0,0,0,.18); transition:.18s;" style-hover="transform:translateY(-2px);">Agendar minha consultoria</a>
+            <a href="#produtos" style="font:700 15.5px 'Hanken Grotesk'; color:#fff; background:rgba(255,255,255,.12); text-decoration:none; padding:16px 28px; border-radius:13px; border:1.5px solid rgba(255,255,255,.3); transition:.18s;" style-hover="background:rgba(255,255,255,.2);">Conhecer os Guias Digitais</a>
+          </div>
+        </div>
+        <div style="position:relative;">
+          <image-slot id="mt-cta" style="width:100%; height:420px;" shape="rounded" radius="26" placeholder="Foto da Vitória — acolhedora, fechamento emocional"></image-slot>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="background:#1F4A52; color:#C7DDE2; padding:64px 40px 30px;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div style="display:grid; grid-template-columns:1.5fr 1fr 1fr 1.2fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,.12);">
+        <div>
+          <div style="display:flex; align-items:center; gap:11px; margin-bottom:16px;"><svg width="30" height="30" viewBox="0 0 40 40" fill="none"><path d="M24.8 4.5C15.5 4.5 8 12 8 21.3S15.5 38 24.8 38c3 0 5.9-.8 8.4-2.3-8 .5-14.7-5.9-14.7-13.9 0-8 6.7-14.4 14.7-13.9-2.5-1.6-5.4-2.4-8.4-2.4Z" fill="#fff"/><circle cx="31" cy="10.5" r="1.9" fill="#C68A7F"/><circle cx="34.5" cy="15" r="1.1" fill="#B7C7AE"/></svg><span style="font:500 19px 'Newsreader',serif; color:#fff;">Vitória Teixeira</span></div>
+          <p style="font:400 13.5px/1.65 'Hanken Grotesk'; color:#9DBFC6; margin:0 0 18px; max-width:280px;">Enfermeira e especialista em sono e rotina infantil. Uma maternidade mais leve através do sono saudável.</p>
+          <div style="display:flex; gap:10px;">
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram" style="width:38px; height:38px; border-radius:11px; background:rgba(255,255,255,.1); display:grid; place-items:center; color:#fff; transition:.16s;" style-hover="background:rgba(255,255,255,.2);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+            <a href="{{ whatsappLink }}" target="_blank" aria-label="WhatsApp" style="width:38px; height:38px; border-radius:11px; background:rgba(255,255,255,.1); display:grid; place-items:center; color:#fff; transition:.16s;" style-hover="background:rgba(255,255,255,.2);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5Z"/></svg></a>
+            <a href="mailto:contato@vitoriateixeira.com.br" aria-label="E-mail" style="width:38px; height:38px; border-radius:11px; background:rgba(255,255,255,.1); display:grid; place-items:center; color:#fff; transition:.16s;" style-hover="background:rgba(255,255,255,.2);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <div style="font:700 11px 'Hanken Grotesk'; letter-spacing:.12em; text-transform:uppercase; color:#7FA3AB; margin-bottom:16px;">Navegação</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="Quem Sou.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">Quem Sou</a>
+            <a href="Metodo.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">Método</a>
+            <a href="Blog.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">Blog</a>
+            <a href="FAQ.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">FAQ</a>
+            <a href="Contato.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">Contato</a>
+          </div>
+        </div>
+        <div>
+          <div style="font:700 11px 'Hanken Grotesk'; letter-spacing:.12em; text-transform:uppercase; color:#7FA3AB; margin-bottom:16px;">Consultorias</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="Diagnostico.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">Diagnóstico do Sono</a>
+            <a href="Consultoria Coletiva.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">Consultoria Coletiva</a>
+            <a href="Consultoria Individual.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">Consultoria Individual</a>
+            <a href="Consultoria Premium.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">Domiciliar Premium</a>
+            <a href="MaternaClub.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">MaternaClub</a>
+          </div>
+        </div>
+        <div>
+          <div style="font:700 11px 'Hanken Grotesk'; letter-spacing:.12em; text-transform:uppercase; color:#7FA3AB; margin-bottom:16px;">Dicas de sono, sem ruído</div>
+          <p style="font:400 13px/1.55 'Hanken Grotesk'; color:#9DBFC6; margin:0 0 14px;">Conteúdo cuidadoso sobre sono e rotina no seu e-mail — e a liberdade de sair quando quiser.</p>
+          <div style="display:flex; gap:8px;">
+            <input placeholder="Seu melhor e-mail" style="flex:1; min-width:0; font:400 13.5px 'Hanken Grotesk'; color:#fff; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); border-radius:10px; padding:11px 13px; outline:none;">
+            <button style="font:700 13px 'Hanken Grotesk'; color:#1F4A52; background:#fff; border:none; padding:0 16px; border-radius:10px; cursor:pointer; white-space:nowrap;">Receber</button>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-top:24px;">
+        <div style="font:400 12.5px 'Hanken Grotesk'; color:#7FA3AB;">© 2026 Vitória Teixeira · Todos os direitos reservados</div>
+        <div style="display:flex; gap:22px;">
+          <a href="#" style="font:400 12.5px 'Hanken Grotesk'; color:#9DBFC6; text-decoration:none;" style-hover="color:#fff;">Política de Privacidade</a>
+          <a href="#" style="font:400 12.5px 'Hanken Grotesk'; color:#9DBFC6; text-decoration:none;" style-hover="color:#fff;">Termos de Uso</a>
+          <a href="#" style="font:400 12.5px 'Hanken Grotesk'; color:#9DBFC6; text-decoration:none;" style-hover="color:#fff;">LGPD</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="{{ whatsappLink }}" target="_blank" aria-label="Falar no WhatsApp" style="position:fixed; bottom:26px; right:26px; z-index:90; width:60px; height:60px; border-radius:50%; background:#5F7E5A; display:grid; place-items:center; color:#fff; box-shadow:0 10px 26px rgba(95,126,90,.4); transition:.2s;" style-hover="transform:scale(1.08); background:#52704D;">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5Z"/></svg>
+  </a>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5500000000000&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;autoplayTestimonials&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { menu: null, faq: 0, t: 0 };
+
+  componentDidMount() {
+    const header = document.getElementById('mt-header');
+    if (header) {
+      const onScroll = () => {
+        if (window.scrollY > 30) {
+          header.style.background = 'rgba(255,255,255,.88)';
+          header.style.backdropFilter = 'blur(14px)';
+          header.style.borderBottomColor = 'rgba(232,225,213,1)';
+          header.style.boxShadow = '0 4px 20px rgba(45,42,36,.05)';
+          header.style.padding = '12px 0';
+        } else {
+          header.style.background = 'rgba(250,247,242,0)';
+          header.style.backdropFilter = 'none';
+          header.style.borderBottomColor = 'rgba(232,225,213,0)';
+          header.style.boxShadow = 'none';
+          header.style.padding = '18px 0';
+        }
+      };
+      this._onScroll = onScroll;
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+    if ('IntersectionObserver' in window) {
+      setTimeout(() => {
+        const els = document.querySelectorAll('[data-reveal]');
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.style.opacity = '1';
+              e.target.style.transform = 'translateY(0)';
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.06, rootMargin: '0px 0px -50px 0px' });
+        els.forEach((el) => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(22px)';
+          el.style.transition = 'opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)';
+          io.observe(el);
+        });
+      }, 60);
+    }
+    if (this.props.autoplayTestimonials !== false) {
+      this._auto = setInterval(() => this.setState((s) => ({ t: (s.t + 1) % 3 })), 6000);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if (this._auto) clearInterval(this._auto);
+  }
+
+  chev(open) { return { display: 'inline-flex', transition: 'transform .22s ease', transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }; }
+  dot(active) { return { width: active ? '26px' : '8px', height: '8px', borderRadius: '999px', background: active ? '#2E5A63' : '#D8D0C2', transition: '.25s', display: 'inline-block', cursor: 'pointer' }; }
+
+  renderVals() {
+    const num = (this.props.whatsappNumber || '5500000000000').replace(/\D/g, '');
+    const t = this.state.t;
+    return {
+      whatsappLink: 'https://wa.me/' + num,
+      openConsult: () => this.setState({ menu: 'consult' }),
+      closeMenu: () => this.setState({ menu: null }),
+      menuConsult: this.state.menu === 'consult',
+      faq0: this.state.faq === 0, faq1: this.state.faq === 1, faq2: this.state.faq === 2, faq3: this.state.faq === 3,
+      chev0: this.chev(this.state.faq === 0), chev1: this.chev(this.state.faq === 1), chev2: this.chev(this.state.faq === 2), chev3: this.chev(this.state.faq === 3),
+      toggleFaq0: () => this.setState((s) => ({ faq: s.faq === 0 ? -1 : 0 })),
+      toggleFaq1: () => this.setState((s) => ({ faq: s.faq === 1 ? -1 : 1 })),
+      toggleFaq2: () => this.setState((s) => ({ faq: s.faq === 2 ? -1 : 2 })),
+      toggleFaq3: () => this.setState((s) => ({ faq: s.faq === 3 ? -1 : 3 })),
+      carouselTrack: { display: 'flex', transition: 'transform .6s cubic-bezier(.4,0,.2,1)', transform: 'translateX(-' + (t * 100) + '%)' },
+      dot0: this.dot(t === 0), dot1: this.dot(t === 1), dot2: this.dot(t === 2),
+      prevT: () => { if (this._auto) clearInterval(this._auto); this.setState((s) => ({ t: (s.t + 2) % 3 })); },
+      nextT: () => { if (this._auto) clearInterval(this._auto); this.setState((s) => ({ t: (s.t + 1) % 3 })); }
+    };
+  }
+}
+</script>
+</body>
+</html>

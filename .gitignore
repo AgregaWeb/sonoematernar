@@ -1,0 +1,10 @@
+# Conteúdo interno / referências de briefing
+uploads/
+
+# Artefatos do editor
+.thumbnail
+.image-slots.state.json
+
+# OS
+.DS_Store
+Thumbs.db

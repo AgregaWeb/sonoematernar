@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #FAF7F2; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; color: #2B2A27; overflow-x: hidden; }
+  ::selection { background: #D6E4F0; color: #1F4A52; }
+  @keyframes pr-float { 0%,100% { transform: translateY(0) rotateY(-17deg) rotateX(5deg); } 50% { transform: translateY(-14px) rotateY(-17deg) rotateX(5deg); } }
+  @keyframes pr-floatcard { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+  @keyframes pr-floatcardB { 0%,100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-7px) translateX(5px); } }
+  @keyframes pr-drift { 0%,100% { transform: translate(0,0); } 50% { transform: translate(16px,-12px); } }
+  @keyframes pr-breathe { 0%,100% { transform: scale(1); opacity:.85; } 50% { transform: scale(1.07); opacity:1; } }
+  image-slot { display:block; }
+</style>
+</helmet>
+
+<div style="font-family:'Hanken Grotesk',sans-serif; background:#FAF7F2; position:relative;">
+
+  <!-- ===== HEADER ===== -->
+  <header id="pr-header" style="position:fixed; top:0; left:0; right:0; z-index:100; padding:18px 0; transition:.32s ease; background:rgba(250,247,242,0); border-bottom:1px solid rgba(232,225,213,0);">
+    <div style="max-width:1240px; margin:0 auto; padding:0 40px; display:flex; align-items:center; gap:28px;">
+      <a href="Home.dc.html" style="display:flex; align-items:center; gap:11px; text-decoration:none; flex-shrink:0;">
+        <img src="assets/logo-mark.png" alt="Vitória — Sono &amp; Maternar" style="height:40px; width:auto; display:block;">
+        <span style="font:500 19px 'Newsreader',serif; color:#2B2A27; letter-spacing:.01em;">Vitória Teixeira</span>
+      </a>
+      <nav style="flex:1; display:flex; align-items:center; justify-content:center; gap:4px;">
+        <a href="Home.dc.html" style="font:600 14px 'Hanken Grotesk'; color:#4A463F; text-decoration:none; padding:9px 14px; border-radius:9px; transition:.16s;" style-hover="background:rgba(46,90,99,.07); color:#2E5A63;">Início</a>
+        <a href="Quem Sou.dc.html" style="font:600 14px 'Hanken Grotesk'; color:#4A463F; text-decoration:none; padding:9px 14px; border-radius:9px; transition:.16s;" style-hover="background:rgba(46,90,99,.07); color:#2E5A63;">Quem Sou</a>
+        <a href="Metodo.dc.html" style="font:600 14px 'Hanken Grotesk'; color:#4A463F; text-decoration:none; padding:9px 14px; border-radius:9px; transition:.16s;" style-hover="background:rgba(46,90,99,.07); color:#2E5A63;">Método</a>
+        <div style="position:relative;" onMouseEnter="{{ openConsult }}" onMouseLeave="{{ closeMenu }}">
+          <a href="Consultoria Individual.dc.html" style="font:600 14px 'Hanken Grotesk'; color:#4A463F; text-decoration:none; padding:9px 14px; border-radius:9px; display:inline-flex; align-items:center; gap:5px; transition:.16s;" style-hover="background:rgba(46,90,99,.07); color:#2E5A63;">Consultorias <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></a>
+          <sc-if value="{{ menuConsult }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; top:100%; left:50%; transform:translateX(-50%); margin-top:8px; width:300px; background:#fff; border:1px solid #ECE4D6; border-radius:16px; box-shadow:0 18px 44px rgba(45,42,36,.12); padding:10px;">
+              <a href="Diagnostico.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Diagnóstico do Sono</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Por onde começar · R$ 147</div></a>
+              <a href="Consultoria Coletiva.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Consultoria Coletiva</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Em grupo, acessível · R$ 247</div></a>
+              <a href="Consultoria Individual.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Consultoria Individual ★</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">A mais escolhida · R$ 597</div></a>
+              <a href="Consultoria Premium.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Domiciliar Premium</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Avaliação presencial</div></a>
+            </div>
+          </sc-if>
+        </div>
+        <div style="position:relative;" onMouseEnter="{{ openBiblio }}" onMouseLeave="{{ closeMenu }}">
+          <a href="#" style="font:600 14px 'Hanken Grotesk'; color:#2E5A63; text-decoration:none; padding:9px 14px; border-radius:9px; display:inline-flex; align-items:center; gap:5px; background:rgba(46,90,99,.07); transition:.16s;">Biblioteca <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></a>
+          <sc-if value="{{ menuBiblio }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; top:100%; left:50%; transform:translateX(-50%); margin-top:8px; width:330px; background:#fff; border:1px solid #ECE4D6; border-radius:16px; box-shadow:0 18px 44px rgba(45,42,36,.12); padding:12px; display:grid; grid-template-columns:1fr 1fr; gap:4px;">
+              <a href="Guia 0-3 meses.dc.html" style="text-decoration:none; padding:9px 11px; border-radius:10px; font:600 13px 'Hanken Grotesk'; color:#2B2A27; transition:.14s;" style-hover="background:#F5EFE6;">Guia 0–3 meses</a>
+              <a href="Guia 4-6 meses.dc.html" style="text-decoration:none; padding:9px 11px; border-radius:10px; font:600 13px 'Hanken Grotesk'; color:#2B2A27; transition:.14s;" style-hover="background:#F5EFE6;">Guia 4–6 meses</a>
+              <a href="Guia 7-12 meses.dc.html" style="text-decoration:none; padding:9px 11px; border-radius:10px; font:600 13px 'Hanken Grotesk'; color:#2B2A27; transition:.14s;" style-hover="background:#F5EFE6;">Guia 7–12 meses</a>
+              <a href="Rotinas Prontas.dc.html" style="text-decoration:none; padding:9px 11px; border-radius:10px; font:600 13px 'Hanken Grotesk'; color:#2B2A27; transition:.14s;" style-hover="background:#F5EFE6;">Rotinas Prontas</a>
+              <a href="Kit Ambiente do Sono.dc.html" style="text-decoration:none; padding:9px 11px; border-radius:10px; font:600 13px 'Hanken Grotesk'; color:#2B2A27; transition:.14s;" style-hover="background:#F5EFE6;">Kit Ambiente</a>
+              <a href="Checklists de Rotina.dc.html" style="text-decoration:none; padding:9px 11px; border-radius:10px; font:600 13px 'Hanken Grotesk'; color:#2B2A27; transition:.14s;" style-hover="background:#F5EFE6;">Checklists</a>
+              <a href="Kit Primeiros Passos.dc.html" style="text-decoration:none; padding:9px 11px; border-radius:10px; font:600 13px 'Hanken Grotesk'; color:#2B2A27; transition:.14s;" style-hover="background:#F5EFE6;">Kit Primeiros Passos</a>
+              <a href="Curso Gestantes.dc.html" style="text-decoration:none; padding:9px 11px; border-radius:10px; font:600 13px 'Hanken Grotesk'; color:#2B2A27; transition:.14s;" style-hover="background:#F5EFE6;">Curso Gestantes</a>
+              <a href="MaternaClub.dc.html" style="grid-column:span 2; text-decoration:none; padding:9px 11px; border-radius:10px; font:600 13px 'Hanken Grotesk'; color:#2E5A63; background:#F2F6F4; transition:.14s;" style-hover="background:#EAF1F7;">MaternaClub · assinatura</a>
+            </div>
+          </sc-if>
+        </div>
+        <a href="Blog.dc.html" style="font:600 14px 'Hanken Grotesk'; color:#4A463F; text-decoration:none; padding:9px 14px; border-radius:9px; transition:.16s;" style-hover="background:rgba(46,90,99,.07); color:#2E5A63;">Blog</a>
+      </nav>
+      <div style="display:flex; align-items:center; gap:12px; flex-shrink:0;">
+        <a href="{{ comprar }}" target="_blank" style="font:700 14px 'Hanken Grotesk'; color:#fff; background:#2E5A63; text-decoration:none; padding:12px 22px; border-radius:11px; box-shadow:0 6px 16px rgba(46,90,99,.2); transition:.18s; white-space:nowrap;" style-hover="background:#1F4A52; transform:translateY(-1px);">{{ ctaText }}</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section style="position:relative; overflow:hidden; padding:150px 0 92px; background:radial-gradient(1100px 560px at 14% 2%, #EAF1F7 0%, rgba(234,241,247,0) 58%), radial-gradient(900px 520px at 96% 8%, #F8EDEA 0%, rgba(248,237,234,0) 55%), #FAF7F2;">
+    <div style="position:absolute; top:120px; left:-60px; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle at 35% 30%, #FFFFFF, #DCE9D1); opacity:.4; filter:blur(2px); animation:pr-drift 16s ease-in-out infinite;"></div>
+    <div style="max-width:1240px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:1.04fr 0.96fr; gap:58px; align-items:center; position:relative;">
+      <div data-reveal>
+        <div style="display:inline-flex; align-items:center; gap:8px; padding:7px 15px; background:rgba(255,255,255,.72); backdrop-filter:blur(8px); border:1px solid #E7DFD1; border-radius:999px; font:600 12px 'Hanken Grotesk'; letter-spacing:.04em; color:#2E5A63; margin-bottom:24px;">
+          <span style="width:7px; height:7px; border-radius:50%; background:#C68A7F;"></span> {{ category }}
+        </div>
+        <h1 style="font:300 52px/1.08 'Newsreader',serif; letter-spacing:-.02em; color:#2B2A27; margin:0;">{{ headline }}</h1>
+        <p style="font:400 18px/1.65 'Hanken Grotesk'; color:#615D55; max-width:540px; margin:22px 0 0;">{{ subheadline }}</p>
+        <div style="display:flex; align-items:flex-start; gap:11px; margin-top:20px; padding:16px 18px; background:rgba(255,255,255,.6); border:1px solid #ECE4D6; border-radius:14px; max-width:520px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:1px;"><path d="m12 3 2.2 4.5 5 .7-3.6 3.5.9 5L12 18.8 7.5 16.7l.9-5L4.8 8.2l5-.7Z"/></svg>
+          <span style="font:500 14.5px/1.55 'Hanken Grotesk'; color:#4A463F;">{{ benefitLine }}</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:22px;">
+          <span style="display:inline-flex; align-items:center; gap:6px; font:600 12.5px 'Hanken Grotesk'; color:#2E5A63; background:#EAF1F7; padding:7px 13px; border-radius:999px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Material Digital</span>
+          <span style="display:inline-flex; align-items:center; gap:6px; font:600 12.5px 'Hanken Grotesk'; color:#2E5A63; background:#EAF1F7; padding:7px 13px; border-radius:999px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Acesso Imediato</span>
+          <span style="display:inline-flex; align-items:center; gap:6px; font:600 12.5px 'Hanken Grotesk'; color:#2E5A63; background:#EAF1F7; padding:7px 13px; border-radius:999px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Conteúdo Prático</span>
+          <span style="display:inline-flex; align-items:center; gap:6px; font:600 12.5px 'Hanken Grotesk'; color:#2E5A63; background:#EAF1F7; padding:7px 13px; border-radius:999px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Baseado em Evidências</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin-top:30px;">
+          <div style="display:flex; align-items:baseline; gap:8px;">
+            <sc-if value="{{ hasOld }}" hint-placeholder-val="{{ true }}"><span style="font:500 17px 'Hanken Grotesk'; color:#A39A8C; text-decoration:line-through;">{{ priceOld }}</span></sc-if>
+            <span style="font:700 34px 'Hanken Grotesk'; color:#2E5A63;">{{ priceNow }}</span>
+            <span style="font:500 14px 'Hanken Grotesk'; color:#8A857B;">{{ pricePeriod }}</span>
+          </div>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:18px;">
+          <a href="{{ comprar }}" target="_blank" style="font:700 15.5px 'Hanken Grotesk'; color:#fff; background:#2E5A63; text-decoration:none; padding:16px 28px; border-radius:13px; box-shadow:0 10px 24px rgba(46,90,99,.24); transition:.18s; display:inline-flex; align-items:center; gap:9px;" style-hover="background:#1F4A52; transform:translateY(-2px); box-shadow:0 16px 32px rgba(46,90,99,.3);">{{ ctaText }} <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#conteudo" style="font:700 15.5px 'Hanken Grotesk'; color:#2E5A63; background:rgba(255,255,255,.7); text-decoration:none; padding:16px 28px; border-radius:13px; border:1.5px solid #C4D7E2; transition:.18s;" style-hover="background:#fff; border-color:#2E5A63;">Ver Conteúdo</a>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:18px; margin-top:26px;">
+          <span style="display:inline-flex; align-items:center; gap:7px; font:500 12.5px 'Hanken Grotesk'; color:#6E6A62;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Pagamento seguro</span>
+          <span style="display:inline-flex; align-items:center; gap:7px; font:500 12.5px 'Hanken Grotesk'; color:#6E6A62;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>Acesso imediato</span>
+          <span style="display:inline-flex; align-items:center; gap:7px; font:500 12.5px 'Hanken Grotesk'; color:#6E6A62;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5-2 8-5 8-10V5l-8-3-8 3v7c0 5 3 8 8 10Z"/></svg>Checkout Hotmart</span>
+          <span style="display:inline-flex; align-items:center; gap:7px; font:500 12.5px 'Hanken Grotesk'; color:#6E6A62;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Garantia de 7 dias</span>
+        </div>
+      </div>
+      <div data-reveal style="position:relative; display:flex; align-items:center; justify-content:center; min-height:540px; perspective:1400px;">
+        <div style="position:absolute; width:300px; height:300px; border-radius:50%; background:radial-gradient(circle at 40% 35%, #EAF1F7, #F8EDEA); opacity:.7; filter:blur(6px);"></div>
+        <div style="position:relative; transform-style:preserve-3d; animation:pr-float 7s ease-in-out infinite;">
+          <div style="position:relative; width:300px; height:400px; border-radius:8px 14px 14px 8px; overflow:hidden; box-shadow:34px 40px 70px rgba(45,42,36,.28), 6px 8px 18px rgba(45,42,36,.14);">
+            <image-slot id="cover-{{ slug }}" style="width:100%; height:100%;" shape="rect" placeholder="{{ mockupPlaceholder }}"></image-slot>
+            <div style="position:absolute; top:0; left:0; bottom:0; width:18px; background:linear-gradient(90deg, rgba(0,0,0,.22), rgba(0,0,0,0) 60%, rgba(255,255,255,.14));"></div>
+            <div style="position:absolute; inset:0; background:linear-gradient(115deg, rgba(255,255,255,.18) 0%, rgba(255,255,255,0) 32%);"></div>
+          </div>
+          <div style="position:absolute; top:6px; right:-13px; width:13px; height:388px; background:linear-gradient(180deg,#EDE6DA,#D8CFBF); transform:rotateY(80deg) translateX(7px); transform-origin:right; border-radius:0 4px 4px 0;"></div>
+        </div>
+        <div style="position:absolute; top:44px; left:6px; background:rgba(255,255,255,.88); backdrop-filter:blur(10px); border:1px solid #EEE6D8; border-radius:15px; padding:12px 15px; box-shadow:0 14px 32px rgba(45,42,36,.12); display:flex; align-items:center; gap:10px; animation:pr-floatcard 6.5s ease-in-out infinite;">
+          <span style="width:34px; height:34px; border-radius:10px; background:#EAF1F7; display:grid; place-items:center; color:#2E5A63;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15a1 1 0 0 0-1-1H4a2 2 0 0 1-2-2Z"/><path d="M22 5a2 2 0 0 0-2-2h-6a2 2 0 0 0-2 2v15a1 1 0 0 1 1-1h7a2 2 0 0 0 2-2Z"/></svg></span>
+          <span style="font:700 12.5px 'Hanken Grotesk'; color:#2B2A27;">Material Completo</span>
+        </div>
+        <div style="position:absolute; top:150px; right:-6px; background:rgba(255,255,255,.88); backdrop-filter:blur(10px); border:1px solid #EEE6D8; border-radius:15px; padding:12px 15px; box-shadow:0 14px 32px rgba(45,42,36,.12); display:flex; align-items:center; gap:10px; animation:pr-floatcardB 8s ease-in-out infinite;">
+          <span style="width:34px; height:34px; border-radius:10px; background:#F8EDEA; display:grid; place-items:center; color:#C68A7F;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
+          <span style="font:700 12.5px 'Hanken Grotesk'; color:#2B2A27;">Rotina</span>
+        </div>
+        <div style="position:absolute; bottom:96px; left:0; background:rgba(255,255,255,.88); backdrop-filter:blur(10px); border:1px solid #EEE6D8; border-radius:15px; padding:12px 15px; box-shadow:0 14px 32px rgba(45,42,36,.12); display:flex; align-items:center; gap:10px; animation:pr-floatcardB 7.5s ease-in-out infinite .4s;">
+          <span style="width:34px; height:34px; border-radius:10px; background:#EEF2EB; display:grid; place-items:center; color:#5F7E5A;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></span>
+          <span style="font:700 12.5px 'Hanken Grotesk'; color:#2B2A27;">Sono Saudável</span>
+        </div>
+        <div style="position:absolute; bottom:34px; right:10px; background:rgba(255,255,255,.88); backdrop-filter:blur(10px); border:1px solid #EEE6D8; border-radius:15px; padding:12px 15px; box-shadow:0 14px 32px rgba(45,42,36,.12); display:flex; align-items:center; gap:10px; animation:pr-floatcard 8.5s ease-in-out infinite .7s;">
+          <span style="width:34px; height:34px; border-radius:10px; background:#F1F3EC; display:grid; place-items:center; color:#5F7E5A;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></span>
+          <span style="font:700 12.5px 'Hanken Grotesk'; color:#2B2A27;">Passo a Passo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BENEFÍCIOS ===== -->
+  <section style="padding:96px 40px; background:linear-gradient(180deg,#FAF7F2,#F6F0E7);">
+    <div style="max-width:1180px; margin:0 auto;">
+      <div data-reveal style="text-align:center; max-width:680px; margin:0 auto 56px;">
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#2E5A63; margin-bottom:14px;">O que você ganha</div>
+        <h2 style="font:300 44px/1.12 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.015em;">Benefícios que transformam as noites</h2>
+      </div>
+      <div data-reveal style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+        <sc-for list="{{ benefits }}" as="b" hint-placeholder-count="6">
+          <div style="background:#fff; border:1px solid #ECE4D6; border-radius:22px; padding:30px; box-shadow:0 2px 8px rgba(45,42,36,.04); transition:.24s; cursor:default;" style-hover="transform:translateY(-6px); box-shadow:0 20px 44px rgba(45,42,36,.1); border-color:#C4D7E2;">
+            <span style="width:50px; height:50px; border-radius:15px; background:#EAF1F7; display:grid; place-items:center; color:#2E5A63; margin-bottom:18px;">{{ b.iconEl }}</span>
+            <div style="font:600 19px 'Newsreader',serif; color:#2B2A27;">{{ b.title }}</div>
+            <div style="font:400 14px/1.6 'Hanken Grotesk'; color:#6E6A62; margin-top:8px;">{{ b.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== O QUE VOCÊ VAI APRENDER ===== -->
+  <section id="conteudo" style="padding:96px 40px; background:#FAF7F2;">
+    <div style="max-width:900px; margin:0 auto;">
+      <div data-reveal style="text-align:center; max-width:680px; margin:0 auto 56px;">
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#C68A7F; margin-bottom:14px;">O que você vai aprender</div>
+        <h2 style="font:300 44px/1.12 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.015em;">{{ modulesTitle }}</h2>
+      </div>
+      <div data-reveal style="position:relative; padding-left:8px;">
+        <div style="position:absolute; left:33px; top:14px; bottom:14px; width:2px; background:linear-gradient(180deg,#D9E6CF,#C4D7E2,#EAD7D0);"></div>
+        <div style="display:flex; flex-direction:column; gap:18px;">
+          <sc-for list="{{ modules }}" as="m" hint-placeholder-count="5">
+            <div style="position:relative; display:flex; gap:22px; align-items:flex-start;">
+              <span style="position:relative; z-index:1; flex-shrink:0; width:52px; height:52px; border-radius:50%; background:#fff; border:1.5px solid #ECE4D6; box-shadow:0 6px 16px rgba(45,42,36,.07); display:grid; place-items:center; color:#2E5A63;">{{ m.iconEl }}</span>
+              <div style="flex:1; background:#fff; border:1px solid #ECE4D6; border-radius:18px; padding:20px 24px; box-shadow:0 2px 8px rgba(45,42,36,.04);">
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <span style="font:700 11px 'Hanken Grotesk'; letter-spacing:.08em; text-transform:uppercase; color:#C68A7F;">Módulo {{ m.n }}</span>
+                </div>
+                <div style="font:600 18px 'Hanken Grotesk'; color:#2B2A27; margin-top:5px;">{{ m.title }}</div>
+                <div style="font:400 14px/1.6 'Hanken Grotesk'; color:#6E6A62; margin-top:5px;">{{ m.desc }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PARA QUEM É ===== -->
+  <section style="padding:30px 40px 96px; background:#FAF7F2;">
+    <div style="max-width:1000px; margin:0 auto;">
+      <div data-reveal style="text-align:center; max-width:680px; margin:0 auto 52px;">
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#2E5A63; margin-bottom:14px;">Para quem é</div>
+        <h2 style="font:300 44px/1.12 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.015em;">Este material é para você?</h2>
+      </div>
+      <div data-reveal style="display:grid; grid-template-columns:1.2fr 0.8fr; gap:24px; align-items:start;">
+        <div style="background:#fff; border:1.5px solid #C9DBC2; border-radius:24px; padding:36px; box-shadow:0 10px 30px rgba(95,126,90,.08);">
+          <div style="display:flex; align-items:center; gap:11px; margin-bottom:22px;">
+            <span style="width:40px; height:40px; border-radius:12px; background:#EEF2EB; display:grid; place-items:center; color:#5F7E5A;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></span>
+            <div style="font:600 21px 'Newsreader',serif; color:#2B2A27;">Ideal para</div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+            <sc-for list="{{ idealFor }}" as="i" hint-placeholder-count="6">
+              <div style="display:flex; align-items:center; gap:10px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M20 6 9 17l-5-5"/></svg><span style="font:500 14.5px/1.4 'Hanken Grotesk'; color:#3A3833;">{{ i }}</span></div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background:#FBF7F0; border:1px solid #EADFCF; border-radius:24px; padding:36px;">
+          <div style="display:flex; align-items:center; gap:11px; margin-bottom:22px;">
+            <span style="width:40px; height:40px; border-radius:12px; background:#F6ECD7; display:grid; place-items:center; color:#C2954C;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg></span>
+            <div style="font:600 21px 'Newsreader',serif; color:#2B2A27;">Não indicado para</div>
+          </div>
+          <p style="font:400 14.5px/1.7 'Hanken Grotesk'; color:#6E6A62; margin:0;">{{ notFor }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== O QUE ESTÁ INCLUSO ===== -->
+  <section style="padding:96px 40px; background:linear-gradient(180deg,#F6F0E7,#FAF7F2);">
+    <div style="max-width:1100px; margin:0 auto;">
+      <div data-reveal style="display:grid; grid-template-columns:1.05fr 0.95fr; gap:48px; align-items:center;">
+        <div>
+          <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#2E5A63; margin-bottom:14px;">O que está incluso</div>
+          <h2 style="font:300 42px/1.14 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.015em;">Tudo o que vem com o seu material</h2>
+          <p style="font:400 17px/1.65 'Hanken Grotesk'; color:#6E6A62; margin:16px 0 26px;">Um pacote completo, pensado para você aplicar de verdade — com extras que aceleram os resultados.</p>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <sc-for list="{{ included }}" as="inc" hint-placeholder-count="6">
+              <div style="display:flex; align-items:center; gap:13px; background:#fff; border:1px solid #ECE4D6; border-radius:14px; padding:14px 18px; box-shadow:0 2px 6px rgba(45,42,36,.04);">
+                <span style="width:26px; height:26px; flex-shrink:0; border-radius:50%; background:#EEF2EB; display:grid; place-items:center; color:#5F7E5A;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <span style="font:500 15px/1.4 'Hanken Grotesk'; color:#3A3833;">{{ inc }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:18px;">
+            <div style="position:relative;">
+              <div style="position:absolute; inset:-12px; background:linear-gradient(150deg,#EAF1F7,#F8EDEA); border-radius:30px; opacity:.6;"></div>
+              <image-slot id="extra1-{{ slug }}" style="position:relative; width:100%; aspect-ratio:3/4;" shape="rounded" radius="18" placeholder="Mockup de página interna"></image-slot>
+            </div>
+            <div style="position:relative; margin-top:28px;">
+              <div style="position:absolute; inset:-12px; background:linear-gradient(150deg,#EEF2EB,#F8EDEA); border-radius:30px; opacity:.6;"></div>
+              <image-slot id="extra2-{{ slug }}" style="position:relative; width:100%; aspect-ratio:3/4;" shape="rounded" radius="18" placeholder="Mockup de checklist / template"></image-slot>
+            </div>
+          </div>
+          <div style="background:#fff; border:1px solid #ECE4D6; border-radius:20px; padding:24px; box-shadow:0 8px 24px rgba(45,42,36,.06);">
+            <div style="display:flex; align-items:center; gap:9px; margin-bottom:16px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C68A7F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v8H4v-8M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7"/></svg>
+              <span style="font:700 12px 'Hanken Grotesk'; letter-spacing:.1em; text-transform:uppercase; color:#C68A7F;">Bônus inclusos</span>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:14px;">
+              <sc-for list="{{ bonuses }}" as="bo" hint-placeholder-count="2">
+                <div style="display:flex; gap:13px; align-items:flex-start;">
+                  <span style="width:38px; height:38px; flex-shrink:0; border-radius:11px; background:#F8EDEA; display:grid; place-items:center; color:#C68A7F;">{{ bo.iconEl }}</span>
+                  <div><div style="font:600 14.5px 'Hanken Grotesk'; color:#2B2A27;">{{ bo.title }}</div><div style="font:400 13px/1.5 'Hanken Grotesk'; color:#8A857B; margin-top:2px;">{{ bo.desc }}</div></div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== POR QUE É DIFERENTE ===== -->
+  <section style="padding:96px 40px; background:#FAF7F2;">
+    <div style="max-width:1180px; margin:0 auto;">
+      <div data-reveal style="text-align:center; max-width:680px; margin:0 auto 56px;">
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#2E5A63; margin-bottom:14px;">Por que este material é diferente</div>
+        <h2 style="font:300 44px/1.12 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.015em;">Não é mais um e-book genérico</h2>
+      </div>
+      <div data-reveal style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:22px; padding:28px; box-shadow:0 2px 8px rgba(45,42,36,.04); transition:.24s;" style-hover="transform:translateY(-6px); box-shadow:0 18px 40px rgba(45,42,36,.1);">
+          <span style="width:48px; height:48px; border-radius:14px; background:#EAF1F7; display:grid; place-items:center; color:#2E5A63; margin-bottom:16px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11a3 3 0 1 0 6 0c0-2-3-3-3-7M5 8a7 7 0 0 1 14 0c0 4-3 5-3 9H8c0-4-3-5-3-9Z"/><path d="M9 21h6"/></svg></span>
+          <div style="font:600 17px 'Newsreader',serif; color:#2B2A27;">Base Científica</div>
+          <div style="font:400 13.5px/1.6 'Hanken Grotesk'; color:#6E6A62; margin-top:7px;">Fundamentado em evidências sobre o sono infantil, sem achismos.</div>
+        </div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:22px; padding:28px; box-shadow:0 2px 8px rgba(45,42,36,.04); transition:.24s;" style-hover="transform:translateY(-6px); box-shadow:0 18px 40px rgba(45,42,36,.1);">
+          <span style="width:48px; height:48px; border-radius:14px; background:#F8EDEA; display:grid; place-items:center; color:#C68A7F; margin-bottom:16px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg></span>
+          <div style="font:600 17px 'Newsreader',serif; color:#2B2A27;">Linguagem Simples</div>
+          <div style="font:400 13.5px/1.6 'Hanken Grotesk'; color:#6E6A62; margin-top:7px;">Sem termos técnicos. Você entende e aplica no mesmo dia.</div>
+        </div>
+        <div style="background:#fff; border:1px solid #ECE4D6; border-radius:22px; padding:28px; box-shadow:0 2px 8px rgba(45,42,36,.04); transition:.24s;" style-hover="transform:translateY(-6px); box-shadow:0 18px 40px rgba(45,42,36,.1);">
+          <span style="width:48px; height:48px; border-radius:14px; background:#EEF2EB; display:grid; place-items:center; color:#5F7E5A; margin-bottom:16px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></span>
+          <div style="font:600 17px 'Newsreader',serif; color:#2B2A27;">Aplicação Prática</div>
+          <div style="font:400 13.5px/1.6 'Hanken Grotesk'; color:#6E6A62; margin-top:7px;">Passo a passo, modelos e checklists prontos para usar.</div>
+        </div>
+        <div style="background:linear-gradient(155deg,#2E5A63,#1F4A52); border-radius:22px; padding:28px; box-shadow:0 12px 30px rgba(46,90,99,.2); transition:.24s;" style-hover="transform:translateY(-6px); box-shadow:0 22px 48px rgba(46,90,99,.3);">
+          <span style="width:48px; height:48px; border-radius:14px; background:rgba(255,255,255,.12); display:grid; place-items:center; color:#B7C7AE; margin-bottom:16px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.2 13.4 7 22l5-3 5 3-1.2-8.6"/></svg></span>
+          <div style="font:600 17px 'Newsreader',serif; color:#fff;">Feito por Especialista</div>
+          <div style="font:400 13.5px/1.6 'Hanken Grotesk'; color:#C7DDE2; margin-top:7px;">Desenvolvido por Vitória, enfermeira e especialista em sono infantil.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOBRE A AUTORA ===== -->
+  <section style="padding:30px 40px 96px; background:#FAF7F2;">
+    <div data-reveal style="max-width:1040px; margin:0 auto; background:#fff; border:1px solid #ECE4D6; border-radius:30px; overflow:hidden; box-shadow:0 16px 44px rgba(45,42,36,.07); display:grid; grid-template-columns:0.8fr 1.2fr;">
+      <div style="position:relative; min-height:420px; background:linear-gradient(160deg,#EAF1F7,#F8EDEA);">
+        <image-slot id="autora-{{ slug }}" style="width:100%; height:100%;" shape="rect" placeholder="Retrato editorial da Vitória — luz natural, elegante"></image-slot>
+      </div>
+      <div style="padding:48px 46px; display:flex; flex-direction:column; justify-content:center;">
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#2E5A63; margin-bottom:14px;">Sobre a autora</div>
+        <h2 style="font:300 34px/1.18 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.01em;">Quem desenvolveu este material</h2>
+        <p style="font:400 16px/1.7 'Hanken Grotesk'; color:#6E6A62; margin:18px 0 0;">Vitória Teixeira é enfermeira e especialista em sono e rotina infantil. Une base científica, acolhimento e o método próprio Maternar Leve para transformar o conhecimento sobre o sono em materiais simples e aplicáveis.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:10px; margin:24px 0 28px;">
+          <span style="font:600 12.5px 'Hanken Grotesk'; color:#2E5A63; background:#EAF1F7; padding:7px 14px; border-radius:999px;">Enfermeira</span>
+          <span style="font:600 12.5px 'Hanken Grotesk'; color:#5F7E5A; background:#EEF2EB; padding:7px 14px; border-radius:999px;">Especialista em Sono Infantil</span>
+          <span style="font:600 12.5px 'Hanken Grotesk'; color:#C68A7F; background:#F8EDEA; padding:7px 14px; border-radius:999px;">Método Maternar Leve</span>
+        </div>
+        <a href="Quem Sou.dc.html" style="align-self:flex-start; font:700 15px 'Hanken Grotesk'; color:#2E5A63; text-decoration:none; padding:14px 24px; border-radius:13px; border:1.5px solid #C4D7E2; transition:.18s; display:inline-flex; align-items:center; gap:9px;" style-hover="background:#2E5A63; color:#fff; border-color:#2E5A63;">Conhecer minha história <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DEPOIMENTOS ===== -->
+  <section style="padding:96px 40px; background:linear-gradient(180deg,#FAF7F2,#F6F0E7);">
+    <div style="max-width:1100px; margin:0 auto;">
+      <div data-reveal style="text-align:center; max-width:680px; margin:0 auto 44px;">
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#C68A7F; margin-bottom:14px;">Quem já aplicou</div>
+        <h2 style="font:300 44px/1.12 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.015em;">Famílias que dormem melhor</h2>
+      </div>
+      <div data-reveal style="position:relative; overflow:hidden; border-radius:28px;">
+        <div style="{{ carouselTrack }}">
+          <sc-for list="{{ testimonials }}" as="tt" hint-placeholder-count="2">
+            <div style="min-width:100%; padding:2px;">
+              <div style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:24px; background:linear-gradient(150deg,#F8EFEC,#FFFFFF); border:1px solid #ECE4D6; border-radius:26px; overflow:hidden; box-shadow:0 12px 34px rgba(45,42,36,.06);">
+                <div style="position:relative; min-height:280px;">
+                  <image-slot id="{{ tt.imgId }}" style="width:100%; height:100%;" shape="rect" placeholder="Foto / vídeo do depoimento"></image-slot>
+                  <span style="position:absolute; top:16px; left:16px; display:inline-flex; align-items:center; gap:7px; font:700 11px 'Hanken Grotesk'; color:#2E5A63; background:rgba(255,255,255,.88); padding:7px 13px; border-radius:999px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="#2E5A63"><path d="M8 5v14l11-7z"/></svg>Ver vídeo</span>
+                </div>
+                <div style="padding:40px 38px; display:flex; flex-direction:column; justify-content:center;">
+                  <div style="display:flex; gap:3px; color:#C68A7F; margin-bottom:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg></div>
+                  <div style="font:400 22px/1.5 'Newsreader',serif; color:#2B2A27; font-style:italic;">{{ tt.quote }}</div>
+                  <div style="display:flex; align-items:center; gap:12px; margin-top:22px;"><span style="width:44px; height:44px; border-radius:50%; background:radial-gradient(circle at 35% 30%,#fff,#E7C9C2);"></span><div><div style="font:600 14.5px 'Hanken Grotesk'; color:#2B2A27;">{{ tt.name }}</div><div style="font:500 12.5px 'Hanken Grotesk'; color:#9B9183;">{{ tt.role }}</div></div></div>
+                </div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div data-reveal style="display:flex; align-items:center; justify-content:center; gap:18px; margin-top:24px;">
+        <button onClick="{{ prevT }}" aria-label="Anterior" style="width:42px; height:42px; border-radius:50%; background:#fff; border:1px solid #E2DACB; display:grid; place-items:center; color:#5C584F; cursor:pointer; transition:.16s;" style-hover="border-color:#2E5A63; color:#2E5A63;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <sc-for list="{{ dots }}" as="d" hint-placeholder-count="2"><span onClick="{{ d.onClick }}" style="{{ d.style }}"></span></sc-for>
+        </div>
+        <button onClick="{{ nextT }}" aria-label="Próximo" style="width:42px; height:42px; border-radius:50%; background:#fff; border:1px solid #E2DACB; display:grid; place-items:center; color:#5C584F; cursor:pointer; transition:.16s;" style-hover="border-color:#2E5A63; color:#2E5A63;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+      <div data-reveal style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:40px;">
+        <image-slot id="print1-{{ slug }}" style="width:100%; aspect-ratio:3/4;" shape="rounded" radius="18" placeholder="Print WhatsApp"></image-slot>
+        <image-slot id="print2-{{ slug }}" style="width:100%; aspect-ratio:3/4;" shape="rounded" radius="18" placeholder="Print avaliação"></image-slot>
+        <image-slot id="print3-{{ slug }}" style="width:100%; aspect-ratio:3/4;" shape="rounded" radius="18" placeholder="Print depoimento"></image-slot>
+        <image-slot id="print4-{{ slug }}" style="width:100%; aspect-ratio:3/4;" shape="rounded" radius="18" placeholder="Foto de cliente"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section style="padding:96px 40px; background:#FAF7F2;">
+    <div style="max-width:820px; margin:0 auto;">
+      <div data-reveal style="text-align:center; margin-bottom:48px;">
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.18em; text-transform:uppercase; color:#2E5A63; margin-bottom:14px;">Perguntas frequentes</div>
+        <h2 style="font:300 44px/1.12 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.015em;">Tudo o que você precisa saber</h2>
+      </div>
+      <div data-reveal style="display:flex; flex-direction:column; gap:12px;">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+          <div style="background:#fff; border:1px solid #ECE4D6; border-radius:18px; padding:6px 26px; box-shadow:0 2px 8px rgba(45,42,36,.04);">
+            <button onClick="{{ f.toggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:none; padding:20px 0; cursor:pointer; font:600 17px 'Hanken Grotesk'; color:#2B2A27; text-align:left;">{{ f.q }}<span style="{{ f.chev }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5A63" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
+            <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}"><div style="font:400 15px/1.65 'Hanken Grotesk'; color:#6E6A62; padding:0 0 20px;">{{ f.a }}</div></sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GARANTIA ===== -->
+  <section style="padding:30px 40px 96px; background:#FAF7F2;">
+    <div data-reveal style="max-width:920px; margin:0 auto; background:linear-gradient(160deg,#F2F6F4,#FFFFFF); border:1px solid #C9DBC2; border-radius:28px; padding:52px 48px; display:flex; align-items:center; gap:44px; box-shadow:0 14px 40px rgba(95,126,90,.1);">
+      <div style="flex-shrink:0; position:relative; width:140px; height:140px;">
+        <div style="position:absolute; inset:0; border-radius:50%; background:radial-gradient(circle at 40% 35%, #FFFFFF, #DCE9D1); animation:pr-breathe 6s ease-in-out infinite;"></div>
+        <div style="position:absolute; inset:14px; border-radius:50%; border:2px dashed #B7C7AE;"></div>
+        <div style="position:absolute; inset:0; display:grid; place-items:center; color:#5F7E5A;"><svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5-2 8-5 8-10V5l-8-3-8 3v7c0 5 3 8 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+      </div>
+      <div>
+        <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.16em; text-transform:uppercase; color:#5F7E5A; margin-bottom:12px;">Garantia incondicional de 7 dias</div>
+        <h2 style="font:300 32px/1.2 'Newsreader',serif; color:#2B2A27; margin:0; letter-spacing:-.01em;">Sua compra é 100% segura</h2>
+        <p style="font:400 16px/1.7 'Hanken Grotesk'; color:#6E6A62; margin:14px 0 0;">Se em até 7 dias você sentir que o material não é para você, devolvemos todo o valor — sem perguntas e sem burocracia. O risco é todo meu. A sua tranquilidade vem primeiro.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section id="comprar" style="padding:30px 40px 90px;">
+    <div data-reveal style="max-width:1100px; margin:0 auto; border-radius:34px; overflow:hidden; position:relative; background:radial-gradient(900px 460px at 100% 0%, #36636C, #1F4A52); box-shadow:0 24px 60px rgba(31,74,82,.26);">
+      <div style="position:absolute; top:-50px; left:-30px; width:220px; height:220px; border-radius:50%; background:radial-gradient(circle at 40% 35%, rgba(255,255,255,.1), rgba(255,255,255,0) 70%);"></div>
+      <div style="position:absolute; bottom:-60px; right:8%; width:180px; height:180px; border-radius:50%; background:radial-gradient(circle at 40% 35%, rgba(183,199,174,.18), rgba(255,255,255,0) 70%); animation:pr-breathe 6s ease-in-out infinite;"></div>
+      <div style="position:relative; display:grid; grid-template-columns:1.15fr 0.85fr; gap:36px; align-items:center; padding:56px 56px;">
+        <div>
+          <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.16em; text-transform:uppercase; color:#B7C7AE; margin-bottom:14px;">Comece hoje mesmo</div>
+          <h2 style="font:300 40px/1.16 'Newsreader',serif; color:#fff; margin:0; letter-spacing:-.015em;">{{ ctaHeadline }}</h2>
+          <p style="font:400 16.5px/1.65 'Hanken Grotesk'; color:#C7DDE2; margin:18px 0 0; max-width:420px;">Acesso imediato, no seu tempo e no conforto da sua casa. Dê o primeiro passo rumo a noites mais tranquilas.</p>
+          <div style="display:flex; align-items:baseline; gap:8px; margin:26px 0 4px;">
+            <sc-if value="{{ hasOld }}" hint-placeholder-val="{{ true }}"><span style="font:500 18px 'Hanken Grotesk'; color:#8FB0B7; text-decoration:line-through;">{{ priceOld }}</span></sc-if>
+            <span style="font:700 38px 'Hanken Grotesk'; color:#fff;">{{ priceNow }}</span>
+            <span style="font:500 15px 'Hanken Grotesk'; color:#9DBFC6;">{{ pricePeriod }}</span>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:22px;">
+            <a href="{{ comprar }}" target="_blank" style="font:700 15.5px 'Hanken Grotesk'; color:#1F4A52; background:#fff; text-decoration:none; padding:16px 30px; border-radius:13px; box-shadow:0 12px 28px rgba(0,0,0,.18); transition:.18s; display:inline-flex; align-items:center; gap:9px;" style-hover="transform:translateY(-2px);">{{ ctaText }} <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:18px; margin-top:22px;">
+            <span style="display:inline-flex; align-items:center; gap:7px; font:500 12.5px 'Hanken Grotesk'; color:#9DBFC6;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B7C7AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Pagamento seguro · Hotmart</span>
+            <span style="display:inline-flex; align-items:center; gap:7px; font:500 12.5px 'Hanken Grotesk'; color:#9DBFC6;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B7C7AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Garantia de 7 dias</span>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center; perspective:1200px;">
+          <div style="position:relative; width:210px; height:280px; border-radius:6px 12px 12px 6px; overflow:hidden; transform:rotateY(-16deg) rotateX(4deg); box-shadow:28px 32px 56px rgba(0,0,0,.34);">
+            <image-slot id="cta-{{ slug }}" style="width:100%; height:100%;" shape="rect" placeholder="{{ mockupPlaceholder }}"></image-slot>
+            <div style="position:absolute; top:0; left:0; bottom:0; width:14px; background:linear-gradient(90deg, rgba(0,0,0,.28), rgba(0,0,0,0) 60%);"></div>
+            <div style="position:absolute; inset:0; background:linear-gradient(115deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,0) 34%);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="background:#1F4A52; color:#C7DDE2; padding:64px 40px 30px;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div style="display:grid; grid-template-columns:1.5fr 1fr 1fr 1.2fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,.12);">
+        <div>
+          <div style="display:flex; align-items:center; gap:11px; margin-bottom:16px;"><svg width="30" height="30" viewBox="0 0 40 40" fill="none"><path d="M24.8 4.5C15.5 4.5 8 12 8 21.3S15.5 38 24.8 38c3 0 5.9-.8 8.4-2.3-8 .5-14.7-5.9-14.7-13.9 0-8 6.7-14.4 14.7-13.9-2.5-1.6-5.4-2.4-8.4-2.4Z" fill="#fff"/><circle cx="31" cy="10.5" r="1.9" fill="#C68A7F"/><circle cx="34.5" cy="15" r="1.1" fill="#B7C7AE"/></svg><span style="font:500 19px 'Newsreader',serif; color:#fff;">Vitória Teixeira</span></div>
+          <p style="font:400 13.5px/1.65 'Hanken Grotesk'; color:#9DBFC6; margin:0 0 18px; max-width:280px;">Enfermeira e especialista em sono e rotina infantil. Uma maternidade mais leve através do sono saudável.</p>
+          <div style="display:flex; gap:10px;">
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram" style="width:38px; height:38px; border-radius:11px; background:rgba(255,255,255,.1); display:grid; place-items:center; color:#fff; transition:.16s;" style-hover="background:rgba(255,255,255,.2);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+            <a href="{{ whatsappLink }}" target="_blank" aria-label="WhatsApp" style="width:38px; height:38px; border-radius:11px; background:rgba(255,255,255,.1); display:grid; place-items:center; color:#fff; transition:.16s;" style-hover="background:rgba(255,255,255,.2);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5Z"/></svg></a>
+            <a href="mailto:contato@vitoriateixeira.com.br" aria-label="E-mail" style="width:38px; height:38px; border-radius:11px; background:rgba(255,255,255,.1); display:grid; place-items:center; color:#fff; transition:.16s;" style-hover="background:rgba(255,255,255,.2);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <div style="font:700 11px 'Hanken Grotesk'; letter-spacing:.12em; text-transform:uppercase; color:#7FA3AB; margin-bottom:16px;">Navegação</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="Quem Sou.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">Quem Sou</a>
+            <a href="Metodo.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">Método</a>
+            <a href="Blog.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">Blog</a>
+            <a href="FAQ.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">FAQ</a>
+            <a href="Contato.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">Contato</a>
+          </div>
+        </div>
+        <div>
+          <div style="font:700 11px 'Hanken Grotesk'; letter-spacing:.12em; text-transform:uppercase; color:#7FA3AB; margin-bottom:16px;">Biblioteca</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="Guia 0-3 meses.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">Guias do Sono</a>
+            <a href="Rotinas Prontas.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">Rotinas Prontas</a>
+            <a href="Kit Ambiente do Sono.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">Kit Ambiente</a>
+            <a href="Curso Gestantes.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">Curso Gestantes</a>
+            <a href="MaternaClub.dc.html" style="font:400 13.5px 'Hanken Grotesk'; color:#C7DDE2; text-decoration:none;" style-hover="color:#fff;">MaternaClub</a>
+          </div>
+        </div>
+        <div>
+          <div style="font:700 11px 'Hanken Grotesk'; letter-spacing:.12em; text-transform:uppercase; color:#7FA3AB; margin-bottom:16px;">Dicas de sono, sem ruído</div>
+          <p style="font:400 13px/1.55 'Hanken Grotesk'; color:#9DBFC6; margin:0 0 14px;">Conteúdo cuidadoso sobre sono e rotina no seu e-mail — e a liberdade de sair quando quiser.</p>
+          <div style="display:flex; gap:8px;">
+            <input placeholder="Seu melhor e-mail" style="flex:1; min-width:0; font:400 13.5px 'Hanken Grotesk'; color:#fff; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); border-radius:10px; padding:11px 13px; outline:none;">
+            <button style="font:700 13px 'Hanken Grotesk'; color:#1F4A52; background:#fff; border:none; padding:0 16px; border-radius:10px; cursor:pointer; white-space:nowrap;">Receber</button>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-top:24px;">
+        <div style="font:400 12.5px 'Hanken Grotesk'; color:#7FA3AB;">© 2026 Vitória Teixeira · Todos os direitos reservados</div>
+        <div style="display:flex; gap:22px;">
+          <a href="#" style="font:400 12.5px 'Hanken Grotesk'; color:#9DBFC6; text-decoration:none;" style-hover="color:#fff;">Política de Privacidade</a>
+          <a href="#" style="font:400 12.5px 'Hanken Grotesk'; color:#9DBFC6; text-decoration:none;" style-hover="color:#fff;">Termos de Uso</a>
+          <a href="#" style="font:400 12.5px 'Hanken Grotesk'; color:#9DBFC6; text-decoration:none;" style-hover="color:#fff;">LGPD</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="{{ whatsappLink }}" target="_blank" aria-label="Falar no WhatsApp" style="position:fixed; bottom:26px; right:26px; z-index:90; width:60px; height:60px; border-radius:50%; background:#5F7E5A; display:grid; place-items:center; color:#fff; box-shadow:0 10px 26px rgba(95,126,90,.4); transition:.2s;" style-hover="transform:scale(1.08); background:#52704D;">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5Z"/></svg>
+  </a>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;slug&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;guia-0-3&quot;,&quot;options&quot;:[&quot;guia-0-3&quot;,&quot;guia-4-6&quot;,&quot;guia-7-12&quot;,&quot;rotinas&quot;,&quot;kit-ambiente&quot;,&quot;checklists&quot;,&quot;kit-primeiros&quot;,&quot;curso-gestantes&quot;,&quot;maternaclub&quot;],&quot;tsType&quot;:&quot;string&quot;},&quot;hotmartLink&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://pay.hotmart.com&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;559184555549&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { menu: null, faq: 0, t: 0 };
+
+  ICONS = {
+    moon: ['M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'],
+    clock: ['c:12,12,9', 'M12 7v5l3 2'],
+    heart: ['M19 14c1.5-1.5 3-3.3 3-5.5A3.5 3.5 0 0 0 12 6 3.5 3.5 0 0 0 2 8.5c0 2.2 1.5 4 3 5.5l7 7Z'],
+    book: ['M2 5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15a1 1 0 0 0-1-1H4a2 2 0 0 1-2-2Z', 'M22 5a2 2 0 0 0-2-2h-6a2 2 0 0 0-2 2v15a1 1 0 0 1 1-1h7a2 2 0 0 0 2-2Z'],
+    calendar: ['c:0,0,0', 'M3 4h18v18H3zM16 2v4M8 2v4M3 10h18'],
+    home: ['M3 10.5 12 3l9 7.5M5 9v11h14V9'],
+    message: ['M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z'],
+    star: ['m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z'],
+    sparkle: ['m12 3 2.2 4.5 5 .7-3.6 3.5.9 5L12 18.8 7.5 16.7l.9-5L4.8 8.2l5-.7Z'],
+    shield: ['M12 22c5-2 8-5 8-10V5l-8-3-8 3v7c0 5 3 8 8 10Z', 'm9 12 2 2 4-4'],
+    leaf: ['M11 20A7 7 0 0 1 9.8 6.1C10.5 5.4 11 4.5 11 3.5a8 8 0 1 0 0 16.5Z', 'M16 6c1 1 1 3 0 4'],
+    search: ['c:11,11,7', 'm21 21-4.3-4.3'],
+    file: ['M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z', 'M14 2v6h6'],
+    edit: ['M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z'],
+    list: ['M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01'],
+    sun: ['c:12,12,4', 'M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4'],
+    smile: ['c:12,12,9', 'M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01'],
+    music: ['M9 18V5l12-2v13', 'c:6,18,3', 'c:18,16,3'],
+    thermometer: ['M14 14.76V5a2 2 0 0 0-4 0v9.76a4 4 0 1 0 4 0Z'],
+    gift: ['M20 12v8H4v-8M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7'],
+    play: ['M8 5v14l11-7z'],
+    download: ['M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3'],
+    phone: ['M5 2h14v20H5zM12 18h.01'],
+    infinity: ['M12 12c-2-3-4-4-6-4a4 4 0 0 0 0 8c2 0 4-1 6-4Zm0 0c2 3 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1-6 4Z'],
+    users: ['M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8'],
+    check: ['M20 6 9 17l-5-5'],
+    bed: ['M2 4v16M2 11h20v9M22 11V9a4 4 0 0 0-4-4h-6v6'],
+    award: ['c:12,8,6', 'M8.2 13.4 7 22l5-3 5 3-1.2-8.6'],
+    compass: ['c:12,12,10', 'm16 8-2 6-6 2 2-6 6-2Z'],
+    target: ['c:12,12,9', 'c:12,12,5', 'c:12,12,1'],
+    eye: ['M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z', 'c:12,12,3'],
+    video: ['M23 7l-7 5 7 5V7Z', 'M1 5h15v14H1z']
+  };
+
+  PRODUTOS = {
+    'guia-0-3': {
+      category: 'Guia Digital · 0 a 3 meses', mockup: 'Capa do Guia do Sono 0–3 meses',
+      headline: 'Os primeiros meses podem ser mais leves do que parecem.',
+      subheadline: 'Um guia prático para entender o sono do recém-nascido e construir uma base tranquila desde o início.',
+      benefitLine: 'Aprenda a compreender o sono do seu bebê e construa uma rotina mais tranquila desde os primeiros meses.',
+      priceNow: 'R$ 47', priceOld: 'R$ 67', pricePeriod: '', ctaText: 'Quero meu guia do sono',
+      ctaHeadline: 'Comece as noites do seu recém-nascido com mais leveza.',
+      modulesTitle: 'O conteúdo completo do guia',
+      benefits: [
+        ['eye','Compreender os sinais de sono','Reconheça as janelas de vigília antes do choro e do cansaço.'],
+        ['calendar','Criar previsibilidade','Âncoras simples de rotina adequadas ao recém-nascido.'],
+        ['shield','Evitar erros comuns','Saiba o que ajuda — e o que atrapalha — o sono nesta fase.'],
+        ['leaf','Melhorar a qualidade do sono','Ajustes de ambiente e manejo que favorecem o descanso.'],
+        ['heart','Reduzir a insegurança','Sinta-se segura para responder às necessidades do bebê.'],
+        ['check','Aplicação prática','Passos objetivos para colocar em prática hoje mesmo.']
+      ],
+      modules: [
+        ['file','Entendendo o sono do recém-nascido','Como o sono funciona nos primeiros meses.'],
+        ['sun','Janelas de vigília por semana','Quanto tempo acordado em cada fase.'],
+        ['home','Ambiente ideal de sono','Luz, ruído, temperatura e segurança.'],
+        ['moon','Rituais e associações saudáveis','Construindo um sono mais autônomo.'],
+        ['list','Checklist do dia a dia','Um guia rápido para consultar sempre.']
+      ],
+      idealFor: ['Gestantes no fim da gestação','Mães de recém-nascidos','Famílias de primeira viagem','Quem busca prevenção','Quem quer base científica','Quem prefere agir cedo'],
+      notFor: 'Bebês com questões clínicas que exijam avaliação médica antes de ajustes de rotina.',
+      included: ['Guia completo em PDF de alta qualidade','Tabela de janelas de vigília 0–3 meses','Checklist do ambiente do sono','Modelo de ritual noturno','Acesso imediato e vitalício'],
+      bonuses: [['gift','Bônus: Mini-guia de sonecas','Como organizar as sonecas do dia.'],['music','Bônus: Lista de ruído branco','Sugestões para acalmar o bebê.']],
+      faqs: [
+        ['Recebo o material imediatamente?','Sim. Logo após a confirmação do pagamento, o acesso é liberado na hora, no seu e-mail e na plataforma.'],
+        ['É um PDF?','Sim, é um e-book digital em PDF de alta qualidade, leve e fácil de abrir em qualquer aparelho.'],
+        ['Funciona no celular?','Perfeitamente. Você pode ler no celular, tablet ou computador, onde e quando quiser.'],
+        ['Tem garantia?','Sim, garantia incondicional de 7 dias. Se não for para você, devolvemos 100% do valor.'],
+        ['Posso imprimir?','Pode. O material foi pensado para leitura digital, mas você pode imprimir para consultar quando preferir.']
+      ],
+      testimonials: [
+        ['"Li ainda na maternidade. Cheguei em casa sabendo o que fazer — fez toda a diferença nas primeiras semanas."','Ana B.','mãe do Davi, 2 meses'],
+        ['"Simples, acolhedor e direto ao ponto. Parei de me sentir perdida com o sono do meu bebê."','Letícia P.','mãe da Aurora, 1 mês']
+      ]
+    },
+    'guia-4-6': {
+      category: 'Guia Digital · 4 a 6 meses', mockup: 'Capa do Guia do Sono 4–6 meses',
+      headline: 'A fase dos 4 meses não precisa ser uma crise.',
+      subheadline: 'Entenda a famosa regressão do sono e conduza essa transição com segurança e previsibilidade.',
+      benefitLine: 'Aprenda a atravessar a regressão dos 4 meses e a estruturar sonecas mais longas e organizadas.',
+      priceNow: 'R$ 47', priceOld: 'R$ 67', pricePeriod: '', ctaText: 'Quero meu guia do sono',
+      ctaHeadline: 'Atravesse a regressão dos 4 meses com tranquilidade.',
+      modulesTitle: 'O conteúdo completo do guia',
+      benefits: [
+        ['clock','Entender a regressão dos 4 meses','Saiba por que o sono muda e como conduzir essa fase.'],
+        ['sun','Estruturar as sonecas','Organize sonecas mais longas e previsíveis.'],
+        ['calendar','Montar uma rotina possível','Horários que se encaixam na sua realidade.'],
+        ['shield','Reduzir os despertares','Estratégias para noites mais inteiras.'],
+        ['leaf','Construir autonomia','Ajude o bebê a adormecer com mais independência.'],
+        ['check','Aplicação prática','Passo a passo para aplicar sem complicação.']
+      ],
+      modules: [
+        ['file','O que muda aos 4 meses','A maturação do sono explicada de forma simples.'],
+        ['sun','Mapa de sonecas 4–6m','Quantidade, duração e horários ideais.'],
+        ['calendar','Rotina flexível por idade','Como montar e ajustar a rotina do dia.'],
+        ['moon','Reduzindo despertares noturnos','Manejo gentil para noites mais longas.'],
+        ['list','Checklist de transição','Tudo o que observar nesta fase.']
+      ],
+      idealFor: ['Bebês de 4 a 6 meses','Famílias na regressão do sono','Quem quer sonecas melhores','Mães cansadas de despertares','Quem busca método','Quem quer previsibilidade'],
+      notFor: 'Bebês com questões clínicas que exijam avaliação médica antes de ajustes de rotina.',
+      included: ['Guia completo em PDF de alta qualidade','Mapa de sonecas 4–6 meses','Modelo de rotina flexível','Checklist da regressão do sono','Acesso imediato e vitalício'],
+      bonuses: [['gift','Bônus: Guia de transição de sonecas','Como ajustar quando o bebê dropa uma soneca.'],['edit','Bônus: Diário do sono','Modelo para acompanhar a evolução.']],
+      faqs: [
+        ['Recebo o material imediatamente?','Sim. O acesso é liberado na hora após a confirmação do pagamento.'],
+        ['É um PDF?','Sim, é um e-book digital em PDF de alta qualidade.'],
+        ['Funciona no celular?','Sim, leia no celular, tablet ou computador, quando quiser.'],
+        ['Tem garantia?','Sim, garantia incondicional de 7 dias com devolução integral.'],
+        ['Posso imprimir?','Pode imprimir e consultar sempre que precisar.']
+      ],
+      testimonials: [
+        ['"A regressão dos 4 meses me assustou. O guia me deu um norte e em duas semanas as sonecas melhoraram muito."','Camila R.','mãe do Noah, 5 meses'],
+        ['"Finalmente entendi o que estava acontecendo. Parei de errar no horário das sonecas."','Bruna M.','mãe da Liz, 4 meses']
+      ]
+    },
+    'guia-7-12': {
+      category: 'Guia Digital · 7 a 12 meses', mockup: 'Capa do Guia do Sono 7–12 meses',
+      headline: 'Mais autonomia para o seu bebê. Mais noites inteiras para você.',
+      subheadline: 'Um guia para consolidar o sono na segunda metade do primeiro ano, com rotina firme e gentil.',
+      benefitLine: 'Aprenda a consolidar o sono noturno e a lidar com as mudanças de rotina dos 7 aos 12 meses.',
+      priceNow: 'R$ 47', priceOld: 'R$ 67', pricePeriod: '', ctaText: 'Quero meu guia do sono',
+      ctaHeadline: 'Consolide noites mais inteiras antes do primeiro ano.',
+      modulesTitle: 'O conteúdo completo do guia',
+      benefits: [
+        ['moon','Consolidar o sono noturno','Estratégias para noites mais longas e estáveis.'],
+        ['sun','Ajustar para 2 sonecas','Conduza a transição de sonecas com segurança.'],
+        ['leaf','Lidar com a ansiedade de separação','Acolhimento nesta fase de mudanças.'],
+        ['shield','Manejar despertares e marcos','Dentes, engatinhar e novas habilidades.'],
+        ['calendar','Rotina firme e gentil','Previsibilidade que respeita o bebê.'],
+        ['check','Aplicação prática','Passos claros para aplicar no dia a dia.']
+      ],
+      modules: [
+        ['file','O sono dos 7 aos 12 meses','O que esperar nesta fase.'],
+        ['sun','Transição para 2 sonecas','Quando e como ajustar.'],
+        ['leaf','Ansiedade de separação','Como acolher sem criar novas associações.'],
+        ['moon','Consolidando a noite','Manejo de despertares e desmame noturno gentil.'],
+        ['list','Checklist por marco de desenvolvimento','Acompanhe cada novidade.']
+      ],
+      idealFor: ['Bebês de 7 a 12 meses','Famílias com despertares frequentes','Quem vai transicionar sonecas','Mães voltando ao trabalho','Quem busca consolidar a noite','Quem quer rotina firme'],
+      notFor: 'Bebês com questões clínicas que exijam avaliação médica antes de ajustes de rotina.',
+      included: ['Guia completo em PDF de alta qualidade','Mapa de rotina 7–12 meses','Guia de transição de sonecas','Checklist por marco de desenvolvimento','Acesso imediato e vitalício'],
+      bonuses: [['gift','Bônus: Desmame noturno gentil','Passo a passo respeitoso.'],['edit','Bônus: Planner de rotina','Modelo para organizar a semana.']],
+      faqs: [
+        ['Recebo o material imediatamente?','Sim. O acesso é liberado na hora após a confirmação do pagamento.'],
+        ['É um PDF?','Sim, é um e-book digital em PDF de alta qualidade.'],
+        ['Funciona no celular?','Sim, leia em qualquer aparelho, quando quiser.'],
+        ['Tem garantia?','Sim, garantia incondicional de 7 dias.'],
+        ['Posso imprimir?','Pode imprimir e consultar sempre que precisar.']
+      ],
+      testimonials: [
+        ['"Voltei a trabalhar tranquila. A rotina ficou firme e meu filho passou a dormir a noite toda."','Patrícia L.','mãe do Gael, 9 meses'],
+        ['"A transição para duas sonecas foi suave seguindo o guia. Recomendo demais."','Sofia T.','mãe da Maitê, 8 meses']
+      ]
+    },
+    'rotinas': {
+      category: 'Material Digital · Rotinas por idade', mockup: 'Capa de Rotinas Prontas por Idade',
+      headline: 'Rotinas prontas, testadas e ajustáveis à sua realidade.',
+      subheadline: 'Modelos de rotina por faixa etária para você parar de adivinhar horários e seguir um plano claro.',
+      benefitLine: 'Tenha rotinas prontas por idade, com horários de sono, mamadas e sonecas — é só adaptar e seguir.',
+      priceNow: 'R$ 37', priceOld: 'R$ 47', pricePeriod: '', ctaText: 'Quero minhas rotinas prontas',
+      ctaHeadline: 'Pare de adivinhar horários. Siga uma rotina pronta.',
+      modulesTitle: 'O que vem nas Rotinas Prontas',
+      benefits: [
+        ['calendar','Horários definidos por idade','Modelos prontos do recém-nascido aos 2 anos.'],
+        ['sun','Sonecas organizadas','Quantidade e duração ideais por fase.'],
+        ['list','Fácil de seguir','Visual claro, sem complicação.'],
+        ['edit','Totalmente adaptável','Ajuste à rotina da sua família.'],
+        ['leaf','Menos estresse no dia a dia','Previsibilidade que acalma a casa.'],
+        ['check','Aplicação imediata','Comece a usar no mesmo dia.']
+      ],
+      modules: [
+        ['file','Como usar as rotinas','Entenda a lógica por trás dos horários.'],
+        ['sun','Rotinas 0–3 e 4–6 meses','Modelos prontos para os primeiros meses.'],
+        ['calendar','Rotinas 7–12 meses','Para a segunda metade do primeiro ano.'],
+        ['moon','Rotinas 12–24 meses','Para a fase do bebê maior.'],
+        ['edit','Modelo editável em branco','Monte a sua própria rotina.']
+      ],
+      idealFor: ['Mães que querem praticidade','Famílias sem rotina definida','Quem se perde nos horários','Pais que dividem tarefas','Cuidadores e avós','Quem quer começar hoje'],
+      notFor: 'Casos que exijam avaliação clínica específica antes de estruturar a rotina.',
+      included: ['Conjunto de rotinas por faixa etária','Modelo editável em branco','Guia de adaptação dos horários','Checklist de implementação','Acesso imediato e vitalício'],
+      bonuses: [['gift','Bônus: Rotina de fim de semana','Como manter sem rigidez.'],['phone','Bônus: Versão para celular','Layout otimizado para a tela do telefone.']],
+      faqs: [
+        ['Recebo o material imediatamente?','Sim. O acesso é liberado na hora após o pagamento.'],
+        ['É um PDF?','Sim, com modelos prontos e uma versão editável.'],
+        ['Funciona no celular?','Sim, há uma versão pensada para a tela do celular.'],
+        ['Tem garantia?','Sim, garantia incondicional de 7 dias.'],
+        ['Posso imprimir?','Pode imprimir e deixar à vista na geladeira ou no quarto.']
+      ],
+      testimonials: [
+        ['"Coloquei a rotina na geladeira e a casa toda passou a seguir. Mudou nosso dia."','Renata S.','mãe do Pedro, 10 meses'],
+        ['"Simples e prático. Era exatamente o que eu precisava para organizar os horários."','Aline C.','mãe da Cecília, 6 meses']
+      ]
+    },
+    'kit-ambiente': {
+      category: 'Kit Digital · Ambiente do Sono', mockup: 'Capa do Kit Ambiente do Sono',
+      headline: 'O ambiente certo faz metade do trabalho.',
+      subheadline: 'Um kit completo para transformar o quarto do seu bebê num convite ao sono profundo e seguro.',
+      benefitLine: 'Aprenda a ajustar luz, ruído, temperatura e segurança para criar o ambiente ideal de sono.',
+      priceNow: 'R$ 47', priceOld: 'R$ 57', pricePeriod: '', ctaText: 'Quero preparar o quarto',
+      ctaHeadline: 'Transforme o quarto num convite ao sono profundo.',
+      modulesTitle: 'O que vem no Kit Ambiente',
+      benefits: [
+        ['moon','Escuridão na medida certa','Como a luz influencia o sono do bebê.'],
+        ['music','Som e ruído branco','O que ajuda a manter o sono contínuo.'],
+        ['thermometer','Temperatura ideal','Conforto térmico para noites tranquilas.'],
+        ['shield','Sono seguro','Diretrizes essenciais de segurança.'],
+        ['home','Organização do quarto','Cada elemento no lugar certo.'],
+        ['check','Aplicação prática','Ajustes que você faz hoje mesmo.']
+      ],
+      modules: [
+        ['home','O quarto ideal de sono','Os pilares de um bom ambiente.'],
+        ['moon','Luz e escuridão','Como regular para cada momento.'],
+        ['music','Ruído branco e sons','Quando e como usar.'],
+        ['thermometer','Temperatura e roupas','Vestindo o bebê para dormir.'],
+        ['shield','Checklist de sono seguro','Tudo o que conferir no berço.']
+      ],
+      idealFor: ['Famílias montando o quarto','Quem busca sono seguro','Pais com bebê agitado à noite','Quem quer ajustes simples','Quem mora em ambiente claro/ruidoso','Quem quer começar pelo básico'],
+      notFor: 'Situações que exijam orientação clínica específica sobre segurança do sono.',
+      included: ['Guia do ambiente ideal em PDF','Checklist de sono seguro','Guia de temperatura e vestuário','Lista de ruído branco recomendada','Acesso imediato e vitalício'],
+      bonuses: [['list','Bônus: Checklist de viagem','Recriando o ambiente fora de casa.'],['gift','Bônus: Guia de blackout caseiro','Soluções simples e baratas.']],
+      faqs: [
+        ['Recebo o material imediatamente?','Sim. Liberação automática após o pagamento.'],
+        ['É um PDF?','Sim, um kit digital em PDF com guias e checklists.'],
+        ['Funciona no celular?','Sim, acesse de qualquer aparelho.'],
+        ['Tem garantia?','Sim, garantia incondicional de 7 dias.'],
+        ['Posso imprimir?','Pode imprimir os checklists para usar no quarto.']
+      ],
+      testimonials: [
+        ['"Pequenos ajustes no quarto e o sono ficou muito mais profundo. Não imaginava o impacto."','Marcela V.','mãe do Theo, 7 meses'],
+        ['"O checklist de sono seguro me deu uma paz enorme. Vale cada centavo."','Júlia F.','mãe da Olívia, 3 meses']
+      ]
+    },
+    'checklists': {
+      category: 'Material Digital · Checklists & Rotina', mockup: 'Capa de Checklists e Materiais de Rotina',
+      headline: 'Tudo o que você precisa lembrar, num só lugar.',
+      subheadline: 'Uma coleção de checklists e materiais práticos para organizar a rotina sem sobrecarga mental.',
+      benefitLine: 'Tenha checklists prontos para a rotina, o sono e o dia a dia — e tire o peso de ter que lembrar de tudo.',
+      priceNow: 'R$ 27', priceOld: 'R$ 37', pricePeriod: '', ctaText: 'Quero meus checklists',
+      ctaHeadline: 'Organize a rotina sem sobrecarga mental.',
+      modulesTitle: 'O que vem nos Checklists',
+      benefits: [
+        ['list','Checklists prontos','Modelos para cada parte do dia.'],
+        ['calendar','Organização da rotina','Visual claro do que fazer e quando.'],
+        ['edit','Materiais editáveis','Adapte ao seu jeito.'],
+        ['leaf','Menos carga mental','Tire da cabeça e coloque no papel.'],
+        ['home','Rotina compartilhada','Toda a família na mesma página.'],
+        ['check','Uso imediato','Comece a organizar hoje.']
+      ],
+      modules: [
+        ['list','Checklist do ritual de sono','O passo a passo da hora de dormir.'],
+        ['sun','Checklist do dia a dia','Organize manhãs, tardes e noites.'],
+        ['home','Checklist da bolsa e do quarto','Nunca esqueça o essencial.'],
+        ['edit','Modelos editáveis','Personalize cada material.'],
+        ['calendar','Planner semanal','Visão geral da semana.']
+      ],
+      idealFor: ['Mães sobrecarregadas','Famílias que dividem tarefas','Quem ama organização','Pais multitarefa','Cuidadores e avós','Quem quer praticidade'],
+      notFor: 'Casos que exijam avaliação clínica específica antes de estruturar a rotina.',
+      included: ['Coleção de checklists em PDF','Planner semanal editável','Checklist do ritual de sono','Modelos personalizáveis','Acesso imediato e vitalício'],
+      bonuses: [['phone','Bônus: Versão para celular','Use direto na tela do telefone.'],['gift','Bônus: Checklist de viagem','Para manter a rotina fora de casa.']],
+      faqs: [
+        ['Recebo o material imediatamente?','Sim. Liberação automática após o pagamento.'],
+        ['É um PDF?','Sim, com checklists prontos e modelos editáveis.'],
+        ['Funciona no celular?','Sim, há versão otimizada para o celular.'],
+        ['Tem garantia?','Sim, garantia incondicional de 7 dias.'],
+        ['Posso imprimir?','Pode imprimir e deixar à vista para consultar.']
+      ],
+      testimonials: [
+        ['"Os checklists tiraram um peso da minha cabeça. Finalmente parei de esquecer coisas."','Tatiane M.','mãe do Ravi, 1 ano'],
+        ['"Práticos e bonitos. Imprimi todos e colei no quarto."','Vanessa D.','mãe da Maya, 8 meses']
+      ]
+    },
+    'kit-primeiros': {
+      category: 'Kit Completo · Primeiros Passos', mockup: 'Capa do Kit Primeiros Passos',
+      headline: 'O ponto de partida completo para o sono do seu bebê.',
+      subheadline: 'Guias, checklists e ferramentas reunidos num único kit — tudo o que você precisa para começar com segurança.',
+      benefitLine: 'Reúna em um só lugar os guias, checklists e ferramentas essenciais para começar a organizar o sono.',
+      priceNow: 'R$ 97', priceOld: 'R$ 147', pricePeriod: '', ctaText: 'Quero meu kit completo',
+      ctaHeadline: 'Tenha tudo o que precisa para começar, num só kit.',
+      modulesTitle: 'Tudo o que vem no Kit Primeiros Passos',
+      benefits: [
+        ['book','Guias essenciais','O conteúdo central sobre sono e rotina.'],
+        ['list','Checklists prontos','Para o sono, o ambiente e o dia a dia.'],
+        ['edit','Ferramentas e modelos','Planners e rotinas editáveis.'],
+        ['shield','Base segura','Diretrizes de sono seguro inclusas.'],
+        ['leaf','Comece com clareza','Um caminho organizado do início ao fim.'],
+        ['check','Melhor custo-benefício','Vários materiais reunidos com economia.']
+      ],
+      modules: [
+        ['book','Guia do sono essencial','Os fundamentos para começar.'],
+        ['home','Guia do ambiente ideal','Preparando o quarto do bebê.'],
+        ['calendar','Rotinas prontas por idade','Modelos para seguir e adaptar.'],
+        ['list','Pacote de checklists','Para não esquecer nada.'],
+        ['edit','Planner e ferramentas','Organize a semana inteira.']
+      ],
+      idealFor: ['Gestantes e recém-nascidos','Famílias de primeira viagem','Quem quer tudo reunido','Quem busca economia','Quem quer começar do zero','Quem prefere um caminho pronto'],
+      notFor: 'Bebês com questões clínicas que exijam avaliação médica antes de ajustes de rotina.',
+      included: ['Guia do sono essencial','Guia do ambiente ideal','Conjunto de rotinas por idade','Pacote completo de checklists','Planner e ferramentas editáveis','Acesso imediato e vitalício'],
+      bonuses: [['gift','Bônus: Mini-guia de sonecas','Organize as sonecas do dia.'],['music','Bônus: Lista de ruído branco','Para acalmar o bebê.']],
+      faqs: [
+        ['Recebo o material imediatamente?','Sim. Todo o kit é liberado na hora após o pagamento.'],
+        ['É um PDF?','São vários materiais digitais em PDF, incluindo modelos editáveis.'],
+        ['Funciona no celular?','Sim, acesse todos os materiais de qualquer aparelho.'],
+        ['Tem garantia?','Sim, garantia incondicional de 7 dias para o kit inteiro.'],
+        ['Posso imprimir?','Pode imprimir guias e checklists à vontade.']
+      ],
+      testimonials: [
+        ['"Comprei na gravidez e cheguei em casa com tudo organizado. Valeu cada real."','Fernanda K.','mãe do Lucas, recém-nascido'],
+        ['"Ter tudo reunido me poupou muito tempo e dinheiro. Recomendo para toda gestante."','Priscila A.','mãe da Isadora, 2 meses']
+      ]
+    },
+    'curso-gestantes': {
+      category: 'Curso Online · Para Gestantes', mockup: 'Capa do Curso para Gestantes',
+      headline: 'Sono do bebê, antes mesmo do bebê chegar.',
+      subheadline: 'Um curso para gestantes que querem se preparar e receber o recém-nascido com confiança e um plano de sono.',
+      benefitLine: 'Aprenda, ainda na gestação, a preparar o ambiente, a rotina e as expectativas para o sono do recém-nascido.',
+      priceNow: 'R$ 147', priceOld: 'R$ 197', pricePeriod: '', ctaText: 'Quero me inscrever',
+      ctaHeadline: 'Prepare-se na gestação e receba seu bebê com confiança.',
+      modulesTitle: 'O que você vai aprender no curso',
+      benefits: [
+        ['video','Aulas em vídeo','Conteúdo organizado e fácil de acompanhar.'],
+        ['home','Preparação do ambiente','Monte o quarto ideal antes do parto.'],
+        ['calendar','Expectativas realistas','Entenda o sono dos primeiros meses.'],
+        ['heart','Mais segurança emocional','Chegue ao puerpério com confiança.'],
+        ['shield','Base científica','Informação confiável, sem mitos.'],
+        ['check','Plano pronto para usar','Saia do curso com um plano claro.']
+      ],
+      modules: [
+        ['video','Boas-vindas e como aproveitar','Estrutura do curso e materiais.'],
+        ['file','O sono do recém-nascido','O que esperar nas primeiras semanas.'],
+        ['home','Preparando o ambiente','Quarto, enxoval do sono e segurança.'],
+        ['moon','Rituais desde o início','Construindo associações saudáveis.'],
+        ['heart','Puerpério e rede de apoio','Cuidando de você também.']
+      ],
+      idealFor: ['Gestantes em qualquer trimestre','Casais se preparando','Famílias de primeira viagem','Quem quer prevenir dificuldades','Quem valoriza ciência','Quem quer chegar segura ao puerpério'],
+      notFor: 'Gestações que exijam orientação clínica específica antes de aplicar estratégias de rotina.',
+      included: ['Curso completo em vídeo','Apostila digital de apoio','Checklist do enxoval do sono','Guia de preparação do quarto','Acesso imediato e por tempo estendido'],
+      bonuses: [['gift','Bônus: Guia dos primeiros 15 dias','O essencial para a chegada.'],['users','Bônus: Encontro de dúvidas','Tira-dúvidas em grupo.']],
+      faqs: [
+        ['Recebo o acesso imediatamente?','Sim. O acesso às aulas é liberado na hora após o pagamento.'],
+        ['É em vídeo ou PDF?','O curso é em vídeo, acompanhado de uma apostila digital em PDF.'],
+        ['Funciona no celular?','Sim, assista às aulas no celular, tablet ou computador.'],
+        ['Tem garantia?','Sim, garantia incondicional de 7 dias.'],
+        ['Por quanto tempo tenho acesso?','Você terá acesso estendido para assistir no seu ritmo, inclusive após o nascimento.']
+      ],
+      testimonials: [
+        ['"Fiz o curso grávida e me senti preparada de verdade. As primeiras semanas foram muito mais leves."','Larissa N.','gestante de 34 semanas'],
+        ['"Cheguei em casa com um plano pronto. Recomendo para toda gestante."','Mariana O.','mãe do Benício, recém-nascido']
+      ]
+    },
+    'maternaclub': {
+      category: 'Assinatura · Comunidade MaternaClub', mockup: 'Capa do MaternaClub',
+      headline: 'Você não precisa atravessar a maternidade sozinha.',
+      subheadline: 'Uma comunidade com suporte contínuo, lives e ajustes de rotina para caminhar com você mês após mês.',
+      benefitLine: 'Tenha acompanhamento contínuo, lives exclusivas e uma rede de apoio para ajustar a rotina sempre que precisar.',
+      priceNow: 'R$ 39,90', priceOld: '', pricePeriod: '/mês', ctaText: 'Quero fazer parte',
+      ctaHeadline: 'Tenha suporte contínuo, mês após mês.',
+      modulesTitle: 'O que você encontra no MaternaClub',
+      benefits: [
+        ['users','Comunidade acolhedora','Mães que se entendem e se apoiam.'],
+        ['video','Lives exclusivas','Encontros e conteúdos novos todo mês.'],
+        ['edit','Ajustes de rotina','Adapte a rotina conforme o bebê cresce.'],
+        ['message','Suporte contínuo','Tire dúvidas e não fique na mão.'],
+        ['gift','Conteúdos e bônus','Materiais novos liberados regularmente.'],
+        ['infinity','Sem fidelidade','Cancele quando quiser, sem burocracia.']
+      ],
+      modules: [
+        ['users','Comunidade ativa','Grupo de apoio e troca entre famílias.'],
+        ['video','Lives e encontros mensais','Temas de sono, rotina e maternidade.'],
+        ['edit','Ajustes de rotina por fase','Suporte para cada nova etapa.'],
+        ['gift','Biblioteca de conteúdos','Materiais exclusivos para assinantes.'],
+        ['message','Canal de dúvidas','Acompanhamento contínuo da Vitória e equipe.']
+      ],
+      idealFor: ['Mães que querem apoio contínuo','Famílias em constante mudança de fase','Quem já fez consultoria','Quem quer conteúdo sempre novo','Quem valoriza comunidade','Quem busca previsibilidade a longo prazo'],
+      notFor: 'Casos que exijam acompanhamento clínico individual e específico, fora do escopo da comunidade.',
+      included: ['Acesso à comunidade exclusiva','Lives e encontros mensais','Biblioteca de conteúdos para assinantes','Ajustes de rotina por fase','Suporte contínuo · sem fidelidade'],
+      bonuses: [['gift','Bônus: Materiais novos todo mês','Guias e checklists exclusivos.'],['users','Bônus: Encontros temáticos','Convidados e temas especiais.']],
+      faqs: [
+        ['Quando começo a acessar?','Assim que a assinatura é confirmada, seu acesso à comunidade é liberado.'],
+        ['Como funciona a cobrança?','É uma assinatura mensal recorrente, processada com segurança pela Hotmart.'],
+        ['Funciona no celular?','Sim, participe de tudo pelo celular, tablet ou computador.'],
+        ['Posso cancelar quando quiser?','Sim. Não há fidelidade — você cancela quando desejar, sem burocracia.'],
+        ['Tem conteúdo novo sempre?','Sim, novos conteúdos, lives e bônus são liberados regularmente.']
+      ],
+      testimonials: [
+        ['"Cada fase traz um desafio novo. Ter suporte contínuo mudou completamente a minha tranquilidade."','Débora S.','mãe do Enzo, 1 ano'],
+        ['"As lives e a comunidade são acolhedoras demais. Me sinto amparada todo mês."','Cris H.','mãe da Lara, 14 meses']
+      ]
+    }
+  };
+
+  componentDidMount() {
+    const header = document.getElementById('pr-header');
+    if (header) {
+      const onScroll = () => {
+        if (window.scrollY > 30) {
+          header.style.background = 'rgba(255,255,255,.88)';
+          header.style.backdropFilter = 'blur(14px)';
+          header.style.borderBottomColor = 'rgba(232,225,213,1)';
+          header.style.boxShadow = '0 4px 20px rgba(45,42,36,.05)';
+          header.style.padding = '12px 0';
+        } else {
+          header.style.background = 'rgba(250,247,242,0)';
+          header.style.backdropFilter = 'none';
+          header.style.borderBottomColor = 'rgba(232,225,213,0)';
+          header.style.boxShadow = 'none';
+          header.style.padding = '18px 0';
+        }
+      };
+      this._onScroll = onScroll;
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+    if ('IntersectionObserver' in window) {
+      setTimeout(() => {
+        const els = document.querySelectorAll('[data-reveal]');
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.style.opacity = '1';
+              e.target.style.transform = 'translateY(0)';
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+        els.forEach((el) => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(22px)';
+          el.style.transition = 'opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)';
+          io.observe(el);
+        });
+      }, 60);
+    }
+    this._auto = setInterval(() => {
+      const p = this.product();
+      const n = (p.testimonials || []).length || 1;
+      this.setState((s) => ({ t: (s.t + 1) % n }));
+    }, 6500);
+  }
+
+  componentWillUnmount() {
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if (this._auto) clearInterval(this._auto);
+  }
+
+  product() {
+    const keys = Object.keys(this.PRODUTOS);
+    const slug = this.props.slug && this.PRODUTOS[this.props.slug] ? this.props.slug : keys[0];
+    return Object.assign({ slug }, this.PRODUTOS[slug]);
+  }
+
+  icon(key) {
+    const entry = this.ICONS[key] || this.ICONS.check;
+    const fill = (key === 'star' || key === 'sparkle' || key === 'play');
+    const kids = entry.filter((d) => d !== 'c:0,0,0').map((d, i) => {
+      if (typeof d === 'string' && d.indexOf('c:') === 0) {
+        const parts = d.slice(2).split(',');
+        return React.createElement('circle', { key: i, cx: parts[0], cy: parts[1], r: parts[2] });
+      }
+      return React.createElement('path', { key: i, d: d });
+    });
+    return React.createElement('svg', {
+      width: 23, height: 23, viewBox: '0 0 24 24',
+      fill: fill ? 'currentColor' : 'none',
+      stroke: fill ? 'none' : 'currentColor',
+      strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round'
+    }, kids);
+  }
+
+  chev(open) {
+    return { display: 'inline-flex', transition: 'transform .22s ease', transform: open ? 'rotate(180deg)' : 'rotate(0deg)' };
+  }
+  dot(active) {
+    return { width: active ? '26px' : '8px', height: '8px', borderRadius: '999px', background: active ? '#2E5A63' : '#D8D0C2', transition: '.25s', display: 'inline-block', cursor: 'pointer' };
+  }
+  stopAuto() { if (this._auto) { clearInterval(this._auto); this._auto = null; } }
+
+  renderVals() {
+    const p = this.product();
+    const slug = p.slug;
+    const num = (this.props.whatsappNumber || '559184555549').replace(/\D/g, '');
+    const hotmartDefault = 'https://pay.hotmart.com';
+    const comprar = (this.props.hotmartLink && this.props.hotmartLink.trim()) ? this.props.hotmartLink : hotmartDefault;
+    const t = this.state.t;
+    const tlist = p.testimonials || [];
+    const n = tlist.length || 1;
+    const curT = t % n;
+
+    const benefits = (p.benefits || []).map((b) => ({ iconEl: this.icon(b[0]), title: b[1], desc: b[2] }));
+    const modules = (p.modules || []).map((m, i) => ({ n: i + 1, iconEl: this.icon(m[0]), title: m[1], desc: m[2] }));
+    const bonuses = (p.bonuses || []).map((b) => ({ iconEl: this.icon(b[0]), title: b[1], desc: b[2] }));
+    const faqs = (p.faqs || []).map((f, i) => ({
+      q: f[0], a: f[1], open: this.state.faq === i, chev: this.chev(this.state.faq === i),
+      toggle: () => this.setState((s) => ({ faq: s.faq === i ? -1 : i }))
+    }));
+    const testimonials = tlist.map((tt, i) => ({ quote: tt[0], name: tt[1], role: tt[2], imgId: 'depo' + (i + 1) + '-' + slug }));
+    const dots = tlist.map((_, i) => ({ style: this.dot(curT === i), onClick: () => { this.stopAuto(); this.setState({ t: i }); } }));
+
+    return {
+      slug: slug,
+      category: p.category, headline: p.headline, subheadline: p.subheadline, benefitLine: p.benefitLine,
+      priceNow: p.priceNow, priceOld: p.priceOld || '', hasOld: !!(p.priceOld && p.priceOld.length),
+      pricePeriod: p.pricePeriod || '', ctaText: p.ctaText || 'Quero começar agora',
+      ctaHeadline: p.ctaHeadline, modulesTitle: p.modulesTitle, mockupPlaceholder: p.mockup,
+      comprar: comprar, whatsappLink: 'https://wa.me/' + num,
+      benefits, modules, bonuses, faqs, testimonials, dots,
+      idealFor: p.idealFor || [], notFor: p.notFor || '', included: p.included || [],
+      carouselTrack: { display: 'flex', transition: 'transform .6s cubic-bezier(.4,0,.2,1)', transform: 'translateX(-' + (curT * 100) + '%)' },
+      openConsult: () => this.setState({ menu: 'consult' }),
+      openBiblio: () => this.setState({ menu: 'biblio' }),
+      closeMenu: () => this.setState({ menu: null }),
+      menuConsult: this.state.menu === 'consult',
+      menuBiblio: this.state.menu === 'biblio',
+      prevT: () => { this.stopAuto(); this.setState((s) => ({ t: (s.t + n - 1) % n })); },
+      nextT: () => { this.stopAuto(); this.setState((s) => ({ t: (s.t + 1) % n })); }
+    };
+  }
+}
+</script>
+</body>
+</html>

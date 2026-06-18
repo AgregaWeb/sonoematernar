@@ -1,0 +1,19 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/Home.dc.html" }
+  ],
+  "headers": [
+    {
+      "source": "/support.js",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+    },
+    {
+      "source": "/image-slot.js",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
+    }
+  ]
+}
