@@ -1,0 +1,155 @@
+/* ================================================================
+   VITÓRIA SONO — RESPONSIVIDADE
+   !important é necessário: todos os estilos são inline via React.
+   Seletores batem com os atributos DOM renderizados (0px, espaços).
+   ================================================================ */
+
+/* ── TABLET (≤ 900px) ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  header > div {
+    padding: 0 24px !important;
+  }
+  header nav {
+    gap: 0 !important;
+  }
+  header nav > a,
+  header nav > div > a {
+    padding: 8px 9px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* ── MOBILE (≤ 768px) ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Previne scroll horizontal de elementos absolutos que transbordam */
+  html, body { overflow-x: hidden !important; }
+
+  /* === HEADER / NAV === */
+  header > div {
+    padding: 0 16px !important;
+    gap: 0 !important;
+    justify-content: space-between !important;
+  }
+  header nav {
+    display: none !important;
+  }
+  /* Esconde texto do logo (span após img), mantém só o ícone */
+  header a > img + span {
+    display: none !important;
+  }
+  /* CTA do header: reduz padding para caber, evita colapso de flex */
+  header > div > div > a:last-child {
+    padding: 10px 14px !important;
+    font-size: 13px !important;
+    box-shadow: none !important;
+    white-space: nowrap !important;
+    min-width: max-content !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* === TIPOGRAFIA === */
+  h1 {
+    font-size: clamp(30px, 9vw, 40px) !important;
+    line-height: 1.1 !important;
+  }
+  h2 {
+    font-size: clamp(22px, 6.5vw, 28px) !important;
+    line-height: 1.2 !important;
+  }
+
+  /* === SEÇÕES: padding vertical === */
+  section[style*="padding: 148px"] { padding: 88px 0 40px !important; }
+  section[style*="padding: 104px"] { padding: 56px 0 !important; }
+  section[style*="padding: 96px"]  { padding: 48px 0 !important; }
+  section[style*="padding: 60px 40px"] { padding: 40px 0 !important; }
+
+  /* === CONTAINERS: padding horizontal 40px → 16px === */
+  [style*="padding: 0px 40px"] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* === HERO: colapsa 2 colunas, oculta coluna de imagem === */
+  section[style*="padding: 148px"] [style*="grid-template-columns: 1.05fr"],
+  section[style*="padding: 148px"] [style*="grid-template-columns: 1.04fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+  section[style*="padding: 148px"] [style*="grid-template-columns: 1.05fr"] > div:last-child,
+  section[style*="padding: 148px"] [style*="grid-template-columns: 1.04fr"] > div:last-child {
+    display: none !important;
+  }
+
+  /* === GRIDS ASSIMÉTRICOS DE 2 COLUNAS → 1 coluna === */
+  [style*="grid-template-columns: 1.04fr 0.96fr"],
+  [style*="grid-template-columns: 1.05fr 0.95fr"],
+  [style*="grid-template-columns: 1.08fr 0.92fr"],
+  [style*="grid-template-columns: 0.92fr 1.08fr"],
+  [style*="grid-template-columns: 1.1fr 0.9fr"],
+  [style*="grid-template-columns: 0.9fr 1.1fr"],
+  [style*="grid-template-columns: 1.15fr 0.85fr"],
+  [style*="grid-template-columns: 0.85fr 1.15fr"],
+  [style*="grid-template-columns: 1.2fr 0.8fr"],
+  [style*="grid-template-columns: 0.8fr 1.2fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* === GRIDS MULTI-COLUNA FIXOS → 2 colunas === */
+  [style*="grid-template-columns: repeat(3, 1fr)"],
+  [style*="grid-template-columns: repeat(4, 1fr)"],
+  [style*="grid-template-columns: repeat(6, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  /* === PRODUTO CARDS (auto-fill minmax): forçar 2 colunas === */
+  [style*="minmax(248px"],
+  [style*="minmax(258px"],
+  [style*="minmax(256px"],
+  [style*="minmax(260px"],
+  [style*="minmax(270px"],
+  [style*="minmax(280px"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  /* === FOOTER: 4 colunas → 2 colunas === */
+  [style*="grid-template-columns: 1.5fr 1fr 1fr 1.2fr"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px 28px !important;
+  }
+
+  /* === SEÇÃO COM FUNDO ESCURO (Método / CTA final) === */
+  section[style*="background: rgb(31, 74, 82)"] { padding: 56px 0 !important; }
+  section[style*="background: rgb(31, 74, 82)"] [style*="padding: 0px 40px"] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* === HERO PADDING SECTION: garante inner padding === */
+  section[style*="padding: 148px"] > div[style*="grid"] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* ── SMALL MOBILE (≤ 480px) ──────────────────────────────────── */
+@media (max-width: 480px) {
+  h1 { font-size: 28px !important; }
+  h2 { font-size: 22px !important; }
+
+  /* Cards de produto → 1 coluna */
+  [style*="grid-template-columns: repeat(3, 1fr)"],
+  [style*="grid-template-columns: repeat(4, 1fr)"],
+  [style*="grid-template-columns: repeat(6, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Footer → 1 coluna */
+  [style*="grid-template-columns: 1.5fr 1fr 1fr 1.2fr"] {
+    grid-template-columns: 1fr !important;
+  }
+}
