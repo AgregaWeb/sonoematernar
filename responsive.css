@@ -30,22 +30,9 @@
     gap: 0 !important;
     justify-content: space-between !important;
   }
-  header nav {
-    display: none !important;
-  }
-  /* Esconde texto do logo (span após img), mantém só o ícone */
-  header a > img + span {
-    display: none !important;
-  }
-  /* CTA do header: reduz padding para caber, evita colapso de flex */
-  header > div > div > a:last-child {
-    padding: 10px 14px !important;
-    font-size: 13px !important;
-    box-shadow: none !important;
-    white-space: nowrap !important;
-    min-width: max-content !important;
-    flex-shrink: 0 !important;
-  }
+  /* Nav e CTA ocultados — substituídos pelo menu hamburger (mobile-menu.js) */
+  header nav { display: none !important; }
+  header > div > div { display: none !important; }
 
   /* === TIPOGRAFIA === */
   h1 {
