@@ -1,0 +1,10 @@
+{
+  "name": "vitoria-sono",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "serve . --listen 3000"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
