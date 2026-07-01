@@ -37,7 +37,7 @@ Home · Quem Sou · Método (Maternar Leve) · Consultorias (Diagnóstico, Colet
 - Curso para Gestantes "Sono do Bebê Antes do Bebê Chegar" — R$ 97 a R$ 197
 
 **Escada de consultorias:**
-- Nível 1 — Diagnóstico do Sono · R$ 147–197 · formulário, análise personalizada, sugestão inicial de rotina. (porta de entrada)
+- Nível 1 — Diagnóstico do Sono · R$ 199 · formulário, análise personalizada, sugestão inicial de rotina. (porta de entrada)
 - Nível 2 — Consultoria Coletiva · R$ 247–397 · aula inicial, grupo WhatsApp, acompanhamento simplificado (em grupo, acessível)
 - Nível 3 — Consultoria Individual · R$ 599 atual / R$ 697 próxima turma / meta R$ 897+ · diagnóstico, rotina personalizada, cronograma, grupo, materiais, 30 dias de acompanhamento
 - Nível 4 — Consultoria Domiciliar Premium · R$ 1.200–2.000 · avaliação presencial do ambiente, rotina e plano personalizado

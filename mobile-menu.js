@@ -10,7 +10,7 @@
   ];
 
   var CONSULTORIAS = [
-    { label: 'Diagnóstico do Sono', href: 'Diagnostico.dc.html', desc: 'Por onde começar · R$ 147' },
+    { label: 'Diagnóstico do Sono', href: 'Diagnostico.dc.html', desc: 'Por onde começar · R$ 199' },
     { label: 'Consultoria Coletiva', href: 'Consultoria Coletiva.dc.html', desc: 'Em grupo · R$ 247' },
     { label: 'Consultoria Individual ★', href: 'Consultoria Individual.dc.html', desc: 'A mais escolhida · R$ 597', hl: true },
     { label: 'Domiciliar Premium', href: 'Consultoria Premium.dc.html', desc: 'Presencial' },
@@ -18,10 +18,9 @@
 
   var BIBLIOTECA = [
     { label: 'Guia 0–3 meses', href: 'Guia 0-3 meses.dc.html' },
-    { label: 'Guia 4–6 meses', href: 'Guia 4-6 meses.dc.html' },
-    { label: 'Guia 7–12 meses', href: 'Guia 7-12 meses.dc.html' },
+    { label: 'Guia 4–6 meses', href: 'Guia 4-6 meses.dc.html', soon: true },
+    { label: 'Guia 7–12 meses', href: 'Guia 7-12 meses.dc.html', soon: true },
     { label: 'Rotinas Prontas', href: 'Rotinas Prontas.dc.html' },
-    { label: 'Kit Ambiente do Sono', href: 'Kit Ambiente do Sono.dc.html' },
     { label: 'Checklists de Rotina', href: 'Checklists de Rotina.dc.html' },
     { label: 'Kit Primeiros Passos', href: 'Kit Primeiros Passos.dc.html' },
     { label: 'Curso para Gestantes', href: 'Curso Gestantes.dc.html' },
@@ -154,7 +153,11 @@
     /* Biblioteca */
     html += '<div class="vt-menu-section">Biblioteca Digital</div>';
     BIBLIOTECA.forEach(function (item) {
-      html += '<a class="vt-menu-link" style="padding:10px 20px 10px 24px;" href="' + item.href + '">' + item.label + '</a>';
+      if (item.soon) {
+        html += '<span class="vt-menu-link" style="padding:10px 20px 10px 24px; display:flex; align-items:center; gap:6px; color:#B5AFA3; cursor:default;">' + item.label + ' <span style="font:700 9px \'Hanken Grotesk\'; color:#C68A7F; text-transform:uppercase; letter-spacing:.04em;">Em breve</span></span>';
+      } else {
+        html += '<a class="vt-menu-link" style="padding:10px 20px 10px 24px;" href="' + item.href + '">' + item.label + '</a>';
+      }
     });
 
     html += '</div>'; /* end .vt-menu-body */
