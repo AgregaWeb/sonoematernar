@@ -60,7 +60,7 @@
           <a href="#" style="font:600 14px 'Hanken Grotesk'; color:#2E5A63; text-decoration:none; padding:9px 14px; border-radius:9px; display:inline-flex; align-items:center; gap:5px; background:rgba(46,90,99,.07); transition:.16s;">Biblioteca <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></a>
           <sc-if value="{{ menuBiblio }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute; top:100%; left:50%; transform:translateX(-50%); width:330px; background:#fff; border:1px solid #ECE4D6; border-radius:16px; box-shadow:0 18px 44px rgba(45,42,36,.12); padding:12px; display:grid; grid-template-columns:1fr 1fr; gap:4px;">
-              <a href="Guia 0-3 meses.dc.html" style="text-decoration:none; padding:9px 11px; border-radius:10px; font:600 13px 'Hanken Grotesk'; color:#2B2A27; transition:.14s;" style-hover="background:#F5EFE6;">Guia 0–3 meses</a>
+              <a href="Guia 0-3 meses.dc.html" style="text-decoration:none; padding:9px 11px; border-radius:10px; font:600 13px 'Hanken Grotesk'; color:#2B2A27; transition:.14s;" style-hover="background:#F5EFE6;">Guia 0–12 meses</a>
               <a href="Guia 4-6 meses.dc.html" style="text-decoration:none; padding:9px 11px; border-radius:10px; font:600 13px 'Hanken Grotesk'; color:#B5AFA3; transition:.14s; pointer-events:none; display:flex; align-items:center; gap:6px;">Guia 4–6 meses <span style="font:700 9px 'Hanken Grotesk'; color:#C68A7F; text-transform:uppercase; letter-spacing:.04em;">Em breve</span></a>
               <a href="Guia 7-12 meses.dc.html" style="text-decoration:none; padding:9px 11px; border-radius:10px; font:600 13px 'Hanken Grotesk'; color:#B5AFA3; transition:.14s; pointer-events:none; display:flex; align-items:center; gap:6px;">Guia 7–12 meses <span style="font:700 9px 'Hanken Grotesk'; color:#C68A7F; text-transform:uppercase; letter-spacing:.04em;">Em breve</span></a>
               <a href="Rotinas Prontas.dc.html" style="text-decoration:none; padding:9px 11px; border-radius:10px; font:600 13px 'Hanken Grotesk'; color:#2B2A27; transition:.14s;" style-hover="background:#F5EFE6;">Rotinas Prontas</a>
@@ -532,11 +532,11 @@ class Component extends DCLogic {
 
   PRODUTOS = {
     'guia-0-3': {
-      category: 'Guia Digital · 0 a 3 meses', mockup: 'Capa do Guia do Sono 0–3 meses',
+      category: 'Guia Digital · 0 a 12 meses', mockup: 'Capa do Guia do Sono 0–12 meses',
       headline: 'Os primeiros meses podem ser mais leves do que parecem.',
-      subheadline: 'Um guia prático para entender o sono do recém-nascido e construir uma base tranquila desde o início.',
-      benefitLine: 'Aprenda a compreender o sono do seu bebê e construa uma rotina mais tranquila desde os primeiros meses.',
-      priceNow: 'R$ 47', priceOld: 'R$ 67', pricePeriod: '', ctaText: 'Quero meu guia do sono',
+      subheadline: 'Um guia prático para entender o sono do bebê do nascimento ao primeiro ano e construir uma base tranquila desde o início.',
+      benefitLine: 'Aprenda a compreender o sono do seu bebê e construa uma rotina mais tranquila do nascimento ao primeiro ano.',
+      priceNow: 'R$ 39,90', priceOld: 'R$ 67', pricePeriod: '', ctaText: 'Quero meu guia do sono',
       ctaHeadline: 'Comece as noites do seu recém-nascido com mais leveza.',
       modulesTitle: 'O conteúdo completo do guia',
       benefits: [
@@ -556,7 +556,7 @@ class Component extends DCLogic {
       ],
       idealFor: ['Gestantes no fim da gestação','Mães de recém-nascidos','Famílias de primeira viagem','Quem busca prevenção','Quem quer base científica','Quem prefere agir cedo'],
       notFor: 'Bebês com questões clínicas que exijam avaliação médica antes de ajustes de rotina.',
-      included: ['Guia completo em PDF de alta qualidade','Tabela de janelas de vigília 0–3 meses','Checklist do ambiente do sono','Modelo de ritual noturno','Acesso imediato e vitalício'],
+      included: ['Guia completo em PDF de alta qualidade','Tabela de janelas de vigília 0–12 meses','Checklist do ambiente do sono','Modelo de ritual noturno','Acesso imediato e vitalício'],
       bonuses: [['gift','Bônus: Mini-guia de sonecas','Como organizar as sonecas do dia.'],['music','Bônus: Lista de ruído branco','Sugestões para acalmar o bebê.']],
       faqs: [
         ['Recebo o material imediatamente?','Sim. Logo após a confirmação do pagamento, o acesso é liberado na hora, no seu e-mail e na plataforma.'],
