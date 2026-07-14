@@ -11,6 +11,7 @@
 
   var CONSULTORIAS = [
     { label: 'Diagnóstico do Sono', href: 'Diagnostico.dc.html', desc: 'Por onde começar · R$ 199,99' },
+    { label: 'Condução do Sono', href: 'Conducao do Sono.dc.html', desc: 'Recém-nascidos · R$ 299,00' },
     { label: 'Consultoria Coletiva', href: 'Consultoria Coletiva.dc.html', desc: 'Em grupo · R$ 449,99' },
     { label: 'Consultoria Individual ★', href: 'Consultoria Individual.dc.html', desc: 'A mais escolhida · R$ 999,99', hl: true },
     { label: 'Domiciliar Premium', href: 'Consultoria Premium.dc.html', desc: 'Presencial' },
