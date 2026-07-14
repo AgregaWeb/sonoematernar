@@ -205,7 +205,7 @@
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;559184555549&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5591984550219&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
   state = { menu: null, sent: false, error: false, name: '', email: '', baby: '', msg: '', consent: false };
   componentDidMount() {
@@ -248,7 +248,7 @@ class Component extends DCLogic {
   }
   componentWillUnmount() { if (this._onScroll) window.removeEventListener('scroll', this._onScroll); }
   renderVals() {
-    const num = (this.props.whatsappNumber || '559184555549').replace(/\D/g, '');
+    const num = (this.props.whatsappNumber || '5591984550219').replace(/\D/g, '');
     const valid = this.state.name.trim() && this.state.email.trim() && this.state.msg.trim() && this.state.consent;
     return {
       whatsappLink: 'https://wa.me/' + num,
