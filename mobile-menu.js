@@ -10,20 +10,19 @@
   ];
 
   var CONSULTORIAS = [
-    { label: 'Diagnóstico do Sono', href: 'Diagnostico.dc.html', desc: 'Por onde começar · R$ 199' },
-    { label: 'Consultoria Coletiva', href: 'Consultoria Coletiva.dc.html', desc: 'Em grupo · R$ 247' },
-    { label: 'Consultoria Individual ★', href: 'Consultoria Individual.dc.html', desc: 'A mais escolhida · R$ 597', hl: true },
+    { label: 'Diagnóstico do Sono', href: 'Diagnostico.dc.html', desc: 'Por onde começar · R$ 199,99' },
+    { label: 'Consultoria Coletiva', href: 'Consultoria Coletiva.dc.html', desc: 'Em grupo · R$ 449,99' },
+    { label: 'Consultoria Individual ★', href: 'Consultoria Individual.dc.html', desc: 'A mais escolhida · R$ 999,99', hl: true },
     { label: 'Domiciliar Premium', href: 'Consultoria Premium.dc.html', desc: 'Presencial' },
   ];
 
   var BIBLIOTECA = [
-    { label: 'Guia 0–3 meses', href: 'Guia 0-3 meses.dc.html' },
+    { label: 'Guia 0–12 meses · Rotinas Prontas', href: 'Guia 0-3 meses.dc.html' },
     { label: 'Guia 4–6 meses', href: 'Guia 4-6 meses.dc.html', soon: true },
     { label: 'Guia 7–12 meses', href: 'Guia 7-12 meses.dc.html', soon: true },
-    { label: 'Rotinas Prontas', href: 'Rotinas Prontas.dc.html' },
     { label: 'Checklists de Rotina', href: 'Checklists de Rotina.dc.html' },
     { label: 'Kit Primeiros Passos', href: 'Kit Primeiros Passos.dc.html' },
-    { label: 'Curso para Gestantes', href: 'Curso Gestantes.dc.html' },
+    { label: 'Curso para Gestantes', href: 'Curso Gestantes.dc.html', soon: true },
     { label: 'MaternaClub', href: 'MaternaClub.dc.html' },
   ];
 

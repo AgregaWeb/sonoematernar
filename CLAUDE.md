@@ -37,10 +37,10 @@ Home · Quem Sou · Método (Maternar Leve) · Consultorias (Diagnóstico, Colet
 - Curso para Gestantes "Sono do Bebê Antes do Bebê Chegar" — R$ 97 a R$ 197
 
 **Escada de consultorias:**
-- Nível 1 — Diagnóstico do Sono · R$ 199 · formulário, análise personalizada, sugestão inicial de rotina. (porta de entrada)
-- Nível 2 — Consultoria Coletiva · R$ 247–397 · aula inicial, grupo WhatsApp, acompanhamento simplificado (em grupo, acessível)
-- Nível 3 — Consultoria Individual · R$ 599 atual / R$ 697 próxima turma / meta R$ 897+ · diagnóstico, rotina personalizada, cronograma, grupo, materiais, 30 dias de acompanhamento
-- Nível 4 — Consultoria Domiciliar Premium · R$ 1.200–2.000 · avaliação presencial do ambiente, rotina e plano personalizado
+- Nível 1 — Diagnóstico do Sono · R$ 199,99 · formulário, análise personalizada, sugestão inicial de rotina. (porta de entrada) · CTA vai para o WhatsApp de vendas
+- Nível 2 — Consultoria Coletiva · R$ 449,99 · aula inicial, grupo WhatsApp, acompanhamento simplificado (em grupo, acessível) · CTA vai para o WhatsApp de vendas (lista de espera)
+- Nível 3 — Consultoria Individual · R$ 999,99 · diagnóstico, rotina personalizada, cronograma, grupo, materiais, 30 dias de acompanhamento · CTA vai para o Forms (https://forms.gle/i2sZybmkGU1YVHPn9)
+- Nível 4 — Consultoria Domiciliar Premium · a partir de R$ 1.200 · avaliação presencial do ambiente, rotina e plano personalizado · CTA vai para o WhatsApp pessoal da Vitória (5591984555549)
 
 **Recorrência:**
 - MaternaClub · R$ 39,90–59,90/mês · comunidade, lives, ajustes de rotina, suporte contínuo

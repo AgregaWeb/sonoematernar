@@ -46,9 +46,9 @@
           <a href="#como" style="font:600 14px 'Hanken Grotesk'; color:#2E5A63; text-decoration:none; padding:9px 14px; border-radius:9px; display:inline-flex; align-items:center; gap:5px; background:rgba(46,90,99,.07); transition:.16s;">Consultorias <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></a>
           <sc-if value="{{ menuConsult }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute; top:100%; left:50%; transform:translateX(-50%); width:300px; background:#fff; border:1px solid #ECE4D6; border-radius:16px; box-shadow:0 18px 44px rgba(45,42,36,.12); padding:10px;">
-              <a href="Diagnostico.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Diagnóstico do Sono</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Por onde começar · R$ 199</div></a>
-              <a href="Consultoria Coletiva.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Consultoria Coletiva</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Em grupo, acessível · R$ 247</div></a>
-              <a href="Consultoria Individual.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Consultoria Individual ★</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">A mais escolhida · R$ 597</div></a>
+              <a href="Diagnostico.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Diagnóstico do Sono</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Por onde começar · R$ 199,99</div></a>
+              <a href="Consultoria Coletiva.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Consultoria Coletiva</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Em grupo, acessível · R$ 449,99</div></a>
+              <a href="Consultoria Individual.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Consultoria Individual ★</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">A mais escolhida · R$ 999,99</div></a>
               <a href="Consultoria Premium.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s; background:#F6EEDD;" style-hover="background:#F0E6CF;"><div style="font:600 14px 'Hanken Grotesk'; color:#9A7B3F;">Domiciliar Premium ✦</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Avaliação presencial</div></a>
             </div>
           </sc-if>
@@ -268,7 +268,7 @@
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;559184555549&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5591984555549&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
   state = { menu: null, faq: 0 };
   componentDidMount() {
@@ -312,7 +312,7 @@ class Component extends DCLogic {
   componentWillUnmount() { if (this._onScroll) window.removeEventListener('scroll', this._onScroll); }
   chev(open) { return { display: 'inline-flex', transition: 'transform .22s ease', transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }; }
   renderVals() {
-    const num = (this.props.whatsappNumber || '559184555549').replace(/\D/g, '');
+    const num = (this.props.whatsappNumber || '5591984555549').replace(/\D/g, '');
     const faqToggle = (i) => () => this.setState((s) => ({ faq: s.faq === i ? -1 : i }));
     return {
       whatsappLink: 'https://wa.me/' + num,
