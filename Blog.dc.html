@@ -103,7 +103,7 @@
             <button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button>
           </sc-for>
         </div>
-        <div style="display:flex; align-items:center; gap:8px;">
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
           <span style="font:600 12px 'Hanken Grotesk'; color:#98938B; white-space:nowrap;">Idade:</span>
           <sc-for list="{{ ageChips }}" as="a" hint-placeholder-count="6">
             <button onClick="{{ a.onClick }}" style="{{ a.style }}">{{ a.label }}</button>

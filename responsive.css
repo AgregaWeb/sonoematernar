@@ -2,6 +2,16 @@
    VITÓRIA SONO — RESPONSIVIDADE
    !important é necessário: todos os estilos são inline via React.
    Seletores batem com os atributos DOM renderizados (0px, espaços).
+
+   Estratégia de grid: em vez de enumerar cada combinação de fr/px
+   (frágil — o projeto usa dezenas de combinações diferentes), os
+   seletores abaixo capturam QUALQUER grid-template-columns por
+   categoria (multi-coluna explícita / repeat fixo / repeat auto-fill
+   ou auto-fit) e usam minmax(0,1fr) em vez de 1fr puro: por padrão um
+   item de grid não encolhe abaixo do seu conteúdo mínimo (min-width:
+   auto), então uma coluna "1fr" pode continuar mais larga que a tela
+   e vazar horizontalmente — minmax(0,1fr) permite o encolhimento e a
+   quebra de linha do conteúdo interno.
    ================================================================ */
 
 /* ── TABLET (≤ 900px) ─────────────────────────────────────────── */
@@ -21,7 +31,7 @@
 
 /* ── MOBILE (≤ 768px) ─────────────────────────────────────────── */
 @media (max-width: 768px) {
-  /* Previne scroll horizontal de elementos absolutos que transbordam */
+  /* Previne scroll horizontal de elementos absolutos/grids que transbordam */
   html, body { overflow-x: hidden !important; }
 
   /* === HEADER / NAV === */
@@ -44,13 +54,27 @@
     line-height: 1.2 !important;
   }
 
-  /* === SEÇÕES: padding vertical === */
-  section[style*="padding: 148px"] { padding: 88px 0 40px !important; }
-  section[style*="padding: 104px"] { padding: 56px 0 !important; }
-  section[style*="padding: 96px"]  { padding: 48px 0 !important; }
-  section[style*="padding: 60px 40px"] { padding: 40px 0 !important; }
+  /* === TOC / SIDEBARS "sticky": evita flutuar sobre o conteúdo quando a
+     coluna ao lado empilha por cima === */
+  aside[style*="position: sticky"] { position: static !important; }
 
-  /* === CONTAINERS: padding horizontal 40px → 16px === */
+  /* === SEÇÕES: padding vertical (por faixa do valor original) === */
+  section[style*="padding: 148px"],
+  section[style*="padding: 150px"] { padding: 88px 0 40px !important; }
+
+  section[style*="padding: 128px"],
+  section[style*="padding: 104px"],
+  section[style*="padding: 100px"],
+  section[style*="padding: 96px"],
+  section[style*="padding: 90px"],
+  section[style*="padding: 84px"] { padding: 56px 0 !important; }
+
+  section[style*="padding: 72px"],
+  section[style*="padding: 64px"],
+  section[style*="padding: 62px"],
+  section[style*="padding: 60px"] { padding: 40px 0 !important; }
+
+  /* === CONTAINERS: padding horizontal 40px → 16px (padrão "0 40px") === */
   [style*="padding: 0px 40px"] {
     padding-left: 16px !important;
     padding-right: 16px !important;
@@ -59,7 +83,7 @@
   /* === HERO: colapsa 2 colunas, oculta coluna de imagem === */
   section[style*="padding: 148px"] [style*="grid-template-columns: 1.05fr"],
   section[style*="padding: 148px"] [style*="grid-template-columns: 1.04fr"] {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: minmax(0, 1fr) !important;
     gap: 0 !important;
   }
   section[style*="padding: 148px"] [style*="grid-template-columns: 1.05fr"] > div:last-child,
@@ -67,45 +91,36 @@
     display: none !important;
   }
 
-  /* === GRIDS ASSIMÉTRICOS DE 2 COLUNAS → 1 coluna === */
-  [style*="grid-template-columns: 1.04fr 0.96fr"],
-  [style*="grid-template-columns: 1.05fr 0.95fr"],
-  [style*="grid-template-columns: 1.08fr 0.92fr"],
-  [style*="grid-template-columns: 0.92fr 1.08fr"],
-  [style*="grid-template-columns: 1.1fr 0.9fr"],
-  [style*="grid-template-columns: 0.9fr 1.1fr"],
-  [style*="grid-template-columns: 1.15fr 0.85fr"],
-  [style*="grid-template-columns: 0.85fr 1.15fr"],
-  [style*="grid-template-columns: 1.2fr 0.8fr"],
-  [style*="grid-template-columns: 0.8fr 1.2fr"] {
-    grid-template-columns: 1fr !important;
-    gap: 28px !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+  /* === GRIDS: qualquer grid-template-columns multi-valor explícito
+     (proporções fr, px+fr, etc.) → 1 coluna. Cobre todas as variações
+     "1fr 1fr", "1.2fr 0.8fr", "240px 1fr" etc. sem precisar enumerar. === */
+  [style*="grid-template-columns: "]:not([style*="grid-template-columns: repeat("]) {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 24px !important;
   }
 
-  /* === GRIDS MULTI-COLUNA FIXOS → 2 colunas === */
+  /* === GRIDS: repeat(N, 1fr) fixo → 2 colunas que encolhem === */
+  [style*="grid-template-columns: repeat(2, 1fr)"],
   [style*="grid-template-columns: repeat(3, 1fr)"],
   [style*="grid-template-columns: repeat(4, 1fr)"],
-  [style*="grid-template-columns: repeat(6, 1fr)"] {
-    grid-template-columns: repeat(2, 1fr) !important;
+  [style*="grid-template-columns: repeat(5, 1fr)"],
+  [style*="grid-template-columns: repeat(6, 1fr)"],
+  [style*="grid-template-columns: repeat(8, 1fr)"],
+  [style*="grid-template-columns: repeat(12, 1fr)"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 10px !important;
   }
 
-  /* === PRODUTO CARDS (auto-fill minmax): forçar 2 colunas === */
-  [style*="minmax(248px"],
-  [style*="minmax(258px"],
-  [style*="minmax(256px"],
-  [style*="minmax(260px"],
-  [style*="minmax(270px"],
-  [style*="minmax(280px"] {
-    grid-template-columns: repeat(2, 1fr) !important;
+  /* === CARDS (auto-fill/auto-fit minmax): 2 colunas que encolhem === */
+  [style*="grid-template-columns: repeat(auto-fill"],
+  [style*="grid-template-columns: repeat(auto-fit"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 12px !important;
   }
 
-  /* === FOOTER: 4 colunas → 2 colunas === */
+  /* === FOOTER: 4 colunas → 2 colunas (sobrescreve a regra genérica acima) === */
   [style*="grid-template-columns: 1.5fr 1fr 1fr 1.2fr"] {
-    grid-template-columns: 1fr 1fr !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 20px 28px !important;
   }
 
@@ -121,6 +136,32 @@
     padding-left: 16px !important;
     padding-right: 16px !important;
   }
+
+  /* === PADDING HORIZONTAL 40px "embutido" no próprio elemento (sem div
+     interna dedicada) — lista exaustiva dos valores usados no projeto.
+     Precisa vir depois das regras de padding vertical acima para vencer
+     a cascata (mesma especificidade, ordem de origem decide). === */
+  section[style*="padding: 128px 40px 0px"],
+  section[style*="padding: 148px 40px 56px"],
+  section[style*="padding: 30px 40px 20px"],
+  section[style*="padding: 30px 40px 90px"],
+  section[style*="padding: 30px 40px 96px"],
+  section[style*="padding: 34px 40px 10px"],
+  section[style*="padding: 40px 40px 20px"],
+  section[style*="padding: 40px 40px 80px"],
+  section[style*="padding: 44px 40px"],
+  section[style*="padding: 48px 40px 30px"],
+  section[style*="padding: 50px 40px"],
+  section[style*="padding: 60px 40px"],
+  section[style*="padding: 60px 40px 80px"],
+  section[style*="padding: 60px 40px 90px"],
+  section[style*="padding: 64px 40px 30px"],
+  section[style*="padding: 8px 40px 0px"],
+  section[style*="padding: 90px 40px"],
+  section[style*="padding: 96px 40px"] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
 }
 
 /* ── SMALL MOBILE (≤ 480px) ──────────────────────────────────── */
@@ -128,15 +169,40 @@
   h1 { font-size: 28px !important; }
   h2 { font-size: 22px !important; }
 
-  /* Cards de produto → 1 coluna */
+  /* Grids de card/ícone → 1 coluna */
+  [style*="grid-template-columns: repeat(2, 1fr)"],
   [style*="grid-template-columns: repeat(3, 1fr)"],
   [style*="grid-template-columns: repeat(4, 1fr)"],
-  [style*="grid-template-columns: repeat(6, 1fr)"] {
-    grid-template-columns: 1fr !important;
+  [style*="grid-template-columns: repeat(5, 1fr)"],
+  [style*="grid-template-columns: repeat(6, 1fr)"],
+  [style*="grid-template-columns: repeat(8, 1fr)"],
+  [style*="grid-template-columns: repeat(12, 1fr)"],
+  [style*="grid-template-columns: repeat(auto-fill"],
+  [style*="grid-template-columns: repeat(auto-fit"] {
+    grid-template-columns: minmax(0, 1fr) !important;
   }
 
   /* Footer → 1 coluna */
   [style*="grid-template-columns: 1.5fr 1fr 1fr 1.2fr"] {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  /* === CALLOUTS "ícone + texto + botão" numa linha só: em telas bem
+     estreitas (iPhone SE etc.) o botão de largura fixa não cabe mais
+     ao lado do texto — permite quebrar para a linha seguinte. === */
+  [style*="align-items: center; gap: 14px"],
+  [style*="gap: 24px; align-items: center"],
+  [style*="gap: 24px; margin-top: 28px; padding-top: 24px"] {
+    flex-wrap: wrap !important;
+  }
+
+  /* === CARD "Garantia" (ícone circular 140px + texto): em telas
+     estreitas o card mantém o padding grande de desktop e o ícone
+     fixo não deixa espaço para o texto — reduz o padding e empilha
+     ícone acima do texto, centralizado. === */
+  [style*="padding: 52px 48px"] {
+    padding: 32px 24px !important;
+    flex-direction: column !important;
+    text-align: center !important;
   }
 }
