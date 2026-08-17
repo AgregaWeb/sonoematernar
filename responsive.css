@@ -162,6 +162,23 @@
     padding-left: 16px !important;
     padding-right: 16px !important;
   }
+
+  /* === MENU DE SERVIÇOS (página Início): a seção abre a página, então
+     o padding superior precisa apenas limpar o header fixo, e os cards
+     ficam em 1 coluna com respiro menor para caber mais na dobra. === */
+  #servicos { padding: 88px 0 48px !important; }
+  #servicos > div[style*="padding: 0px 40px"] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  #servicos [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 14px !important;
+  }
+  #servicos [style*="grid-template-columns: repeat(3, 1fr)"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 10px !important;
+  }
 }
 
 /* ── SMALL MOBILE (≤ 480px) ──────────────────────────────────── */
