@@ -179,6 +179,12 @@
     grid-template-columns: minmax(0, 1fr) !important;
     gap: 10px !important;
   }
+
+  /* === CAPAS DOS CARDS: o card fica bem mais estreito no mobile, então a
+     mesma altura de faixa revelaria uma fatia bem maior da arte (que é
+     vertical) — e o texto do material voltaria a aparecer no topo. A
+     altura menor mantém a mesma proporção de recorte do desktop. === */
+  #servicos [style*="height: 180px"] { height: 120px !important; }
 }
 
 /* ── SMALL MOBILE (≤ 480px) ──────────────────────────────────── */
@@ -212,6 +218,10 @@
   [style*="gap: 24px; margin-top: 28px; padding-top: 24px"] {
     flex-wrap: wrap !important;
   }
+
+  /* === CAPAS DOS CARDS: telas bem estreitas exigem faixa ainda menor
+     para manter a mesma proporção de recorte. === */
+  #servicos [style*="height: 180px"] { height: 100px !important; }
 
   /* === CARD "Garantia" (ícone circular 140px + texto): em telas
      estreitas o card mantém o padding grande de desktop e o ícone
