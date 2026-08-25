@@ -40,7 +40,7 @@ Home · Quem Sou · Método (Maternar Leve) · Consultorias (Diagnóstico, Colet
 - Nível 1 — Diagnóstico do Sono · R$ 399,99 · formulário, análise personalizada, sugestão inicial de rotina, retorno em até 5 dias úteis + 1 dia de suporte no WhatsApp. (porta de entrada) · CTA vai para o WhatsApp de vendas
 - Nível 2 — Consultoria Coletiva · R$ 449,99 · aula inicial, grupo WhatsApp, acompanhamento simplificado (em grupo, acessível) · CTA vai para o WhatsApp de vendas (lista de espera)
 - Nível 3 — Consultoria Individual · R$ 1.100 (voucher de 5% de desconto no Pix) · diagnóstico, rotina personalizada, cronograma, grupo, materiais, 30 dias de acompanhamento · CTA vai para o Forms (https://forms.gle/i2sZybmkGU1YVHPn9)
-- Nível 4 — Consultoria Domiciliar Premium · a partir de R$ 1.200 · avaliação presencial do ambiente, rotina e plano personalizado · CTA vai para o WhatsApp pessoal da Vitória (5591984555549)
+- Nível 4 — Consultoria Domiciliar Premium · a partir de R$ 1.200 · avaliação presencial do ambiente, rotina e plano personalizado · CTA vai para o WhatsApp pessoal da Vitória (5591985773041)
 
 **Recorrência:**
 - MaternaClub · R$ 39,90–59,90/mês · comunidade, lives, ajustes de rotina, suporte contínuo

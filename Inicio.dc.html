@@ -570,7 +570,7 @@
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5591984550219&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;whatsappVitoria&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5591984555549&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showInstagram&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;autoplayTestimonials&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5591984550219&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;whatsappVitoria&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5591985773041&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showInstagram&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;autoplayTestimonials&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
   state = { menu: null, faq: 0, t: 0 };
 
@@ -642,7 +642,7 @@ class Component extends DCLogic {
     const num = (this.props.whatsappNumber || '5591984550219').replace(/\D/g, '');
     // Domiciliar Premium fala direto com a Vitória (mesmo número usado na
     // página Consultoria Premium); os demais vão para o WhatsApp de vendas.
-    const numVitoria = (this.props.whatsappVitoria || '5591984555549').replace(/\D/g, '');
+    const numVitoria = (this.props.whatsappVitoria || '5591985773041').replace(/\D/g, '');
     const wa = (n, msg) => 'https://wa.me/' + n + '?text=' + encodeURIComponent(msg);
     const t = this.state.t;
     return {
