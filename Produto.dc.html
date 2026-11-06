@@ -49,10 +49,10 @@
           <a href="Consultoria Individual.dc.html" style="font:600 14px 'Hanken Grotesk'; color:#4A463F; text-decoration:none; padding:9px 14px; border-radius:9px; display:inline-flex; align-items:center; gap:5px; transition:.16s;" style-hover="background:rgba(46,90,99,.07); color:#2E5A63;">Consultorias <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></a>
           <sc-if value="{{ menuConsult }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute; top:100%; left:50%; transform:translateX(-50%); width:300px; background:#fff; border:1px solid #ECE4D6; border-radius:16px; box-shadow:0 18px 44px rgba(45,42,36,.12); padding:10px;">
-              <a href="Diagnostico.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Diagnóstico do Sono</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Por onde começar · R$ 399,99</div></a>
-              <a href="Conducao do Sono.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Condução do Sono</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Recém-nascidos · R$ 299,00</div></a>
-              <a href="Consultoria Coletiva.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Consultoria Coletiva</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Em grupo, acessível · R$ 449,99</div></a>
-              <a href="Consultoria Individual.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Consultoria Individual ★</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">A mais escolhida · R$ 1.100</div></a>
+              <a href="Diagnostico.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Diagnóstico do Sono</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Por onde começar</div></a>
+              <a href="Conducao do Sono.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Condução do Sono</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Recém-nascidos</div></a>
+              <a href="Consultoria Coletiva.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Consultoria Coletiva</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Em grupo, acessível</div></a>
+              <a href="Consultoria Individual.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Consultoria Individual ★</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">VIP, Premium e Platinum</div></a>
               <a href="Consultoria Premium.dc.html" style="display:block; text-decoration:none; padding:11px 13px; border-radius:11px; transition:.14s;" style-hover="background:#F5EFE6;"><div style="font:600 14px 'Hanken Grotesk'; color:#2B2A27;">Domiciliar Premium</div><div style="font:400 12px 'Hanken Grotesk'; color:#98938B; margin-top:1px;">Avaliação presencial</div></a>
             </div>
           </sc-if>
@@ -99,21 +99,14 @@
           <span style="display:inline-flex; align-items:center; gap:6px; font:600 12.5px 'Hanken Grotesk'; color:#2E5A63; background:#EAF1F7; padding:7px 13px; border-radius:999px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Conteúdo Prático</span>
           <span style="display:inline-flex; align-items:center; gap:6px; font:600 12.5px 'Hanken Grotesk'; color:#2E5A63; background:#EAF1F7; padding:7px 13px; border-radius:999px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Baseado em Evidências</span>
         </div>
-        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin-top:30px;">
-          <div style="display:flex; align-items:baseline; gap:8px;">
-            <sc-if value="{{ hasOld }}" hint-placeholder-val="{{ true }}"><span style="font:500 17px 'Hanken Grotesk'; color:#A39A8C; text-decoration:line-through;">{{ priceOld }}</span></sc-if>
-            <span style="font:700 34px 'Hanken Grotesk'; color:#2E5A63;">{{ priceNow }}</span>
-            <span style="font:500 14px 'Hanken Grotesk'; color:#8A857B;">{{ pricePeriod }}</span>
-          </div>
-        </div>
-        <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:18px;">
+        <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:30px;">
           <a href="{{ comprar }}" target="_blank" style="font:700 15.5px 'Hanken Grotesk'; color:#fff; background:#2E5A63; text-decoration:none; padding:16px 28px; border-radius:13px; box-shadow:0 10px 24px rgba(46,90,99,.24); transition:.18s; display:inline-flex; align-items:center; gap:9px;" style-hover="background:#1F4A52; transform:translateY(-2px); box-shadow:0 16px 32px rgba(46,90,99,.3);">{{ ctaText }} <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a href="#conteudo" style="font:700 15.5px 'Hanken Grotesk'; color:#2E5A63; background:rgba(255,255,255,.7); text-decoration:none; padding:16px 28px; border-radius:13px; border:1.5px solid #C4D7E2; transition:.18s;" style-hover="background:#fff; border-color:#2E5A63;">Ver Conteúdo</a>
         </div>
         <div style="display:flex; flex-wrap:wrap; gap:18px; margin-top:26px;">
-          <span style="display:inline-flex; align-items:center; gap:7px; font:500 12.5px 'Hanken Grotesk'; color:#6E6A62;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Pagamento seguro</span>
+          <span style="display:inline-flex; align-items:center; gap:7px; font:500 12.5px 'Hanken Grotesk'; color:#6E6A62;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Atendimento direto no WhatsApp</span>
           <span style="display:inline-flex; align-items:center; gap:7px; font:500 12.5px 'Hanken Grotesk'; color:#6E6A62;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>Acesso imediato</span>
-          <span style="display:inline-flex; align-items:center; gap:7px; font:500 12.5px 'Hanken Grotesk'; color:#6E6A62;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5-2 8-5 8-10V5l-8-3-8 3v7c0 5 3 8 8 10Z"/></svg>Checkout Hotmart</span>
+          <span style="display:inline-flex; align-items:center; gap:7px; font:500 12.5px 'Hanken Grotesk'; color:#6E6A62;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5-2 8-5 8-10V5l-8-3-8 3v7c0 5 3 8 8 10Z"/></svg>Resposta rápida</span>
           <span style="display:inline-flex; align-items:center; gap:7px; font:500 12.5px 'Hanken Grotesk'; color:#6E6A62;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5F7E5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Garantia de 7 dias</span>
         </div>
       </div>
@@ -408,16 +401,11 @@
           <div style="font:700 12px 'Hanken Grotesk'; letter-spacing:.16em; text-transform:uppercase; color:#B7C7AE; margin-bottom:14px;">Comece hoje mesmo</div>
           <h2 style="font:300 40px/1.16 'Newsreader',serif; color:#fff; margin:0; letter-spacing:-.015em;">{{ ctaHeadline }}</h2>
           <p style="font:400 16.5px/1.65 'Hanken Grotesk'; color:#C7DDE2; margin:18px 0 0; max-width:420px;">Acesso imediato, no seu tempo e no conforto da sua casa. Dê o primeiro passo rumo a noites mais tranquilas.</p>
-          <div style="display:flex; align-items:baseline; gap:8px; margin:26px 0 4px;">
-            <sc-if value="{{ hasOld }}" hint-placeholder-val="{{ true }}"><span style="font:500 18px 'Hanken Grotesk'; color:#8FB0B7; text-decoration:line-through;">{{ priceOld }}</span></sc-if>
-            <span style="font:700 38px 'Hanken Grotesk'; color:#fff;">{{ priceNow }}</span>
-            <span style="font:500 15px 'Hanken Grotesk'; color:#9DBFC6;">{{ pricePeriod }}</span>
-          </div>
-          <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:22px;">
+          <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:26px;">
             <a href="{{ comprar }}" target="_blank" style="font:700 15.5px 'Hanken Grotesk'; color:#1F4A52; background:#fff; text-decoration:none; padding:16px 30px; border-radius:13px; box-shadow:0 12px 28px rgba(0,0,0,.18); transition:.18s; display:inline-flex; align-items:center; gap:9px;" style-hover="transform:translateY(-2px);">{{ ctaText }} <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:18px; margin-top:22px;">
-            <span style="display:inline-flex; align-items:center; gap:7px; font:500 12.5px 'Hanken Grotesk'; color:#9DBFC6;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B7C7AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Pagamento seguro · Hotmart</span>
+            <span style="display:inline-flex; align-items:center; gap:7px; font:500 12.5px 'Hanken Grotesk'; color:#9DBFC6;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B7C7AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Atendimento direto no WhatsApp</span>
             <span style="display:inline-flex; align-items:center; gap:7px; font:500 12.5px 'Hanken Grotesk'; color:#9DBFC6;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B7C7AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Garantia de 7 dias</span>
           </div>
         </div>
@@ -536,7 +524,7 @@ class Component extends DCLogic {
       headline: 'Os primeiros meses podem ser mais leves do que parecem.',
       subheadline: 'Um guia prático para entender o sono do bebê do nascimento ao primeiro ano e construir uma base tranquila desde o início.',
       benefitLine: 'Aprenda a compreender o sono do seu bebê e construa uma rotina mais tranquila do nascimento ao primeiro ano.',
-      priceNow: 'R$ 39,90', priceOld: 'R$ 67', pricePeriod: '', ctaText: 'Quero meu guia do sono',
+      ctaText: 'Quero meu guia do sono',
       ctaHeadline: 'Comece as noites do seu recém-nascido com mais leveza.',
       modulesTitle: 'O conteúdo completo do guia',
       benefits: [
@@ -575,7 +563,7 @@ class Component extends DCLogic {
       headline: 'A fase dos 4 meses não precisa ser uma crise.',
       subheadline: 'Entenda a famosa regressão do sono e conduza essa transição com segurança e previsibilidade.',
       benefitLine: 'Aprenda a atravessar a regressão dos 4 meses e a estruturar sonecas mais longas e organizadas.',
-      priceNow: 'R$ 47', priceOld: 'R$ 67', pricePeriod: '', ctaText: 'Quero meu guia do sono',
+      ctaText: 'Quero meu guia do sono',
       ctaHeadline: 'Atravesse a regressão dos 4 meses com tranquilidade.',
       modulesTitle: 'O conteúdo completo do guia',
       benefits: [
@@ -614,7 +602,7 @@ class Component extends DCLogic {
       headline: 'Mais autonomia para o seu bebê. Mais noites inteiras para você.',
       subheadline: 'Um guia para consolidar o sono na segunda metade do primeiro ano, com rotina firme e gentil.',
       benefitLine: 'Aprenda a consolidar o sono noturno e a lidar com as mudanças de rotina dos 7 aos 12 meses.',
-      priceNow: 'R$ 47', priceOld: 'R$ 67', pricePeriod: '', ctaText: 'Quero meu guia do sono',
+      ctaText: 'Quero meu guia do sono',
       ctaHeadline: 'Consolide noites mais inteiras antes do primeiro ano.',
       modulesTitle: 'O conteúdo completo do guia',
       benefits: [
@@ -653,7 +641,7 @@ class Component extends DCLogic {
       headline: 'Rotinas prontas, testadas e ajustáveis à sua realidade.',
       subheadline: 'Modelos de rotina por faixa etária para você parar de adivinhar horários e seguir um plano claro.',
       benefitLine: 'Tenha rotinas prontas por idade, com horários de sono, mamadas e sonecas — é só adaptar e seguir.',
-      priceNow: 'R$ 37', priceOld: 'R$ 47', pricePeriod: '', ctaText: 'Quero minhas rotinas prontas',
+      ctaText: 'Quero minhas rotinas prontas',
       ctaHeadline: 'Pare de adivinhar horários. Siga uma rotina pronta.',
       modulesTitle: 'O que vem nas Rotinas Prontas',
       benefits: [
@@ -692,7 +680,7 @@ class Component extends DCLogic {
       headline: 'O ambiente certo faz metade do trabalho.',
       subheadline: 'Um kit completo para transformar o quarto do seu bebê num convite ao sono profundo e seguro.',
       benefitLine: 'Aprenda a ajustar luz, ruído, temperatura e segurança para criar o ambiente ideal de sono.',
-      priceNow: 'R$ 47', priceOld: 'R$ 57', pricePeriod: '', ctaText: 'Quero preparar o quarto',
+      ctaText: 'Quero preparar o quarto',
       ctaHeadline: 'Transforme o quarto num convite ao sono profundo.',
       modulesTitle: 'O que vem no Kit Ambiente',
       benefits: [
@@ -731,7 +719,7 @@ class Component extends DCLogic {
       headline: 'Tudo o que você precisa lembrar, num só lugar.',
       subheadline: 'Uma coleção de checklists e materiais práticos para organizar a rotina sem sobrecarga mental.',
       benefitLine: 'Tenha checklists prontos para a rotina, o sono e o dia a dia — e tire o peso de ter que lembrar de tudo.',
-      priceNow: 'R$ 27', priceOld: 'R$ 37', pricePeriod: '', ctaText: 'Quero meus checklists',
+      ctaText: 'Quero meus checklists',
       ctaHeadline: 'Organize a rotina sem sobrecarga mental.',
       modulesTitle: 'O que vem nos Checklists',
       benefits: [
@@ -770,7 +758,7 @@ class Component extends DCLogic {
       headline: 'O ponto de partida completo para o sono do seu bebê.',
       subheadline: 'Guias, checklists e ferramentas reunidos num único kit — tudo o que você precisa para começar com segurança.',
       benefitLine: 'Reúna em um só lugar os guias, checklists e ferramentas essenciais para começar a organizar o sono.',
-      priceNow: 'R$ 97', priceOld: 'R$ 147', pricePeriod: '', ctaText: 'Quero meu kit completo',
+      ctaText: 'Quero meu kit completo',
       ctaHeadline: 'Tenha tudo o que precisa para começar, num só kit.',
       modulesTitle: 'Tudo o que vem no Kit Primeiros Passos',
       benefits: [
@@ -809,7 +797,7 @@ class Component extends DCLogic {
       headline: 'Sono do bebê, antes mesmo do bebê chegar.',
       subheadline: 'Um curso para gestantes que querem se preparar e receber o recém-nascido com confiança e um plano de sono.',
       benefitLine: 'Aprenda, ainda na gestação, a preparar o ambiente, a rotina e as expectativas para o sono do recém-nascido.',
-      priceNow: 'R$ 147', priceOld: 'R$ 197', pricePeriod: '', ctaText: 'Quero me inscrever',
+      ctaText: 'Quero me inscrever',
       ctaHeadline: 'Prepare-se na gestação e receba seu bebê com confiança.',
       modulesTitle: 'O que você vai aprender no curso',
       benefits: [
@@ -848,7 +836,7 @@ class Component extends DCLogic {
       headline: 'Você não precisa atravessar a maternidade sozinha.',
       subheadline: 'Uma comunidade com suporte contínuo, lives e ajustes de rotina para caminhar com você mês após mês.',
       benefitLine: 'Tenha acompanhamento contínuo, lives exclusivas e uma rede de apoio para ajustar a rotina sempre que precisar.',
-      priceNow: 'R$ 39,90', priceOld: '', pricePeriod: '/mês', ctaText: 'Quero fazer parte',
+      ctaText: 'Quero fazer parte',
       ctaHeadline: 'Tenha suporte contínuo, mês após mês.',
       modulesTitle: 'O que você encontra no MaternaClub',
       benefits: [
@@ -974,8 +962,8 @@ class Component extends DCLogic {
     const p = this.product();
     const slug = p.slug;
     const num = (this.props.whatsappNumber || '5591984550219').replace(/\D/g, '');
-    const hotmartDefault = 'https://pay.hotmart.com';
-    const comprar = (this.props.hotmartLink && this.props.hotmartLink.trim()) ? this.props.hotmartLink : hotmartDefault;
+    const waText = encodeURIComponent('Olá, Vitória! Tenho interesse em: ' + (p.category || 'seus produtos') + '. Pode me passar mais informações?');
+    const comprar = 'https://wa.me/' + num + '?text=' + waText;
     const t = this.state.t;
     const tlist = p.testimonials || [];
     const n = tlist.length || 1;
@@ -994,8 +982,7 @@ class Component extends DCLogic {
     return {
       slug: slug,
       category: p.category, headline: p.headline, subheadline: p.subheadline, benefitLine: p.benefitLine,
-      priceNow: p.priceNow, priceOld: p.priceOld || '', hasOld: !!(p.priceOld && p.priceOld.length),
-      pricePeriod: p.pricePeriod || '', ctaText: p.ctaText || 'Quero começar agora',
+      ctaText: p.ctaText || 'Quero começar agora',
       ctaHeadline: p.ctaHeadline, modulesTitle: p.modulesTitle, mockupPlaceholder: p.mockup, coverSrc: p.coverSrc || '',
       comprar: comprar, whatsappLink: 'https://wa.me/' + num,
       benefits, modules, bonuses, faqs, testimonials, dots,
